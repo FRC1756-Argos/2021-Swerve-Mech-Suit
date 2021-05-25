@@ -7,7 +7,7 @@
 
 class DriveSubsystem : public frc2::SubsystemBase {
  public:
-  enum class ModuleIndex {
+  enum ModuleIndex {
     frontLeft,
     frontRight,
     rearRight,

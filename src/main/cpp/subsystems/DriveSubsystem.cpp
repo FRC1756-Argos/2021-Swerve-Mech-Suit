@@ -27,7 +27,8 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   auto minLeverArm = std::min({leverArmFrontLeft, leverArmFrontRight, leverArmRearRight, leverArmRearLeft},
                               [](const auto& a, const auto& b) { return a.Norm() < b.Norm(); });
   units::length::meter_t turnCircumference = minLeverArm.Norm() * 2 * M_PI;
-  m_maxAngularRate = units::degrees_per_second_t( 360.0 * (speedLimits::drive::maxVelocity.to<double>() / turnCircumference.to<double>()) );
+
+  m_maxAngularRate = units::degree_t(360.0) * (speedLimits::drive::maxVelocity / turnCircumference);
 }
 
 void DriveSubsystem::SwerveDrive(const double fwVelocity,
@@ -36,7 +37,18 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
   auto moduleStates = m_pSwerveKinematicsModel->ToSwerveModuleStates(frc::ChassisSpeeds{ speedLimits::drive::maxVelocity * fwVelocity,
                                                                                          speedLimits::drive::maxVelocity * latVelocity,
                                                                                          m_maxAngularRate * rotateVelocity });
-  /// @TODO: Actually control stuff
+  m_motorDriveFrontLeft.Set(moduleStates.at(ModuleIndex::frontLeft).speed / speedLimits::drive::maxVelocity);
+  m_motorTurnFrontLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
+                           moduleStates.at(ModuleIndex::frontLeft).angle.Degrees().to<double>());
+  m_motorDriveFrontRight.Set(moduleStates.at(ModuleIndex::frontRight).speed / speedLimits::drive::maxVelocity);
+  m_motorTurnFrontRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
+                            moduleStates.at(ModuleIndex::frontRight).angle.Degrees().to<double>());
+  m_motorDriveRearRight.Set(moduleStates.at(ModuleIndex::rearRight).speed / speedLimits::drive::maxVelocity);
+  m_motorTurnRearRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
+                           moduleStates.at(ModuleIndex::rearRight).angle.Degrees().to<double>());
+  m_motorDriveRearLeft.Set(moduleStates.at(ModuleIndex::rearLeft).speed / speedLimits::drive::maxVelocity);
+  m_motorTurnRearLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
+                          moduleStates.at(ModuleIndex::rearLeft).angle.Degrees().to<double>());
 }
 
 void DriveSubsystem::Periodic() {

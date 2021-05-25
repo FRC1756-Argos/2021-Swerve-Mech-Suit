@@ -55,14 +55,14 @@ namespace measureUp
   }
   namespace drive
   {
-    constexpr auto frontLeftLatInset = 5.0_in;
-    constexpr auto frontLeftLonInset = 5.0_in;
-    constexpr auto frontRightLatInset = 5.0_in;
-    constexpr auto frontRightLonInset = 5.0_in;
-    constexpr auto rearRightLatInset = 5.0_in;
-    constexpr auto rearRightLonInset = 5.0_in;
-    constexpr auto rearLeftLatInset = 5.0_in;
-    constexpr auto rearLeftLonInset = 5.0_in;
+    constexpr auto frontLeftLatInset  = 4.0_in;
+    constexpr auto frontLeftLonInset  = 4.0_in;
+    constexpr auto frontRightLatInset = 4.0_in;
+    constexpr auto frontRightLonInset = 4.0_in;
+    constexpr auto rearRightLatInset  = 4.0_in;
+    constexpr auto rearRightLonInset  = 4.0_in;
+    constexpr auto rearLeftLatInset   = 4.0_in;
+    constexpr auto rearLeftLonInset   = 4.0_in;
   }
 }
 
