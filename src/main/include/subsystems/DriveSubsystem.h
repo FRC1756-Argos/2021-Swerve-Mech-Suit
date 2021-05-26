@@ -20,6 +20,8 @@ class DriveSubsystem : public frc2::SubsystemBase {
                    const double latVelocity,
                    const double rotateVelocity);
 
+  void Home(const units::degree_t currentAngle);
+
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */

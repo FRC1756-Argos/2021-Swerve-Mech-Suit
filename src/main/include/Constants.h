@@ -63,6 +63,26 @@ namespace measureUp
     constexpr auto rearRightLonInset  = 4.0_in;
     constexpr auto rearLeftLatInset   = 4.0_in;
     constexpr auto rearLeftLonInset   = 4.0_in;
+
+    constexpr auto wheelDiameter      = 4.0_in;
+    constexpr auto wheelCircumference = wheelDiameter * M_PI;
+  }
+  namespace sensorConversion
+  {
+    namespace swerveRotate
+    {
+      constexpr auto toAngle(double sensorVal) { return units::make_unit<units::degree_t>(sensorVal); }
+      constexpr auto fromAngle(units::degree_t angVal) { return angVal.to<double>(); }
+      constexpr auto toAngVel(double sensorVal) { return units::make_unit<units::degrees_per_second_t>(sensorVal); }
+      constexpr auto fromAngVel(units::degree_t angVelVal) { return angVelVal.to<double>(); }
+    }
+    namespace swerveDrive
+    {
+      constexpr auto toDist(double sensorVal) { return measureUp::drive::wheelCircumference / 8.16 * sensorVal; }
+      constexpr auto fromDist(units::inch_t distVal) { return (distVal * 8.16 / measureUp::drive::wheelCircumference).to<double>(); }
+      constexpr auto toVel(double sensorVal) { return measureUp::drive::wheelCircumference / 8.16 / 100_ms * sensorVal; }
+      constexpr auto fromVel(units::feet_per_second_t velValue) { return (velValue * 8.16  * 100_ms / measureUp::drive::wheelCircumference).to<double>(); }
+    }
   }
 }
 
@@ -71,5 +91,21 @@ namespace speedLimits
   namespace drive
   {
     constexpr auto maxVelocity = 12_fps;
+  }
+}
+
+namespace controlLoop
+{
+  namespace drive
+  {
+    namespace rotate
+    {
+      constexpr double kP = 0.0;
+      constexpr double kI = 0.0;
+      constexpr double kD = 0.0;
+      constexpr double kF = 0.0;
+      constexpr double iZone = 0.0;
+      constexpr double allowableError = 0.0;
+    }
   }
 }
