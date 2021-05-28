@@ -2,7 +2,8 @@
 
 namespace ArgosLib {
 
-XboxController::XboxController(int port) : frc::GenericHID(port) {
+XboxController::XboxController(int port) : frc::GenericHID(port),
+                                           m_vibrationModel(VibrationOff()) {
   m_buttonDebounceSettings.fill({0_ms, 0_ms});
   m_buttonDebounceStatus.fill(false);
   m_rawButtonStatus.fill(false);
@@ -47,6 +48,17 @@ bool XboxController::GetRawButtonPressed(Button buttonIdx){
 
 bool XboxController::GetRawButtonReleased(Button buttonIdx){
   return UpdateButton(buttonIdx).released;
+}
+
+void XboxController::SetVibration(VibrationModel newVibrationModel) {
+  m_vibrationModel = newVibrationModel;
+  UpdateVibration();
+}
+
+void XboxController::UpdateVibration() {
+  const auto vibrationStatus = m_vibrationModel();
+  SetRumble(kLeftRumble, vibrationStatus.intensityLeft);
+  SetRumble(kRightRumble, vibrationStatus.intensityRight);
 }
 
 XboxController::UpdateStatus XboxController::UpdateButton(Button buttonIdx) {

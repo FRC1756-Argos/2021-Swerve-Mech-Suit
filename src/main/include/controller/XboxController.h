@@ -3,6 +3,7 @@
 #include <array>
 #include <frc/GenericHID.h>
 #include "general/debounceSettings.h"
+#include "Vibration.h"
 
 namespace ArgosLib{
 
@@ -55,6 +56,9 @@ public:
   bool GetRawButtonPressed(Button);
   bool GetRawButtonReleased(Button);
 
+  void SetVibration(VibrationModel);
+  void UpdateVibration();
+
 private:
   struct UpdateStatus {
     bool pressed = false;
@@ -82,6 +86,8 @@ private:
   std::array<bool, static_cast<int>(Button::COUNT)> m_buttonDebounceStatus;
   std::array<bool, static_cast<int>(Button::COUNT)> m_rawButtonStatus;
   std::array<std::chrono::time_point<std::chrono::steady_clock>, static_cast<int>(Button::COUNT)> m_buttonDebounceStableTime;
+
+  VibrationModel m_vibrationModel;
 };
 
 } // namespace ArgosLib

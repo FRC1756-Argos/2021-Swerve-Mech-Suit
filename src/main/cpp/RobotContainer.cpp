@@ -29,6 +29,7 @@ RobotContainer::RobotContainer() : m_driverController(address::joystick::driver)
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
+  m_driverController.UpdateVibration();
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
