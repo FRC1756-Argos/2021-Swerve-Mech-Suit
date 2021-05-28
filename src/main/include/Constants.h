@@ -8,6 +8,7 @@
 #include <units/velocity.h>
 #include <units/angle.h>
 #include <units/angular_velocity.h>
+#include "general/interpolation.h"
 
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
@@ -108,4 +109,20 @@ namespace controlLoop
       constexpr double allowableError = 0.0;
     }
   }
+}
+
+namespace controllerMap
+{
+  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,  -1.0},
+                                                        interpMapPoint{-0.15,  0.0},
+                                                        interpMapPoint{ 0.15,  0.0},
+                                                        interpMapPoint{ 1.0,   1.0} };
+  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -1.0},
+                                                       interpMapPoint{-0.15,  0.0},
+                                                       interpMapPoint{ 0.15,  0.0},
+                                                       interpMapPoint{ 1.0,   1.0} };
+  [[maybe_unused]] constexpr std::array driveRotSpeed{ interpMapPoint{-1.0,  -1.0},
+                                                       interpMapPoint{-0.15,  0.0},
+                                                       interpMapPoint{ 0.15,  0.0},
+                                                       interpMapPoint{ 1.0,   1.0} };
 }

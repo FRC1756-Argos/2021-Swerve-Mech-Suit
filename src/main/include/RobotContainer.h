@@ -9,6 +9,8 @@
 
 #include "commands/ExampleCommand.h"
 #include "subsystems/DriveSubsystem.h"
+#include "general/interpolation.h"
+#include "Constants.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -31,6 +33,10 @@ class RobotContainer {
 
   DriveSubsystem m_drive;
   ExampleSubsystem m_exampleSubsystem;
+
+  interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()> m_driveLonSpeedMap;
+  interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()> m_driveLatSpeedMap;
+  interpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()> m_driveRotSpeedMap;
 
   void ConfigureButtonBindings();
 };

@@ -7,16 +7,19 @@
 #include <frc2/command/RunCommand.h>
 
 RobotContainer::RobotContainer() : m_driverController(address::joystick::driver),
-                                   m_autonomousCommand(&m_exampleSubsystem)
+                                   m_autonomousCommand(&m_exampleSubsystem),
+                                   m_driveLonSpeedMap(controllerMap::driveLongSpeed),
+                                   m_driveLatSpeedMap(controllerMap::driveLatSpeed),
+                                   m_driveRotSpeedMap(controllerMap::driveRotSpeed)
 {
   // Initialize all of your commands and subsystems here
 
   m_drive.SetDefaultCommand(frc2::RunCommand(
       [this] {
         m_drive.SwerveDrive(
-            m_driverController.GetY(frc::GenericHID::kLeftHand),
-            m_driverController.GetX(frc::GenericHID::kLeftHand),
-            m_driverController.GetX(frc::GenericHID::kRightHand));
+            m_driveLonSpeedMap(m_driverController.GetY(frc::GenericHID::kLeftHand)),
+            m_driveLatSpeedMap(m_driverController.GetX(frc::GenericHID::kLeftHand)),
+            m_driveRotSpeedMap(m_driverController.GetX(frc::GenericHID::kRightHand)));
       },
       {&m_drive}));
 
