@@ -52,9 +52,17 @@ public:
   bool GetDebouncedButtonPressed(Button);
   bool GetDebouncedButtonReleased(Button);
 
+  bool GetDebouncedButton(std::initializer_list<Button>);
+  bool GetDebouncedButtonPressed(std::initializer_list<Button>);
+  bool GetDebouncedButtonReleased(std::initializer_list<Button>);
+
   bool GetRawButton(Button);
   bool GetRawButtonPressed(Button);
   bool GetRawButtonReleased(Button);
+
+  bool GetRawButton(std::initializer_list<Button>);
+  bool GetRawButtonPressed(std::initializer_list<Button>);
+  bool GetRawButtonReleased(std::initializer_list<Button>);
 
   void SetVibration(VibrationModel);
   void UpdateVibration();

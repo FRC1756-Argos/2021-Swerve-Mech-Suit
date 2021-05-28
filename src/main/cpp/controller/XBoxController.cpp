@@ -38,6 +38,35 @@ bool XboxController::GetDebouncedButtonReleased(Button buttonIdx){
   return UpdateButton(buttonIdx).debounceRelease;
 }
 
+bool XboxController::GetDebouncedButton(std::initializer_list<Button> buttonCombo){
+  std::vector<UpdateStatus> updates;
+  updates.reserve(buttonCombo.size());
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
+                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceActive; });
+}
+
+bool XboxController::GetDebouncedButtonPressed(std::initializer_list<Button> buttonCombo){
+  std::vector<UpdateStatus> updates;
+  updates.reserve(buttonCombo.size());
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
+                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debouncePress; });
+}
+
+bool XboxController::GetDebouncedButtonReleased(std::initializer_list<Button> buttonCombo){
+  std::vector<UpdateStatus> updates;
+  updates.reserve(buttonCombo.size());
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
+                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+
+  return std::none_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceRelease; });
+}
+
 bool XboxController::GetRawButton(Button buttonIdx){
   return UpdateButton(buttonIdx).rawActive;
 }
@@ -48,6 +77,35 @@ bool XboxController::GetRawButtonPressed(Button buttonIdx){
 
 bool XboxController::GetRawButtonReleased(Button buttonIdx){
   return UpdateButton(buttonIdx).released;
+}
+
+bool XboxController::GetRawButton(std::initializer_list<Button> buttonCombo){
+  std::vector<UpdateStatus> updates;
+  updates.reserve(buttonCombo.size());
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
+                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.rawActive; });
+}
+
+bool XboxController::GetRawButtonPressed(std::initializer_list<Button> buttonCombo){
+  std::vector<UpdateStatus> updates;
+  updates.reserve(buttonCombo.size());
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
+                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.rawActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.pressed; });
+}
+
+bool XboxController::GetRawButtonReleased(std::initializer_list<Button> buttonCombo){
+  std::vector<UpdateStatus> updates;
+  updates.reserve(buttonCombo.size());
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
+                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+
+  return std::none_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.rawActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.released; });
 }
 
 void XboxController::SetVibration(VibrationModel newVibrationModel) {
