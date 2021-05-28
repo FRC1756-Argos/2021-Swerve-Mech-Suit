@@ -10,6 +10,7 @@
 #include "commands/ExampleCommand.h"
 #include "subsystems/DriveSubsystem.h"
 #include "general/interpolation.h"
+#include "controller/XboxController.h"
 #include "Constants.h"
 
 /**
@@ -27,7 +28,7 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
-  frc::XboxController m_driverController;
+  ArgosLib::XboxController m_driverController;
 
   ExampleCommand m_autonomousCommand;
 
