@@ -1,6 +1,6 @@
 #include "controller/XboxController.h"
 
-namespace ArgosLib {
+using namespace ArgosLib;
 
 XboxController::XboxController(int port) : frc::GenericHID(port),
                                            m_vibrationModel(VibrationOff()) {
@@ -197,5 +197,3 @@ XboxController::DPadButtons XboxController::GetPOVButtons() {
                       povAngle >= 135 && povAngle <= 225,
                       povAngle >= 225 && povAngle <= 315};
 }
-
-} // namespace ArgosLib

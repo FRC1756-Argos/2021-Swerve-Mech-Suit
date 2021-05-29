@@ -3,26 +3,26 @@
 
 using namespace ArgosLib;
 
-VibrationModel VibrationOff() {
+VibrationModel ArgosLib::VibrationOff() {
   return [](){ return VibrationStatus{0.0, 0.0}; };
 }
 
-VibrationModel VibrationConstant(double intensity) {
+VibrationModel ArgosLib::VibrationConstant(double intensity) {
   return [intensity](){ return VibrationStatus{intensity, intensity}; };
 }
 
-VibrationModel VibrationConstant(double intensityLeft, double intensityRight) {
+VibrationModel ArgosLib::VibrationConstant(double intensityLeft, double intensityRight) {
   return [intensityLeft, intensityRight](){ return VibrationStatus{intensityLeft, intensityRight}; };
 }
 
-VibrationModel VibrationSyncPulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel ArgosLib::VibrationSyncPulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff](){ const auto periodTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() % msPeriod;
                                                   const auto vibrationIntensity = periodTime < (msPeriod / 2) ? intensityOn : intensityOff;
                                                   return VibrationStatus{vibrationIntensity, vibrationIntensity}; };
 }
 
-VibrationModel VibrationAlternatePulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel ArgosLib::VibrationAlternatePulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff](){ const auto periodTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() % msPeriod;
                                                   const auto vibrationState = periodTime < (msPeriod / 2);
@@ -30,7 +30,7 @@ VibrationModel VibrationAlternatePulse(units::millisecond_t pulsePeriod, double 
                                                                          vibrationState ? intensityOff : intensityOn}; };
 }
 
-VibrationModel VibrationSyncWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel ArgosLib::VibrationSyncWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff](){ const auto periodTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() % msPeriod;
                                                   const auto periodProgress = static_cast<double>(periodTime) / msPeriod;
@@ -39,7 +39,7 @@ VibrationModel VibrationSyncWave(units::millisecond_t pulsePeriod, double intens
                                                   return VibrationStatus{outputIntensity, outputIntensity}; };
 }
 
-VibrationModel VibrationAlternateWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel ArgosLib::VibrationAlternateWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff](){ const auto periodTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() % msPeriod;
                                                   const auto periodProgress = static_cast<double>(periodTime) / msPeriod;
