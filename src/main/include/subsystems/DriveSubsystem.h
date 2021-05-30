@@ -34,6 +34,8 @@ class DriveSubsystem : public frc2::SubsystemBase {
   void SimulationPeriodic() override;
 
  private:
+  void NTUpdate(NetworkTable*, wpi::StringRef, nt::NetworkTableEntry, std::shared_ptr<nt::Value>, int);
+
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
   WPI_TalonFX m_motorDriveFrontLeft;

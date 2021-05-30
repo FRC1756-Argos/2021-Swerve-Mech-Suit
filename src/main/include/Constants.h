@@ -126,3 +126,30 @@ namespace controllerMap
                                                        interpMapPoint{ 0.15,  0.0},
                                                        interpMapPoint{ 1.0,   1.0} };
 }
+
+namespace ntKeys
+{
+  constexpr auto tableName = "Argos";
+  namespace subsystemDrive
+  {
+    namespace homePosition
+    {
+      constexpr auto turnFrontLeft  = "drive/homing/turnFrontLeft";
+      constexpr auto turnFrontRight = "drive/homing/turnFrontRight";
+      constexpr auto turnRearRight  = "drive/homing/turnRearRight";
+      constexpr auto turnRearLeft   = "drive/homing/turnRearLeft";
+    }
+    namespace tuning
+    {
+      namespace turn
+      {
+        constexpr auto kP = "drive/tuning/turn/kP";
+        constexpr auto kI = "drive/tuning/turn/kI";
+        constexpr auto kD = "drive/tuning/turn/kD";
+        constexpr auto kF = "drive/tuning/turn/kF";
+        constexpr auto iZone = "drive/tuning/turn/iZone";
+        constexpr auto allowableError = "drive/tuning/turn/allowableError";
+      }
+    }
+  }
+}

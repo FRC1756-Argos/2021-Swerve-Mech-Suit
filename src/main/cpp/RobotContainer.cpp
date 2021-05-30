@@ -5,6 +5,7 @@
 #include "RobotContainer.h"
 #include "Constants.h"
 #include <frc2/command/RunCommand.h>
+#include <networktables/NetworkTableInstance.h>
 
 RobotContainer::RobotContainer() : m_driverController(address::joystick::driver),
                                    m_autonomousCommand(&m_exampleSubsystem),
@@ -25,11 +26,23 @@ RobotContainer::RobotContainer() : m_driverController(address::joystick::driver)
 
   // Configure the button bindings
   ConfigureButtonBindings();
+
+  // Configure network tables
+  auto ntInstance{nt::NetworkTableInstance::GetDefault()};
+  auto ntTable{ntInstance.GetTable(ntKeys::tableName)};
+  ntTable->SetPersistent(ntKeys::subsystemDrive::homePosition::turnFrontLeft);
+  ntTable->SetPersistent(ntKeys::subsystemDrive::homePosition::turnFrontRight);
+  ntTable->SetPersistent(ntKeys::subsystemDrive::homePosition::turnRearRight);
+  ntTable->SetPersistent(ntKeys::subsystemDrive::homePosition::turnRearLeft);
+
+  // Set controller configs
+  m_driverController.SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {500_ms, 0_ms});
+  m_driverController.SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {500_ms, 0_ms});
 }
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
-  m_driverController.UpdateVibration();
+  m_triggerHomeCombo.WhenActive(&m_homeSwerveModulesCommand);
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

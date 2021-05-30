@@ -5,7 +5,8 @@
 #pragma once
 
 #include <frc2/command/Command.h>
-#include <frc/XboxController.h>
+#include <frc2/command/InstantCommand.h>
+#include <frc2/command/button/Trigger.h>
 
 #include "commands/ExampleCommand.h"
 #include "subsystems/DriveSubsystem.h"
@@ -30,10 +31,17 @@ class RobotContainer {
   // The robot's subsystems and commands are defined here...
   ArgosLib::XboxController m_driverController;
 
-  ExampleCommand m_autonomousCommand;
-
+  // Subsystems
   DriveSubsystem m_drive;
   ExampleSubsystem m_exampleSubsystem;
+
+  // Commands
+  ExampleCommand m_autonomousCommand;
+  frc2::InstantCommand m_homeSwerveModulesCommand{[this](){m_drive.Home(0_deg);}, {&m_drive}};
+
+  // Triggers
+  frc2::Trigger m_triggerHomeCombo{[this](){return m_driverController.GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
+                                                                                          ArgosLib::XboxController::Button::kStart});}};
 
   interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()> m_driveLonSpeedMap;
   interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()> m_driveLatSpeedMap;
