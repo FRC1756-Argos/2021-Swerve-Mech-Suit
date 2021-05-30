@@ -9,7 +9,9 @@
 #include <frc2/command/button/Trigger.h>
 
 #include "commands/ExampleCommand.h"
+#include "commands/SwapControllersCommand.h"
 #include "subsystems/DriveSubsystem.h"
+#include "subsystems/SwappableControllersSubsystem.h"
 #include "general/interpolation.h"
 #include "controller/XboxController.h"
 #include "Constants.h"
@@ -29,19 +31,23 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
-  ArgosLib::XboxController m_driverController;
 
   // Subsystems
   DriveSubsystem m_drive;
   ExampleSubsystem m_exampleSubsystem;
+  SwappableControllersSubsystem m_controllers;
 
   // Commands
   ExampleCommand m_autonomousCommand;
   frc2::InstantCommand m_homeSwerveModulesCommand{[this](){m_drive.Home(0_deg);}, {&m_drive}};
 
   // Triggers
-  frc2::Trigger m_triggerHomeCombo{[this](){return m_driverController.GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
-                                                                                          ArgosLib::XboxController::Button::kStart});}};
+  frc2::Trigger m_triggerHomeCombo{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kBumperLeft,
+                                                                                                        ArgosLib::XboxController::Button::kBumperRight});}};
+  frc2::Trigger m_driverTriggerSwapCombo{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
+                                                                                                              ArgosLib::XboxController::Button::kStart});}};
+  frc2::Trigger m_operatorTriggerSwapCombo{[this](){return m_controllers.operatorController().GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
+                                                                                                                  ArgosLib::XboxController::Button::kStart});}};
 
   interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()> m_driveLonSpeedMap;
   interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()> m_driveLatSpeedMap;

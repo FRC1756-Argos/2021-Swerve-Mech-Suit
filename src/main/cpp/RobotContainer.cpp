@@ -7,7 +7,7 @@
 #include <frc2/command/RunCommand.h>
 #include <networktables/NetworkTableInstance.h>
 
-RobotContainer::RobotContainer() : m_driverController(address::joystick::driver),
+RobotContainer::RobotContainer() : m_controllers(address::joystick::driver, address::joystick::secondary),
                                    m_autonomousCommand(&m_exampleSubsystem),
                                    m_driveLonSpeedMap(controllerMap::driveLongSpeed),
                                    m_driveLatSpeedMap(controllerMap::driveLatSpeed),
@@ -18,9 +18,9 @@ RobotContainer::RobotContainer() : m_driverController(address::joystick::driver)
   m_drive.SetDefaultCommand(frc2::RunCommand(
       [this] {
         m_drive.SwerveDrive(
-            m_driveLonSpeedMap(m_driverController.GetY(frc::GenericHID::kLeftHand)),
-            m_driveLatSpeedMap(m_driverController.GetX(frc::GenericHID::kLeftHand)),
-            m_driveRotSpeedMap(m_driverController.GetX(frc::GenericHID::kRightHand)));
+            m_driveLonSpeedMap(m_controllers.driverController().GetY(frc::GenericHID::kLeftHand)),
+            m_driveLatSpeedMap(m_controllers.driverController().GetX(frc::GenericHID::kLeftHand)),
+            m_driveRotSpeedMap(m_controllers.driverController().GetX(frc::GenericHID::kRightHand)));
       },
       {&m_drive}));
 
@@ -36,13 +36,19 @@ RobotContainer::RobotContainer() : m_driverController(address::joystick::driver)
   ntTable->SetPersistent(ntKeys::subsystemDrive::homePosition::turnRearLeft);
 
   // Set controller configs
-  m_driverController.SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {500_ms, 0_ms});
-  m_driverController.SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {500_ms, 0_ms});
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {1_s, 0_ms});
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {1_s, 0_ms});
+  m_controllers.operatorController().SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {1_s, 0_ms});
+  m_controllers.operatorController().SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {1_s, 0_ms});
+
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBumperLeft, {500_ms, 0_ms});
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBumperRight, {500_ms, 0_ms});
 }
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
   m_triggerHomeCombo.WhenActive(&m_homeSwerveModulesCommand);
+  (m_driverTriggerSwapCombo || m_operatorTriggerSwapCombo).WhileActiveOnce(SwapControllersCommand(&m_controllers));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

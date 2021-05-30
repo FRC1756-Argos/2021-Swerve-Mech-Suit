@@ -44,6 +44,8 @@ public:
 
   void SetButtonDebounce(Button, debounceSetttings);
 
+  void SwapSettings(XboxController&);
+
   virtual double GetX(JoystickHand) const override;
   virtual double GetY(JoystickHand) const override;
   double GetTriggerAxis(JoystickHand) const;

@@ -24,7 +24,8 @@ namespace address
 {
   namespace joystick
   {
-    constexpr int driver = 0;
+    constexpr int driver    = 0;
+    constexpr int secondary = 1;
   }
   namespace motor
   {

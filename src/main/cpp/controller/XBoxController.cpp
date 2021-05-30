@@ -14,6 +14,17 @@ void XboxController::SetButtonDebounce(Button targetButton, debounceSetttings ne
   m_buttonDebounceSettings.at(static_cast<int>(targetButton)) = newSettings;
 }
 
+void XboxController::SwapSettings(XboxController& other) {
+  std::swap(m_buttonDebounceSettings, other.m_buttonDebounceSettings);
+  std::fill(m_rawButtonStatus.begin(), m_rawButtonStatus.end(), false);
+  std::fill(other.m_rawButtonStatus.begin(), other.m_rawButtonStatus.end(), false);
+  std::fill(m_buttonDebounceStatus.begin(), m_buttonDebounceStatus.end(), false);
+  std::fill(other.m_buttonDebounceStatus.begin(), other.m_buttonDebounceStatus.end(), false);
+  const auto now{std::chrono::steady_clock::now()};
+  std::fill(m_buttonDebounceStableTime.begin(), m_buttonDebounceStableTime.end(), now);
+  std::fill(other.m_buttonDebounceStableTime.begin(), other.m_buttonDebounceStableTime.end(), now);
+}
+
 double XboxController::GetX(JoystickHand hand) const {
   return GetRawAxis(static_cast<int>(hand == kLeftHand ? Axis::kLeftX : Axis::kRightX));
 }

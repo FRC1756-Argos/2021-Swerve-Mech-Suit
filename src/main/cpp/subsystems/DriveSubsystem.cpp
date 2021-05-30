@@ -164,14 +164,6 @@ void DriveSubsystem::Home(const units::degree_t currentAngle){
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnRearLeft, m_encoderTurnRearLeft.GetAbsolutePosition());
 }
 
-void DriveSubsystem::Periodic() {
-  // Implementation of subsystem periodic method goes here.
-}
-
-void DriveSubsystem::SimulationPeriodic() {
-  // Implementation of subsystem simulation periodic method goes here.
-}
-
 void DriveSubsystem::NTUpdate(NetworkTable* table,
                               wpi::StringRef key,
                               nt::NetworkTableEntry entry,
