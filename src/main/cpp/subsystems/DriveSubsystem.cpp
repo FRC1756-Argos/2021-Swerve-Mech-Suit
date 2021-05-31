@@ -72,6 +72,47 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_motorTurnRearRight.Config_IntegralZone(0, controlLoop::drive::rotate::iZone);
   m_motorTurnRearRight.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError);
 
+  // Configure motors
+  m_motorDriveFrontLeft.SetInverted(motorConfig::drive::frontLeftDrive::inverted);
+  m_motorDriveFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftDrive::sensorPhase);
+  m_motorDriveFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftDrive::neutralMode);
+  m_motorDriveFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftDrive::voltCompSat);
+
+  m_motorDriveFrontRight.SetInverted(motorConfig::drive::frontRightDrive::inverted);
+  m_motorDriveFrontRight.SetSensorPhase(motorConfig::drive::frontRightDrive::sensorPhase);
+  m_motorDriveFrontRight.SetNeutralMode(motorConfig::drive::frontRightDrive::neutralMode);
+  m_motorDriveFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightDrive::voltCompSat);
+
+  m_motorDriveRearRight.SetInverted(motorConfig::drive::rearRightDrive::inverted);
+  m_motorDriveRearRight.SetSensorPhase(motorConfig::drive::rearRightDrive::sensorPhase);
+  m_motorDriveRearRight.SetNeutralMode(motorConfig::drive::rearRightDrive::neutralMode);
+  m_motorDriveRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightDrive::voltCompSat);
+
+  m_motorDriveRearLeft.SetInverted(motorConfig::drive::rearLeftDrive::inverted);
+  m_motorDriveRearLeft.SetSensorPhase(motorConfig::drive::rearLeftDrive::sensorPhase);
+  m_motorDriveRearLeft.SetNeutralMode(motorConfig::drive::rearLeftDrive::neutralMode);
+  m_motorDriveRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftDrive::voltCompSat);
+
+  m_motorTurnFrontLeft.SetInverted(motorConfig::drive::frontLeftTurn::inverted);
+  m_motorTurnFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftTurn::sensorPhase);
+  m_motorTurnFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftTurn::neutralMode);
+  m_motorTurnFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftTurn::voltCompSat);
+
+  m_motorTurnFrontRight.SetInverted(motorConfig::drive::frontRightTurn::inverted);
+  m_motorTurnFrontRight.SetSensorPhase(motorConfig::drive::frontRightTurn::sensorPhase);
+  m_motorTurnFrontRight.SetNeutralMode(motorConfig::drive::frontRightTurn::neutralMode);
+  m_motorTurnFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightTurn::voltCompSat);
+
+  m_motorTurnRearRight.SetInverted(motorConfig::drive::rearRightTurn::inverted);
+  m_motorTurnRearRight.SetSensorPhase(motorConfig::drive::rearRightTurn::sensorPhase);
+  m_motorTurnRearRight.SetNeutralMode(motorConfig::drive::rearRightTurn::neutralMode);
+  m_motorTurnRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightTurn::voltCompSat);
+
+  m_motorTurnRearLeft.SetInverted(motorConfig::drive::rearLeftTurn::inverted);
+  m_motorTurnRearLeft.SetSensorPhase(motorConfig::drive::rearLeftTurn::sensorPhase);
+  m_motorTurnRearLeft.SetNeutralMode(motorConfig::drive::rearLeftTurn::neutralMode);
+  m_motorTurnRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftTurn::voltCompSat);
+
   auto ntInstance{nt::NetworkTableInstance::GetDefault()};
   auto ntTable{ntInstance.GetTable(ntKeys::tableName)};
   auto homePositionTurnFrontLeft = ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnFrontLeft, 0);
@@ -100,9 +141,10 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   ntTable->PutNumber(ntKeys::subsystemDrive::tuning::turn::iZone, controlLoop::drive::rotate::iZone);
   ntTable->PutNumber(ntKeys::subsystemDrive::tuning::turn::allowableError, controlLoop::drive::rotate::allowableError);
 
-  ntTable->AddEntryListener([this](NetworkTable* table, wpi::StringRef key, nt::NetworkTableEntry entry, std::shared_ptr<nt::Value> value, int flags)
-                              {this->NTUpdate(table, key, entry, value, flags);},
-                            NT_NOTIFY_UPDATE);
+  auto tuningSubtable = ntTable->GetSubTable(ntKeys::subsystemDrive::tuning::turn::subtableName);
+  tuningSubtable->AddEntryListener([this](NetworkTable* table, wpi::StringRef key, nt::NetworkTableEntry entry, std::shared_ptr<nt::Value> value, int flags)
+                                     {this->NTUpdate(table, key, entry, value, flags);},
+                                   NT_NOTIFY_UPDATE);
 }
 
 void DriveSubsystem::SwerveDrive(const double fwVelocity,

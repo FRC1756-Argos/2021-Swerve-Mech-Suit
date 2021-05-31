@@ -8,6 +8,7 @@
 #include <units/velocity.h>
 #include <units/angle.h>
 #include <units/angular_velocity.h>
+#include <ctre/phoenix/motorcontrol/NeutralMode.h>
 #include "general/interpolation.h"
 
 /**
@@ -29,22 +30,22 @@ namespace address
   }
   namespace motor
   {
-    constexpr int frontLeftDrive  = 0;
-    constexpr int frontRightDrive = 1;
-    constexpr int rearRightDrive  = 2;
-    constexpr int rearLeftDrive   = 3;
+    constexpr int frontLeftDrive  = 10;
+    constexpr int frontRightDrive = 11;
+    constexpr int rearRightDrive  = 12;
+    constexpr int rearLeftDrive   = 13;
 
-    constexpr int frontLeftTurn   = 4;
-    constexpr int frontRightTurn  = 5;
-    constexpr int rearRightTurn   = 6;
-    constexpr int rearLeftTurn    = 7;
+    constexpr int frontLeftTurn   = 14;
+    constexpr int frontRightTurn  = 15;
+    constexpr int rearRightTurn   = 16;
+    constexpr int rearLeftTurn    = 17;
   }
   namespace encoder
   {
-    constexpr int frontLeftTurn   = 8;
-    constexpr int frontRightTurn  = 9;
-    constexpr int rearRightTurn   = 10;
-    constexpr int rearLeftTurn    = 11;
+    constexpr int frontLeftTurn   = 18;
+    constexpr int frontRightTurn  = 19;
+    constexpr int rearRightTurn   = 20;
+    constexpr int rearLeftTurn    = 21;
   }
 }
 
@@ -112,6 +113,69 @@ namespace controlLoop
   }
 }
 
+namespace motorConfig
+{
+  namespace drive
+  {
+    namespace frontLeftDrive
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace frontRightDrive
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace rearRightDrive
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace rearLeftDrive
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace frontLeftTurn
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace frontRightTurn
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace rearRightTurn
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+    namespace rearLeftTurn
+    {
+      constexpr bool inverted      = false;
+      constexpr bool sensorPhase   = false;
+      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr double voltCompSat = 11.0;
+    }
+  }
+}
+
 namespace controllerMap
 {
   [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,  -1.0},
@@ -144,6 +208,7 @@ namespace ntKeys
     {
       namespace turn
       {
+        constexpr auto subtableName = "drive/tuning/turn";
         constexpr auto kP = "drive/tuning/turn/kP";
         constexpr auto kI = "drive/tuning/turn/kI";
         constexpr auto kD = "drive/tuning/turn/kD";
