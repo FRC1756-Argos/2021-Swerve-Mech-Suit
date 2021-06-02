@@ -35,8 +35,84 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
 
   m_maxAngularRate = units::degree_t(360.0) * (speedLimits::drive::maxVelocity / turnCircumference);
 
+  // Config Sensors
+  m_encoderTurnFrontLeft.ConfigFactoryDefault();
+  m_encoderTurnFrontLeft.ConfigSensorDirection(sensorConfig::drive::frontLeftTurn::direction);
+  m_encoderTurnFrontLeft.ConfigSensorInitializationStrategy(sensorConfig::drive::frontLeftTurn::initMode);
+  m_encoderTurnFrontLeft.ConfigAbsoluteSensorRange(sensorConfig::drive::frontLeftTurn::range);
+  m_encoderTurnFrontLeft.ConfigMagnetOffset(sensorConfig::drive::frontLeftTurn::magOffset);
+
+  m_encoderTurnFrontRight.ConfigFactoryDefault();
+  m_encoderTurnFrontRight.ConfigSensorDirection(sensorConfig::drive::frontRightTurn::direction);
+  m_encoderTurnFrontRight.ConfigSensorInitializationStrategy(sensorConfig::drive::frontRightTurn::initMode);
+  m_encoderTurnFrontRight.ConfigAbsoluteSensorRange(sensorConfig::drive::frontRightTurn::range);
+  m_encoderTurnFrontRight.ConfigMagnetOffset(sensorConfig::drive::frontRightTurn::magOffset);
+
+  m_encoderTurnRearRight.ConfigFactoryDefault();
+  m_encoderTurnRearRight.ConfigSensorDirection(sensorConfig::drive::rearRightTurn::direction);
+  m_encoderTurnRearRight.ConfigSensorInitializationStrategy(sensorConfig::drive::rearRightTurn::initMode);
+  m_encoderTurnRearRight.ConfigAbsoluteSensorRange(sensorConfig::drive::rearRightTurn::range);
+  m_encoderTurnRearRight.ConfigMagnetOffset(sensorConfig::drive::rearRightTurn::magOffset);
+
+  m_encoderTurnRearLeft.ConfigFactoryDefault();
+  m_encoderTurnRearLeft.ConfigSensorDirection(sensorConfig::drive::rearLeftTurn::direction);
+  m_encoderTurnRearLeft.ConfigSensorInitializationStrategy(sensorConfig::drive::rearLeftTurn::initMode);
+  m_encoderTurnRearLeft.ConfigAbsoluteSensorRange(sensorConfig::drive::rearLeftTurn::range);
+  m_encoderTurnRearLeft.ConfigMagnetOffset(sensorConfig::drive::rearLeftTurn::magOffset);
+
+  // Configure motors
+  m_motorDriveFrontLeft.ConfigFactoryDefault();
+  m_motorDriveFrontLeft.SetInverted(motorConfig::drive::frontLeftDrive::inverted);
+  m_motorDriveFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftDrive::sensorPhase);
+  m_motorDriveFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftDrive::neutralMode);
+  m_motorDriveFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftDrive::voltCompSat);
+
+  m_motorDriveFrontRight.ConfigFactoryDefault();
+  m_motorDriveFrontRight.SetInverted(motorConfig::drive::frontRightDrive::inverted);
+  m_motorDriveFrontRight.SetSensorPhase(motorConfig::drive::frontRightDrive::sensorPhase);
+  m_motorDriveFrontRight.SetNeutralMode(motorConfig::drive::frontRightDrive::neutralMode);
+  m_motorDriveFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightDrive::voltCompSat);
+
+  m_motorDriveRearRight.ConfigFactoryDefault();
+  m_motorDriveRearRight.SetInverted(motorConfig::drive::rearRightDrive::inverted);
+  m_motorDriveRearRight.SetSensorPhase(motorConfig::drive::rearRightDrive::sensorPhase);
+  m_motorDriveRearRight.SetNeutralMode(motorConfig::drive::rearRightDrive::neutralMode);
+  m_motorDriveRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightDrive::voltCompSat);
+
+  m_motorDriveRearLeft.ConfigFactoryDefault();
+  m_motorDriveRearLeft.SetInverted(motorConfig::drive::rearLeftDrive::inverted);
+  m_motorDriveRearLeft.SetSensorPhase(motorConfig::drive::rearLeftDrive::sensorPhase);
+  m_motorDriveRearLeft.SetNeutralMode(motorConfig::drive::rearLeftDrive::neutralMode);
+  m_motorDriveRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftDrive::voltCompSat);
+
+  m_motorTurnFrontLeft.ConfigFactoryDefault();
+  m_motorTurnFrontLeft.SetInverted(motorConfig::drive::frontLeftTurn::inverted);
+  m_motorTurnFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftTurn::sensorPhase);
+  m_motorTurnFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftTurn::neutralMode);
+  m_motorTurnFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftTurn::voltCompSat);
+
+  m_motorTurnFrontRight.ConfigFactoryDefault();
+  m_motorTurnFrontRight.SetInverted(motorConfig::drive::frontRightTurn::inverted);
+  m_motorTurnFrontRight.SetSensorPhase(motorConfig::drive::frontRightTurn::sensorPhase);
+  m_motorTurnFrontRight.SetNeutralMode(motorConfig::drive::frontRightTurn::neutralMode);
+  m_motorTurnFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightTurn::voltCompSat);
+
+  m_motorTurnRearRight.ConfigFactoryDefault();
+  m_motorTurnRearRight.SetInverted(motorConfig::drive::rearRightTurn::inverted);
+  m_motorTurnRearRight.SetSensorPhase(motorConfig::drive::rearRightTurn::sensorPhase);
+  m_motorTurnRearRight.SetNeutralMode(motorConfig::drive::rearRightTurn::neutralMode);
+  m_motorTurnRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightTurn::voltCompSat);
+
+  m_motorTurnRearLeft.ConfigFactoryDefault();
+  m_motorTurnRearLeft.SetInverted(motorConfig::drive::rearLeftTurn::inverted);
+  m_motorTurnRearLeft.SetSensorPhase(motorConfig::drive::rearLeftTurn::sensorPhase);
+  m_motorTurnRearLeft.SetNeutralMode(motorConfig::drive::rearLeftTurn::neutralMode);
+  m_motorTurnRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftTurn::voltCompSat);
+
   // Assign feedback sensors to motors
-  m_motorTurnFrontLeft.ConfigRemoteFeedbackFilter(address::encoder::frontLeftTurn, ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder, 0);
+  m_motorTurnFrontLeft.ConfigRemoteFeedbackFilter(m_encoderTurnFrontLeft.GetDeviceNumber(),
+                                                  ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
+                                                  0);
   m_motorTurnFrontLeft.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0);
   m_motorTurnFrontLeft.Config_kP(0, controlLoop::drive::rotate::kP);
   m_motorTurnFrontLeft.Config_kI(0, controlLoop::drive::rotate::kI);
@@ -45,6 +121,9 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_motorTurnFrontLeft.Config_IntegralZone(0, controlLoop::drive::rotate::iZone);
   m_motorTurnFrontLeft.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError);
 
+  m_motorTurnFrontRight.ConfigRemoteFeedbackFilter(m_encoderTurnFrontRight.GetDeviceNumber(),
+                                                   ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
+                                                   0);
   m_motorTurnFrontRight.ConfigRemoteFeedbackFilter(address::encoder::frontRightTurn, ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder, 0);
   m_motorTurnFrontRight.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0);
   m_motorTurnFrontRight.Config_kP(0, controlLoop::drive::rotate::kP);
@@ -54,7 +133,9 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_motorTurnFrontRight.Config_IntegralZone(0, controlLoop::drive::rotate::iZone);
   m_motorTurnFrontRight.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError);
 
-  m_motorTurnRearLeft.ConfigRemoteFeedbackFilter(address::encoder::rearLeftTurn, ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder, 0);
+  m_motorTurnRearLeft.ConfigRemoteFeedbackFilter(m_encoderTurnRearLeft.GetDeviceNumber(),
+                                                 ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
+                                                 0);
   m_motorTurnRearLeft.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0);
   m_motorTurnRearLeft.Config_kP(0, controlLoop::drive::rotate::kP);
   m_motorTurnRearLeft.Config_kI(0, controlLoop::drive::rotate::kI);
@@ -63,7 +144,9 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_motorTurnRearLeft.Config_IntegralZone(0, controlLoop::drive::rotate::iZone);
   m_motorTurnRearLeft.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError);
 
-  m_motorTurnRearRight.ConfigRemoteFeedbackFilter(address::encoder::rearRightTurn, ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder, 0);
+  m_motorTurnRearRight.ConfigRemoteFeedbackFilter(m_encoderTurnRearRight.GetDeviceNumber(),
+                                                  ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
+                                                  0);
   m_motorTurnRearRight.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0);
   m_motorTurnRearRight.Config_kP(0, controlLoop::drive::rotate::kP);
   m_motorTurnRearRight.Config_kI(0, controlLoop::drive::rotate::kI);
@@ -71,47 +154,6 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_motorTurnRearRight.Config_kF(0, controlLoop::drive::rotate::kF);
   m_motorTurnRearRight.Config_IntegralZone(0, controlLoop::drive::rotate::iZone);
   m_motorTurnRearRight.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError);
-
-  // Configure motors
-  m_motorDriveFrontLeft.SetInverted(motorConfig::drive::frontLeftDrive::inverted);
-  m_motorDriveFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftDrive::sensorPhase);
-  m_motorDriveFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftDrive::neutralMode);
-  m_motorDriveFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftDrive::voltCompSat);
-
-  m_motorDriveFrontRight.SetInverted(motorConfig::drive::frontRightDrive::inverted);
-  m_motorDriveFrontRight.SetSensorPhase(motorConfig::drive::frontRightDrive::sensorPhase);
-  m_motorDriveFrontRight.SetNeutralMode(motorConfig::drive::frontRightDrive::neutralMode);
-  m_motorDriveFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightDrive::voltCompSat);
-
-  m_motorDriveRearRight.SetInverted(motorConfig::drive::rearRightDrive::inverted);
-  m_motorDriveRearRight.SetSensorPhase(motorConfig::drive::rearRightDrive::sensorPhase);
-  m_motorDriveRearRight.SetNeutralMode(motorConfig::drive::rearRightDrive::neutralMode);
-  m_motorDriveRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightDrive::voltCompSat);
-
-  m_motorDriveRearLeft.SetInverted(motorConfig::drive::rearLeftDrive::inverted);
-  m_motorDriveRearLeft.SetSensorPhase(motorConfig::drive::rearLeftDrive::sensorPhase);
-  m_motorDriveRearLeft.SetNeutralMode(motorConfig::drive::rearLeftDrive::neutralMode);
-  m_motorDriveRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftDrive::voltCompSat);
-
-  m_motorTurnFrontLeft.SetInverted(motorConfig::drive::frontLeftTurn::inverted);
-  m_motorTurnFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftTurn::sensorPhase);
-  m_motorTurnFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftTurn::neutralMode);
-  m_motorTurnFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftTurn::voltCompSat);
-
-  m_motorTurnFrontRight.SetInverted(motorConfig::drive::frontRightTurn::inverted);
-  m_motorTurnFrontRight.SetSensorPhase(motorConfig::drive::frontRightTurn::sensorPhase);
-  m_motorTurnFrontRight.SetNeutralMode(motorConfig::drive::frontRightTurn::neutralMode);
-  m_motorTurnFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightTurn::voltCompSat);
-
-  m_motorTurnRearRight.SetInverted(motorConfig::drive::rearRightTurn::inverted);
-  m_motorTurnRearRight.SetSensorPhase(motorConfig::drive::rearRightTurn::sensorPhase);
-  m_motorTurnRearRight.SetNeutralMode(motorConfig::drive::rearRightTurn::neutralMode);
-  m_motorTurnRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightTurn::voltCompSat);
-
-  m_motorTurnRearLeft.SetInverted(motorConfig::drive::rearLeftTurn::inverted);
-  m_motorTurnRearLeft.SetSensorPhase(motorConfig::drive::rearLeftTurn::sensorPhase);
-  m_motorTurnRearLeft.SetNeutralMode(motorConfig::drive::rearLeftTurn::neutralMode);
-  m_motorTurnRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftTurn::voltCompSat);
 
   auto ntInstance{nt::NetworkTableInstance::GetDefault()};
   auto ntTable{ntInstance.GetTable(ntKeys::tableName)};

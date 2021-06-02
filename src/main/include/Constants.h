@@ -113,6 +113,41 @@ namespace controlLoop
   }
 }
 
+namespace sensorConfig
+{
+  namespace drive
+  {
+    namespace frontLeftTurn
+    {
+      constexpr bool direction = false;
+      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr auto magOffset = 0;
+    }
+    namespace frontRightTurn
+    {
+      constexpr bool direction = false;
+      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr auto magOffset = 0;
+    }
+    namespace rearRightTurn
+    {
+      constexpr bool direction = false;
+      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr auto magOffset = 0;
+    }
+    namespace rearLeftTurn
+    {
+      constexpr bool direction = false;
+      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr auto magOffset = 0;
+    }
+  }
+}
+
 namespace motorConfig
 {
   namespace drive
