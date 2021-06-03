@@ -169,12 +169,12 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
         inAngle += 360;
     }
     return inAngle;
-  };
+   };
 
-  m_motorTurnFrontLeft.SetSelectedSensorPosition(constrainAngle(m_encoderTurnFrontLeft.GetAbsolutePosition() - homePositionTurnFrontLeft));
-  m_motorTurnFrontRight.SetSelectedSensorPosition(constrainAngle(m_encoderTurnFrontRight.GetAbsolutePosition() - homePositionTurnFrontRight));
-  m_motorTurnRearLeft.SetSelectedSensorPosition(constrainAngle(m_encoderTurnRearRight.GetAbsolutePosition() - homePositionTurnRearRight));
-  m_motorTurnRearRight.SetSelectedSensorPosition(constrainAngle(m_encoderTurnRearLeft.GetAbsolutePosition() - homePositionTurnRearLeft));
+  m_encoderTurnFrontLeft.SetPosition(constrainAngle(m_encoderTurnFrontLeft.GetAbsolutePosition() - homePositionTurnFrontLeft));
+  m_encoderTurnFrontRight.SetPosition(constrainAngle(m_encoderTurnFrontRight.GetAbsolutePosition() - homePositionTurnFrontRight));
+  m_encoderTurnRearLeft.SetPosition(constrainAngle(m_encoderTurnRearRight.GetAbsolutePosition() - homePositionTurnRearRight));
+  m_encoderTurnRearRight.SetPosition(constrainAngle(m_encoderTurnRearLeft.GetAbsolutePosition() - homePositionTurnRearLeft));
 
   ntTable->PutNumber(ntKeys::subsystemDrive::tuning::turn::kP, controlLoop::drive::rotate::kP);
   ntTable->PutNumber(ntKeys::subsystemDrive::tuning::turn::kI, controlLoop::drive::rotate::kI);
@@ -222,26 +222,27 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
 
   m_motorDriveFrontLeft.Set(moduleStates.at(ModuleIndex::frontLeft).speed / speedLimits::drive::maxVelocity);
   m_motorTurnFrontLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                           measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontLeft).angle.Degrees()));
+                           -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontLeft).angle.Degrees()));
   m_motorDriveFrontRight.Set(moduleStates.at(ModuleIndex::frontRight).speed / speedLimits::drive::maxVelocity);
   m_motorTurnFrontRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                            measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontRight).angle.Degrees()));
+                            -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontRight).angle.Degrees()));
   m_motorDriveRearRight.Set(moduleStates.at(ModuleIndex::rearRight).speed / speedLimits::drive::maxVelocity);
   m_motorTurnRearRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                           measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearRight).angle.Degrees()));
+                           -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearRight).angle.Degrees()));
   m_motorDriveRearLeft.Set(moduleStates.at(ModuleIndex::rearLeft).speed / speedLimits::drive::maxVelocity);
   m_motorTurnRearLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                          measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearLeft).angle.Degrees()));
+                          -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearLeft).angle.Degrees()));
 }
 
 void DriveSubsystem::Home(const units::degree_t currentAngle){
-  m_motorTurnFrontLeft.SetSelectedSensorPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle));
-  m_motorTurnFrontRight.SetSelectedSensorPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle));
-  m_motorTurnRearRight.SetSelectedSensorPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle));
-  m_motorTurnRearLeft.SetSelectedSensorPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle));
-
   auto ntInstance{nt::NetworkTableInstance::GetDefault()};
   auto ntTable{ntInstance.GetTable(ntKeys::tableName)};
+
+  m_encoderTurnFrontLeft.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
+  m_encoderTurnFrontRight.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
+  m_encoderTurnRearRight.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
+  m_encoderTurnRearLeft.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
+
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnFrontLeft, m_encoderTurnFrontLeft.GetAbsolutePosition());
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnFrontRight, m_encoderTurnFrontRight.GetAbsolutePosition());
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnRearRight, m_encoderTurnRearRight.GetAbsolutePosition());
@@ -253,37 +254,37 @@ void DriveSubsystem::NTUpdate(NetworkTable* table,
                               nt::NetworkTableEntry entry,
                               std::shared_ptr<nt::Value> value,
                               int flags) {
-  if(key == ntKeys::subsystemDrive::tuning::turn::kP) {
+  if(entry.GetName() == std::string("/") + ntKeys::tableName + "/" + ntKeys::subsystemDrive::tuning::turn::kP) {
     m_motorTurnFrontLeft.Config_kP(0, value->GetDouble());
     m_motorTurnFrontRight.Config_kP(0, value->GetDouble());
     m_motorTurnRearLeft.Config_kP(0, value->GetDouble());
     m_motorTurnRearRight.Config_kP(0, value->GetDouble());
   }
-  else if(key == ntKeys::subsystemDrive::tuning::turn::kI) {
+  else if(entry.GetName() == std::string("/") + ntKeys::tableName + "/" + ntKeys::subsystemDrive::tuning::turn::kI) {
     m_motorTurnFrontLeft.Config_kI(0, value->GetDouble());
     m_motorTurnFrontRight.Config_kI(0, value->GetDouble());
     m_motorTurnRearLeft.Config_kI(0, value->GetDouble());
     m_motorTurnRearRight.Config_kI(0, value->GetDouble());
   }
-  else if(key == ntKeys::subsystemDrive::tuning::turn::kD) {
+  else if(entry.GetName() == std::string("/") + ntKeys::tableName + "/" + ntKeys::subsystemDrive::tuning::turn::kD) {
     m_motorTurnFrontLeft.Config_kD(0, value->GetDouble());
     m_motorTurnFrontRight.Config_kD(0, value->GetDouble());
     m_motorTurnRearLeft.Config_kD(0, value->GetDouble());
     m_motorTurnRearRight.Config_kD(0, value->GetDouble());
   }
-  else if(key == ntKeys::subsystemDrive::tuning::turn::kF) {
+  else if(entry.GetName() == std::string("/") + ntKeys::tableName + "/" + ntKeys::subsystemDrive::tuning::turn::kF) {
     m_motorTurnFrontLeft.Config_kF(0, value->GetDouble());
     m_motorTurnFrontRight.Config_kF(0, value->GetDouble());
     m_motorTurnRearLeft.Config_kF(0, value->GetDouble());
     m_motorTurnRearRight.Config_kF(0, value->GetDouble());
   }
-  else if(key == ntKeys::subsystemDrive::tuning::turn::iZone) {
+  else if(entry.GetName() == std::string("/") + ntKeys::tableName + "/" + ntKeys::subsystemDrive::tuning::turn::iZone) {
     m_motorTurnFrontLeft.Config_IntegralZone(0, value->GetDouble());
     m_motorTurnFrontRight.Config_IntegralZone(0, value->GetDouble());
     m_motorTurnRearLeft.Config_IntegralZone(0, value->GetDouble());
     m_motorTurnRearRight.Config_IntegralZone(0, value->GetDouble());
   }
-  else if(key == ntKeys::subsystemDrive::tuning::turn::allowableError) {
+  else if(entry.GetName() == std::string("/") + ntKeys::tableName + "/" + ntKeys::subsystemDrive::tuning::turn::allowableError) {
     m_motorTurnFrontLeft.ConfigAllowableClosedloopError(0, value->GetDouble());
     m_motorTurnFrontRight.ConfigAllowableClosedloopError(0, value->GetDouble());
     m_motorTurnRearLeft.ConfigAllowableClosedloopError(0, value->GetDouble());

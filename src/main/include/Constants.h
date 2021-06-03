@@ -42,10 +42,10 @@ namespace address
   }
   namespace encoder
   {
-    constexpr int frontLeftTurn   = 18;
-    constexpr int frontRightTurn  = 19;
-    constexpr int rearRightTurn   = 20;
-    constexpr int rearLeftTurn    = 21;
+    constexpr int frontLeftTurn   = 1;
+    constexpr int frontRightTurn  = 2;
+    constexpr int rearRightTurn   = 3;
+    constexpr int rearLeftTurn    = 4;
   }
 }
 
@@ -74,10 +74,11 @@ namespace measureUp
   {
     namespace swerveRotate
     {
-      constexpr auto toAngle(double sensorVal) { return units::make_unit<units::degree_t>(sensorVal); }
-      constexpr auto fromAngle(units::degree_t angVal) { return angVal.to<double>(); }
-      constexpr auto toAngVel(double sensorVal) { return units::make_unit<units::degrees_per_second_t>(sensorVal); }
-      constexpr auto fromAngVel(units::degree_t angVelVal) { return angVelVal.to<double>(); }
+      constexpr auto ticksPerDegree = 4096.0 / 360.0;
+      constexpr auto toAngle(double sensorVal) { return units::make_unit<units::degree_t>(sensorVal / ticksPerDegree); }
+      constexpr auto fromAngle(units::degree_t angVal) { return angVal.to<double>() * ticksPerDegree; }
+      constexpr auto toAngVel(double sensorVal) { return units::make_unit<units::degrees_per_second_t>(sensorVal / ticksPerDegree); }
+      constexpr auto fromAngVel(units::degree_t angVelVal) { return angVelVal.to<double>() * ticksPerDegree; }
     }
     namespace swerveDrive
     {
@@ -103,7 +104,7 @@ namespace controlLoop
   {
     namespace rotate
     {
-      constexpr double kP = 0.0;
+      constexpr double kP = 1.2;
       constexpr double kI = 0.0;
       constexpr double kD = 0.0;
       constexpr double kF = 0.0;
@@ -213,18 +214,18 @@ namespace motorConfig
 
 namespace controllerMap
 {
-  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,  -1.0},
+  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,   0.5},
                                                         interpMapPoint{-0.15,  0.0},
                                                         interpMapPoint{ 0.15,  0.0},
-                                                        interpMapPoint{ 1.0,   1.0} };
-  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -1.0},
+                                                        interpMapPoint{ 1.0,  -0.5} };
+  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -0.5},
                                                        interpMapPoint{-0.15,  0.0},
                                                        interpMapPoint{ 0.15,  0.0},
-                                                       interpMapPoint{ 1.0,   1.0} };
-  [[maybe_unused]] constexpr std::array driveRotSpeed{ interpMapPoint{-1.0,  -1.0},
+                                                       interpMapPoint{ 1.0,   0.5} };
+  [[maybe_unused]] constexpr std::array driveRotSpeed{ interpMapPoint{-1.0,  -0.5},
                                                        interpMapPoint{-0.15,  0.0},
                                                        interpMapPoint{ 0.15,  0.0},
-                                                       interpMapPoint{ 1.0,   1.0} };
+                                                       interpMapPoint{ 1.0,   0.5} };
 }
 
 namespace ntKeys

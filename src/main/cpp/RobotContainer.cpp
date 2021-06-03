@@ -36,10 +36,10 @@ RobotContainer::RobotContainer() : m_controllers(address::joystick::driver, addr
   ntTable->SetPersistent(ntKeys::subsystemDrive::homePosition::turnRearLeft);
 
   // Set controller configs
-  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {1_s, 0_ms});
-  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {1_s, 0_ms});
-  m_controllers.operatorController().SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {1_s, 0_ms});
-  m_controllers.operatorController().SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {1_s, 0_ms});
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {1500_ms, 0_ms});
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {1500_ms, 0_ms});
+  m_controllers.operatorController().SetButtonDebounce(ArgosLib::XboxController::Button::kBack, {1500_ms, 0_ms});
+  m_controllers.operatorController().SetButtonDebounce(ArgosLib::XboxController::Button::kStart, {1500_ms, 0_ms});
 
   m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBumperLeft, {500_ms, 0_ms});
   m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBumperRight, {500_ms, 0_ms});
