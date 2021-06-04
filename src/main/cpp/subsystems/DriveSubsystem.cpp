@@ -1,6 +1,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <networktables/NetworkTableInstance.h>
 
+#include "general/swerveUtils.h"
 #include "subsystems/DriveSubsystem.h"
 #include "Constants.h"
 
@@ -18,14 +19,14 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
                                    m_encoderTurnRearLeft(address::encoder::rearLeftTurn)
 {
   // Set lever arms for each module
-  frc::Translation2d leverArmFrontLeft {-measureUp::chassis::width/2 + measureUp::drive::frontLeftLatInset,
-                                         measureUp::chassis::length/2 - measureUp::drive::frontLeftLonInset};
-  frc::Translation2d leverArmFrontRight{ measureUp::chassis::width/2 - measureUp::drive::frontRightLatInset,
-                                         measureUp::chassis::length/2 - measureUp::drive::frontRightLonInset};
-  frc::Translation2d leverArmRearRight{  measureUp::chassis::width/2 - measureUp::drive::rearRightLatInset,
-                                        -measureUp::chassis::length/2 + measureUp::drive::rearRightLonInset};
-  frc::Translation2d leverArmRearLeft{  -measureUp::chassis::width/2 + measureUp::drive::rearLeftLatInset,
-                                        -measureUp::chassis::length/2 + measureUp::drive::rearLeftLonInset};
+  frc::Translation2d leverArmFrontLeft {  measureUp::chassis::length/2 - measureUp::drive::frontLeftLonInset,
+                                         -measureUp::chassis::width/2  + measureUp::drive::frontLeftLatInset };
+  frc::Translation2d leverArmFrontRight{ measureUp::chassis::length/2 - measureUp::drive::frontRightLonInset,
+                                         measureUp::chassis::width/2  - measureUp::drive::frontRightLatInset };
+  frc::Translation2d leverArmRearRight{ -measureUp::chassis::length/2 + measureUp::drive::rearRightLonInset,
+                                         measureUp::chassis::width/2  - measureUp::drive::rearRightLatInset };
+  frc::Translation2d leverArmRearLeft{ -measureUp::chassis::length/2 + measureUp::drive::rearLeftLonInset,
+                                       -measureUp::chassis::width/2  + measureUp::drive::rearLeftLatInset };
   m_pSwerveKinematicsModel = std::make_unique<frc::SwerveDriveKinematics<4>>(leverArmFrontLeft, leverArmFrontRight, leverArmRearRight, leverArmRearLeft);
 
   // Determine max rotate speed
@@ -163,18 +164,10 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   auto homePositionTurnRearLeft = ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnRearLeft, 0);
 
   // Set initial positions
-  auto constrainAngle = [](double inAngle){
-    inAngle = fmod(inAngle,360);
-    if (inAngle < 0) {
-        inAngle += 360;
-    }
-    return inAngle;
-   };
-
-  m_encoderTurnFrontLeft.SetPosition(constrainAngle(m_encoderTurnFrontLeft.GetAbsolutePosition() - homePositionTurnFrontLeft));
-  m_encoderTurnFrontRight.SetPosition(constrainAngle(m_encoderTurnFrontRight.GetAbsolutePosition() - homePositionTurnFrontRight));
-  m_encoderTurnRearLeft.SetPosition(constrainAngle(m_encoderTurnRearRight.GetAbsolutePosition() - homePositionTurnRearRight));
-  m_encoderTurnRearRight.SetPosition(constrainAngle(m_encoderTurnRearLeft.GetAbsolutePosition() - homePositionTurnRearLeft));
+  m_encoderTurnFrontLeft.SetPosition(constrainAngle(m_encoderTurnFrontLeft.GetAbsolutePosition() - homePositionTurnFrontLeft, 0.0, 360.0));
+  m_encoderTurnFrontRight.SetPosition(constrainAngle(m_encoderTurnFrontRight.GetAbsolutePosition() - homePositionTurnFrontRight, 0.0, 360.0));
+  m_encoderTurnRearLeft.SetPosition(constrainAngle(m_encoderTurnRearRight.GetAbsolutePosition() - homePositionTurnRearRight, 0.0, 360.0));
+  m_encoderTurnRearRight.SetPosition(constrainAngle(m_encoderTurnRearLeft.GetAbsolutePosition() - homePositionTurnRearLeft, 0.0, 360.0));
 
   ntTable->PutNumber(ntKeys::subsystemDrive::tuning::turn::kP, controlLoop::drive::rotate::kP);
   ntTable->PutNumber(ntKeys::subsystemDrive::tuning::turn::kI, controlLoop::drive::rotate::kI);
@@ -214,6 +207,32 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
   frc::SmartDashboard::PutNumber("drive/frontRight/targetAngle", moduleStates.at(ModuleIndex::frontRight).angle.Degrees().to<double>());
   frc::SmartDashboard::PutNumber("drive/rearRight/targetAngle", moduleStates.at(ModuleIndex::rearRight).angle.Degrees().to<double>());
   frc::SmartDashboard::PutNumber("drive/rearLeft/targetAngle", moduleStates.at(ModuleIndex::rearLeft).angle.Degrees().to<double>());
+
+  std::for_each(moduleStates.begin(), moduleStates.end(),
+                [](frc::SwerveModuleState& state){ state.angle = -state.angle; });
+
+  moduleStates.at(ModuleIndex::frontLeft) = Optimize( moduleStates.at(ModuleIndex::frontLeft),
+                                                      measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontLeft.GetSelectedSensorPosition()),
+                                                      measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnFrontLeft.GetSelectedSensorVelocity()),
+                                                      measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveFrontLeft.GetSelectedSensorVelocity()) );
+  moduleStates.at(ModuleIndex::frontRight) = Optimize( moduleStates.at(ModuleIndex::frontRight),
+                                                       measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontRight.GetSelectedSensorPosition()),
+                                                       measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnFrontRight.GetSelectedSensorVelocity()),
+                                                       measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveFrontRight.GetSelectedSensorVelocity()) );
+  moduleStates.at(ModuleIndex::rearRight) = Optimize( moduleStates.at(ModuleIndex::rearRight),
+                                                      measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnRearRight.GetSelectedSensorPosition()),
+                                                      measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnRearRight.GetSelectedSensorVelocity()),
+                                                      measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveRearRight.GetSelectedSensorVelocity()) );
+  moduleStates.at(ModuleIndex::rearLeft) = Optimize( moduleStates.at(ModuleIndex::rearLeft),
+                                                     measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnRearLeft.GetSelectedSensorPosition()),
+                                                     measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnRearLeft.GetSelectedSensorVelocity()),
+                                                     measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveRearLeft.GetSelectedSensorVelocity()) );
+
+  // Write optimized angles to dashboard
+  frc::SmartDashboard::PutNumber("drive/frontLeft/optimizedTargetAngle", moduleStates.at(ModuleIndex::frontLeft).angle.Degrees().to<double>());
+  frc::SmartDashboard::PutNumber("drive/frontRight/optimizedTargetAngle", moduleStates.at(ModuleIndex::frontRight).angle.Degrees().to<double>());
+  frc::SmartDashboard::PutNumber("drive/rearRight/optimizedTargetAngle", moduleStates.at(ModuleIndex::rearRight).angle.Degrees().to<double>());
+  frc::SmartDashboard::PutNumber("drive/rearLeft/optimizedTargetAngle", moduleStates.at(ModuleIndex::rearLeft).angle.Degrees().to<double>());
   // Write current angles to dashboard
   frc::SmartDashboard::PutNumber("drive/frontLeft/currentAngle", measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontLeft.GetSelectedSensorPosition()).to<double>());
   frc::SmartDashboard::PutNumber("drive/frontRight/currentAngle", measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontRight.GetSelectedSensorPosition()).to<double>());
@@ -222,16 +241,16 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
 
   m_motorDriveFrontLeft.Set(moduleStates.at(ModuleIndex::frontLeft).speed / speedLimits::drive::maxVelocity);
   m_motorTurnFrontLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                           -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontLeft).angle.Degrees()));
+                           measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontLeft).angle.Degrees()));
   m_motorDriveFrontRight.Set(moduleStates.at(ModuleIndex::frontRight).speed / speedLimits::drive::maxVelocity);
   m_motorTurnFrontRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                            -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontRight).angle.Degrees()));
+                            measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontRight).angle.Degrees()));
   m_motorDriveRearRight.Set(moduleStates.at(ModuleIndex::rearRight).speed / speedLimits::drive::maxVelocity);
   m_motorTurnRearRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                           -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearRight).angle.Degrees()));
+                           measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearRight).angle.Degrees()));
   m_motorDriveRearLeft.Set(moduleStates.at(ModuleIndex::rearLeft).speed / speedLimits::drive::maxVelocity);
   m_motorTurnRearLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
-                          -measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearLeft).angle.Degrees()));
+                          measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearLeft).angle.Degrees()));
 }
 
 void DriveSubsystem::Home(const units::degree_t currentAngle){

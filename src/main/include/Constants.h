@@ -9,6 +9,8 @@
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 #include <ctre/phoenix/motorcontrol/NeutralMode.h>
+#include <ctre/phoenix/sensors/SensorInitializationStrategy.h>
+#include <ctre/phoenix/sensors/AbsoluteSensorRange.h>
 #include "general/interpolation.h"
 
 /**
