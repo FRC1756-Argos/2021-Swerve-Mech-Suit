@@ -97,6 +97,50 @@
               "_source0": "network_table:///SmartDashboard/drive/rearLeft/currentAngle",
               "_title": "drive/rearLeft/currentAngle"
             }
+          },
+          "2,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/drive/frontLeft/optimizedTargetAngle",
+              "_title": "drive/frontLeft/optimizedTargetAngle"
+            }
+          },
+          "5,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/drive/frontRight/optimizedTargetAngle",
+              "_title": "drive/frontRight/optimizedTargetAngle"
+            }
+          },
+          "5,5": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/drive/rearRight/optimizedTargetAngle",
+              "_title": "drive/rearRight/optimizedTargetAngle"
+            }
+          },
+          "2,5": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/drive/rearLeft/optimizedTargetAngle",
+              "_title": "drive/rearLeft/optimizedTargetAngle"
+            }
           }
         }
       }
