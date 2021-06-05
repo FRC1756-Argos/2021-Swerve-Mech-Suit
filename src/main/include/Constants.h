@@ -9,6 +9,7 @@
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 #include <ctre/phoenix/motorcontrol/NeutralMode.h>
+#include <ctre/phoenix/motorcontrol/can/BaseMotorController.h>
 #include <ctre/phoenix/sensors/SensorInitializationStrategy.h>
 #include <ctre/phoenix/sensors/AbsoluteSensorRange.h>
 #include "general/interpolation.h"
@@ -155,62 +156,98 @@ namespace motorConfig
 {
   namespace drive
   {
-    namespace frontLeftDrive
+    struct frontLeftDrive
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace frontRightDrive
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static double voltCompSat = 11.0;
+    };
+    struct frontRightDrive
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace rearRightDrive
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static double voltCompSat = 11.0;
+    };
+    struct rearRightDrive
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace rearLeftDrive
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static double voltCompSat = 11.0;
+    };
+    struct rearLeftDrive
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace frontLeftTurn
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static double voltCompSat = 11.0;
+    };
+    struct frontLeftTurn
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace frontRightTurn
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
+      constexpr static double voltCompSat = 11.0;
+      constexpr static auto remoteFilter0_addr = address::encoder::frontLeftTurn;
+      constexpr static auto remoteFilter0_type = ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
+      constexpr static auto pid0_selectedSensor = ctre::phoenix::motorcontrol::FeedbackDevice::RemoteSensor0;
+      constexpr static auto pid0_kP = controlLoop::drive::rotate::kP;
+      constexpr static auto pid0_kI = controlLoop::drive::rotate::kI;
+      constexpr static auto pid0_kD = controlLoop::drive::rotate::kD;
+      constexpr static auto pid0_kF = controlLoop::drive::rotate::kF;
+      constexpr static auto pid0_iZone = controlLoop::drive::rotate::iZone;
+      constexpr static auto pid0_allowableError = controlLoop::drive::rotate::allowableError;
+    };
+    struct frontRightTurn
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace rearRightTurn
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
+      constexpr static double voltCompSat = 11.0;
+      constexpr static auto remoteFilter0_addr = address::encoder::frontRightTurn;
+      constexpr static auto remoteFilter0_type = ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
+      constexpr static auto pid0_selectedSensor = ctre::phoenix::motorcontrol::FeedbackDevice::RemoteSensor0;
+      constexpr static auto pid0_kP = controlLoop::drive::rotate::kP;
+      constexpr static auto pid0_kI = controlLoop::drive::rotate::kI;
+      constexpr static auto pid0_kD = controlLoop::drive::rotate::kD;
+      constexpr static auto pid0_kF = controlLoop::drive::rotate::kF;
+      constexpr static auto pid0_iZone = controlLoop::drive::rotate::iZone;
+      constexpr static auto pid0_allowableError = controlLoop::drive::rotate::allowableError;
+    };
+    struct rearRightTurn
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
-    namespace rearLeftTurn
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
+      constexpr static double voltCompSat = 11.0;
+      constexpr static auto remoteFilter0_addr = address::encoder::rearRightTurn;
+      constexpr static auto remoteFilter0_type = ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
+      constexpr static auto pid0_selectedSensor = ctre::phoenix::motorcontrol::FeedbackDevice::RemoteSensor0;
+      constexpr static auto pid0_kP = controlLoop::drive::rotate::kP;
+      constexpr static auto pid0_kI = controlLoop::drive::rotate::kI;
+      constexpr static auto pid0_kD = controlLoop::drive::rotate::kD;
+      constexpr static auto pid0_kF = controlLoop::drive::rotate::kF;
+      constexpr static auto pid0_iZone = controlLoop::drive::rotate::iZone;
+      constexpr static auto pid0_allowableError = controlLoop::drive::rotate::allowableError;
+    };
+    struct rearLeftTurn
     {
-      constexpr bool inverted      = false;
-      constexpr bool sensorPhase   = false;
-      constexpr auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr double voltCompSat = 11.0;
-    }
+      constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static bool sensorPhase   = false;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
+      constexpr static double voltCompSat = 11.0;
+      constexpr static auto remoteFilter0_addr = address::encoder::rearLeftTurn;
+      constexpr static auto remoteFilter0_type = ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
+      constexpr static auto pid0_selectedSensor = ctre::phoenix::motorcontrol::FeedbackDevice::RemoteSensor0;
+      constexpr static auto pid0_kP = controlLoop::drive::rotate::kP;
+      constexpr static auto pid0_kI = controlLoop::drive::rotate::kI;
+      constexpr static auto pid0_kD = controlLoop::drive::rotate::kD;
+      constexpr static auto pid0_kF = controlLoop::drive::rotate::kF;
+      constexpr static auto pid0_iZone = controlLoop::drive::rotate::iZone;
+      constexpr static auto pid0_allowableError = controlLoop::drive::rotate::allowableError;
+    };
   }
 }
 

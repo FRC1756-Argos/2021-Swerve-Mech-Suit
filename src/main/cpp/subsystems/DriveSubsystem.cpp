@@ -3,6 +3,7 @@
 
 #include "general/swerveUtils.h"
 #include "subsystems/DriveSubsystem.h"
+#include "config/falconConfig.h"
 #include "Constants.h"
 
 DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLeftDrive),
@@ -62,99 +63,14 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_encoderTurnRearLeft.ConfigMagnetOffset(sensorConfig::drive::rearLeftTurn::magOffset, 100);
 
   // Configure motors
-  m_motorDriveFrontLeft.ConfigFactoryDefault(100);
-  m_motorDriveFrontLeft.SetInverted(motorConfig::drive::frontLeftDrive::inverted);
-  m_motorDriveFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftDrive::sensorPhase);
-  m_motorDriveFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftDrive::neutralMode);
-  m_motorDriveFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftDrive::voltCompSat, 100);
-
-  m_motorDriveFrontRight.ConfigFactoryDefault(100);
-  m_motorDriveFrontRight.SetInverted(motorConfig::drive::frontRightDrive::inverted);
-  m_motorDriveFrontRight.SetSensorPhase(motorConfig::drive::frontRightDrive::sensorPhase);
-  m_motorDriveFrontRight.SetNeutralMode(motorConfig::drive::frontRightDrive::neutralMode);
-  m_motorDriveFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightDrive::voltCompSat, 100);
-
-  m_motorDriveRearRight.ConfigFactoryDefault(100);
-  m_motorDriveRearRight.SetInverted(motorConfig::drive::rearRightDrive::inverted);
-  m_motorDriveRearRight.SetSensorPhase(motorConfig::drive::rearRightDrive::sensorPhase);
-  m_motorDriveRearRight.SetNeutralMode(motorConfig::drive::rearRightDrive::neutralMode);
-  m_motorDriveRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightDrive::voltCompSat, 100);
-
-  m_motorDriveRearLeft.ConfigFactoryDefault(100);
-  m_motorDriveRearLeft.SetInverted(motorConfig::drive::rearLeftDrive::inverted);
-  m_motorDriveRearLeft.SetSensorPhase(motorConfig::drive::rearLeftDrive::sensorPhase);
-  m_motorDriveRearLeft.SetNeutralMode(motorConfig::drive::rearLeftDrive::neutralMode);
-  m_motorDriveRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftDrive::voltCompSat, 100);
-
-  m_motorTurnFrontLeft.ConfigFactoryDefault(100);
-  m_motorTurnFrontLeft.SetInverted(motorConfig::drive::frontLeftTurn::inverted);
-  m_motorTurnFrontLeft.SetSensorPhase(motorConfig::drive::frontLeftTurn::sensorPhase);
-  m_motorTurnFrontLeft.SetNeutralMode(motorConfig::drive::frontLeftTurn::neutralMode);
-  m_motorTurnFrontLeft.ConfigVoltageCompSaturation(motorConfig::drive::frontLeftTurn::voltCompSat, 100);
-
-  m_motorTurnFrontRight.ConfigFactoryDefault(100);
-  m_motorTurnFrontRight.SetInverted(motorConfig::drive::frontRightTurn::inverted);
-  m_motorTurnFrontRight.SetSensorPhase(motorConfig::drive::frontRightTurn::sensorPhase);
-  m_motorTurnFrontRight.SetNeutralMode(motorConfig::drive::frontRightTurn::neutralMode);
-  m_motorTurnFrontRight.ConfigVoltageCompSaturation(motorConfig::drive::frontRightTurn::voltCompSat, 100);
-
-  m_motorTurnRearRight.ConfigFactoryDefault(100);
-  m_motorTurnRearRight.SetInverted(motorConfig::drive::rearRightTurn::inverted);
-  m_motorTurnRearRight.SetSensorPhase(motorConfig::drive::rearRightTurn::sensorPhase);
-  m_motorTurnRearRight.SetNeutralMode(motorConfig::drive::rearRightTurn::neutralMode);
-  m_motorTurnRearRight.ConfigVoltageCompSaturation(motorConfig::drive::rearRightTurn::voltCompSat, 100);
-
-  m_motorTurnRearLeft.ConfigFactoryDefault(100);
-  m_motorTurnRearLeft.SetInverted(motorConfig::drive::rearLeftTurn::inverted);
-  m_motorTurnRearLeft.SetSensorPhase(motorConfig::drive::rearLeftTurn::sensorPhase);
-  m_motorTurnRearLeft.SetNeutralMode(motorConfig::drive::rearLeftTurn::neutralMode);
-  m_motorTurnRearLeft.ConfigVoltageCompSaturation(motorConfig::drive::rearLeftTurn::voltCompSat, 100);
-
-  // Assign feedback sensors to motors
-  m_motorTurnFrontLeft.ConfigRemoteFeedbackFilter(m_encoderTurnFrontLeft.GetDeviceNumber(),
-                                                  ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
-                                                  0, 100);
-  m_motorTurnFrontLeft.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0, 0, 100);
-  m_motorTurnFrontLeft.Config_kP(0, controlLoop::drive::rotate::kP, 100);
-  m_motorTurnFrontLeft.Config_kI(0, controlLoop::drive::rotate::kI, 100);
-  m_motorTurnFrontLeft.Config_kD(0, controlLoop::drive::rotate::kD, 100);
-  m_motorTurnFrontLeft.Config_kF(0, controlLoop::drive::rotate::kF, 100);
-  m_motorTurnFrontLeft.Config_IntegralZone(0, controlLoop::drive::rotate::iZone, 100);
-  m_motorTurnFrontLeft.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError, 100);
-
-  m_motorTurnFrontRight.ConfigRemoteFeedbackFilter(m_encoderTurnFrontRight.GetDeviceNumber(),
-                                                   ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
-                                                   0, 100);
-  m_motorTurnFrontRight.ConfigRemoteFeedbackFilter(address::encoder::frontRightTurn, ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder, 0);
-  m_motorTurnFrontRight.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0, 0, 100);
-  m_motorTurnFrontRight.Config_kP(0, controlLoop::drive::rotate::kP, 100);
-  m_motorTurnFrontRight.Config_kI(0, controlLoop::drive::rotate::kI, 100);
-  m_motorTurnFrontRight.Config_kD(0, controlLoop::drive::rotate::kD, 100);
-  m_motorTurnFrontRight.Config_kF(0, controlLoop::drive::rotate::kF, 100);
-  m_motorTurnFrontRight.Config_IntegralZone(0, controlLoop::drive::rotate::iZone, 100);
-  m_motorTurnFrontRight.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError, 100);
-
-  m_motorTurnRearLeft.ConfigRemoteFeedbackFilter(m_encoderTurnRearLeft.GetDeviceNumber(),
-                                                 ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
-                                                 0, 100);
-  m_motorTurnRearLeft.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0, 0, 100);
-  m_motorTurnRearLeft.Config_kP(0, controlLoop::drive::rotate::kP, 100);
-  m_motorTurnRearLeft.Config_kI(0, controlLoop::drive::rotate::kI, 100);
-  m_motorTurnRearLeft.Config_kD(0, controlLoop::drive::rotate::kD, 100);
-  m_motorTurnRearLeft.Config_kF(0, controlLoop::drive::rotate::kF, 100);
-  m_motorTurnRearLeft.Config_IntegralZone(0, controlLoop::drive::rotate::iZone, 100);
-  m_motorTurnRearLeft.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError, 100);
-
-  m_motorTurnRearRight.ConfigRemoteFeedbackFilter(m_encoderTurnRearRight.GetDeviceNumber(),
-                                                  ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder,
-                                                  0, 100);
-  m_motorTurnRearRight.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::RemoteFeedbackDevice::RemoteSensor0, 0, 100);
-  m_motorTurnRearRight.Config_kP(0, controlLoop::drive::rotate::kP, 100);
-  m_motorTurnRearRight.Config_kI(0, controlLoop::drive::rotate::kI, 100);
-  m_motorTurnRearRight.Config_kD(0, controlLoop::drive::rotate::kD, 100);
-  m_motorTurnRearRight.Config_kF(0, controlLoop::drive::rotate::kF, 100);
-  m_motorTurnRearRight.Config_IntegralZone(0, controlLoop::drive::rotate::iZone, 100);
-  m_motorTurnRearRight.ConfigAllowableClosedloopError(0, controlLoop::drive::rotate::allowableError, 100);
+  FalconConfig<motorConfig::drive::frontLeftDrive>(m_motorDriveFrontLeft, 100_ms);
+  FalconConfig<motorConfig::drive::frontRightDrive>(m_motorDriveFrontRight, 100_ms);
+  FalconConfig<motorConfig::drive::rearRightDrive>(m_motorDriveRearRight, 100_ms);
+  FalconConfig<motorConfig::drive::rearLeftDrive>(m_motorDriveRearLeft, 100_ms);
+  FalconConfig<motorConfig::drive::frontLeftTurn>(m_motorTurnFrontLeft, 100_ms);
+  FalconConfig<motorConfig::drive::frontRightTurn>(m_motorTurnFrontRight, 100_ms);
+  FalconConfig<motorConfig::drive::rearRightTurn>(m_motorTurnRearRight, 100_ms);
+  FalconConfig<motorConfig::drive::rearLeftTurn>(m_motorTurnRearLeft, 100_ms);
 
   InitializeTurnEncoderAngles();
 
