@@ -4,6 +4,7 @@
 #include "general/swerveUtils.h"
 #include "subsystems/DriveSubsystem.h"
 #include "config/falconConfig.h"
+#include "config/canCoderConfig.h"
 #include "Constants.h"
 
 DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLeftDrive),
@@ -38,29 +39,10 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   m_maxAngularRate = units::degree_t(360.0) * (speedLimits::drive::maxVelocity / turnCircumference);
 
   // Config Sensors
-  m_encoderTurnFrontLeft.ConfigFactoryDefault(100);
-  m_encoderTurnFrontLeft.ConfigSensorDirection(sensorConfig::drive::frontLeftTurn::direction, 100);
-  m_encoderTurnFrontLeft.ConfigSensorInitializationStrategy(sensorConfig::drive::frontLeftTurn::initMode, 100);
-  m_encoderTurnFrontLeft.ConfigAbsoluteSensorRange(sensorConfig::drive::frontLeftTurn::range, 100);
-  m_encoderTurnFrontLeft.ConfigMagnetOffset(sensorConfig::drive::frontLeftTurn::magOffset, 100);
-
-  m_encoderTurnFrontRight.ConfigFactoryDefault(100);
-  m_encoderTurnFrontRight.ConfigSensorDirection(sensorConfig::drive::frontRightTurn::direction, 100);
-  m_encoderTurnFrontRight.ConfigSensorInitializationStrategy(sensorConfig::drive::frontRightTurn::initMode, 100);
-  m_encoderTurnFrontRight.ConfigAbsoluteSensorRange(sensorConfig::drive::frontRightTurn::range, 100);
-  m_encoderTurnFrontRight.ConfigMagnetOffset(sensorConfig::drive::frontRightTurn::magOffset, 100);
-
-  m_encoderTurnRearRight.ConfigFactoryDefault(100);
-  m_encoderTurnRearRight.ConfigSensorDirection(sensorConfig::drive::rearRightTurn::direction, 100);
-  m_encoderTurnRearRight.ConfigSensorInitializationStrategy(sensorConfig::drive::rearRightTurn::initMode, 100);
-  m_encoderTurnRearRight.ConfigAbsoluteSensorRange(sensorConfig::drive::rearRightTurn::range, 100);
-  m_encoderTurnRearRight.ConfigMagnetOffset(sensorConfig::drive::rearRightTurn::magOffset, 100);
-
-  m_encoderTurnRearLeft.ConfigFactoryDefault(100);
-  m_encoderTurnRearLeft.ConfigSensorDirection(sensorConfig::drive::rearLeftTurn::direction, 100);
-  m_encoderTurnRearLeft.ConfigSensorInitializationStrategy(sensorConfig::drive::rearLeftTurn::initMode, 100);
-  m_encoderTurnRearLeft.ConfigAbsoluteSensorRange(sensorConfig::drive::rearLeftTurn::range, 100);
-  m_encoderTurnRearLeft.ConfigMagnetOffset(sensorConfig::drive::rearLeftTurn::magOffset, 100);
+  CanCoderConfig<sensorConfig::drive::frontLeftTurn>(m_encoderTurnFrontLeft, 100_ms);
+  CanCoderConfig<sensorConfig::drive::frontRightTurn>(m_encoderTurnFrontRight, 100_ms);
+  CanCoderConfig<sensorConfig::drive::rearRightTurn>(m_encoderTurnRearRight, 100_ms);
+  CanCoderConfig<sensorConfig::drive::rearLeftTurn>(m_encoderTurnRearLeft, 100_ms);
 
   // Configure motors
   FalconConfig<motorConfig::drive::frontLeftDrive>(m_motorDriveFrontLeft, 100_ms);

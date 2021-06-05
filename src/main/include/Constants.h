@@ -121,34 +121,34 @@ namespace sensorConfig
 {
   namespace drive
   {
-    namespace frontLeftTurn
+    struct frontLeftTurn
     {
-      constexpr bool direction = false;
-      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
-      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
-      constexpr auto magOffset = 0;
-    }
-    namespace frontRightTurn
+      constexpr static bool direction = false;
+      constexpr static auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr static auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr static auto magOffset = 0;
+    };
+    struct frontRightTurn
     {
-      constexpr bool direction = false;
-      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
-      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
-      constexpr auto magOffset = 0;
-    }
-    namespace rearRightTurn
+      constexpr static bool direction = false;
+      constexpr static auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr static auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr static auto magOffset = 0;
+    };
+    struct rearRightTurn
     {
-      constexpr bool direction = false;
-      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
-      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
-      constexpr auto magOffset = 0;
-    }
-    namespace rearLeftTurn
+      constexpr static bool direction = false;
+      constexpr static auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr static auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr static auto magOffset = 0;
+    };
+    struct rearLeftTurn
     {
-      constexpr bool direction = false;
-      constexpr auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
-      constexpr auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
-      constexpr auto magOffset = 0;
-    }
+      constexpr static bool direction = false;
+      constexpr static auto initMode = ctre::phoenix::sensors::SensorInitializationStrategy::BootToAbsolutePosition;
+      constexpr static auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
+      constexpr static auto magOffset = 0;
+    };
   }
 }
 

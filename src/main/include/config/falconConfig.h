@@ -1,10 +1,7 @@
 #pragma once
 
-#include <type_traits>
-
 #include "ctre/Phoenix.h"
 #include <units/time.h>
-#include "Constants.h"
 #include "compileTimeMemberCheck.h"
 
 HAS_MEMBER(inverted)
@@ -70,8 +67,6 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
   if constexpr(has_pid0_allowableError<T>{}) {
     config.slot0.allowableClosedloopError = T::pid0_allowableError;
   }
-
-  printf("%s", config.toString(typeid(T).name()).c_str());
 
   return 0 != motorController.ConfigAllSettings(config, timeout);
 }
