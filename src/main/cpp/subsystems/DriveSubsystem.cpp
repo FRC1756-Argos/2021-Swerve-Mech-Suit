@@ -97,6 +97,10 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
   frc::SmartDashboard::PutNumber("drive/frontRight/targetAngle", moduleStates.at(ModuleIndex::frontRight).angle.Degrees().to<double>());
   frc::SmartDashboard::PutNumber("drive/rearRight/targetAngle", moduleStates.at(ModuleIndex::rearRight).angle.Degrees().to<double>());
   frc::SmartDashboard::PutNumber("drive/rearLeft/targetAngle", moduleStates.at(ModuleIndex::rearLeft).angle.Degrees().to<double>());
+  frc::SmartDashboard::PutNumber("drive/frontLeft/targetVel", moduleStates.at(ModuleIndex::frontLeft).speed.to<double>());
+  frc::SmartDashboard::PutNumber("drive/frontRight/targetVel", moduleStates.at(ModuleIndex::frontRight).speed.to<double>());
+  frc::SmartDashboard::PutNumber("drive/rearRight/targetVel", moduleStates.at(ModuleIndex::rearRight).speed.to<double>());
+  frc::SmartDashboard::PutNumber("drive/rearLeft/targetVel", moduleStates.at(ModuleIndex::rearLeft).speed.to<double>());
 
   std::for_each(moduleStates.begin(), moduleStates.end(),
                 [](frc::SwerveModuleState& state){ state.angle = -state.angle; });
@@ -123,6 +127,10 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
   frc::SmartDashboard::PutNumber("drive/frontRight/optimizedTargetAngle", moduleStates.at(ModuleIndex::frontRight).angle.Degrees().to<double>());
   frc::SmartDashboard::PutNumber("drive/rearRight/optimizedTargetAngle", moduleStates.at(ModuleIndex::rearRight).angle.Degrees().to<double>());
   frc::SmartDashboard::PutNumber("drive/rearLeft/optimizedTargetAngle", moduleStates.at(ModuleIndex::rearLeft).angle.Degrees().to<double>());
+  frc::SmartDashboard::PutNumber("drive/frontLeft/optimizedTargetVel", moduleStates.at(ModuleIndex::frontLeft).speed.to<double>());
+  frc::SmartDashboard::PutNumber("drive/frontRight/optimizedTargetVel", moduleStates.at(ModuleIndex::frontRight).speed.to<double>());
+  frc::SmartDashboard::PutNumber("drive/rearRight/optimizedTargetVel", moduleStates.at(ModuleIndex::rearRight).speed.to<double>());
+  frc::SmartDashboard::PutNumber("drive/rearLeft/optimizedTargetVel", moduleStates.at(ModuleIndex::rearLeft).speed.to<double>());
   // Write current angles to dashboard
   frc::SmartDashboard::PutNumber("drive/frontLeft/currentAngle", measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontLeft.GetSelectedSensorPosition()).to<double>());
   frc::SmartDashboard::PutNumber("drive/frontRight/currentAngle", measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontRight.GetSelectedSensorPosition()).to<double>());
@@ -147,11 +155,13 @@ void DriveSubsystem::Home(const units::degree_t currentAngle) {
   auto ntInstance{nt::NetworkTableInstance::GetDefault()};
   auto ntTable{ntInstance.GetTable(ntKeys::tableName)};
 
-  m_encoderTurnFrontLeft.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
-  m_encoderTurnFrontRight.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
-  m_encoderTurnRearRight.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
-  m_encoderTurnRearLeft.SetPosition(measureUp::sensorConversion::swerveRotate::fromAngle(currentAngle), 10);
+  // SetPosition expects a value in degrees
+  m_encoderTurnFrontLeft.SetPosition(currentAngle.to<double>(), 50);
+  m_encoderTurnFrontRight.SetPosition(currentAngle.to<double>(), 50);
+  m_encoderTurnRearRight.SetPosition(currentAngle.to<double>(), 50);
+  m_encoderTurnRearLeft.SetPosition(currentAngle.to<double>(), 50);
 
+  // GetAbsolutePosition returns degrees in configured range
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnFrontLeft, m_encoderTurnFrontLeft.GetAbsolutePosition());
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnFrontRight, m_encoderTurnFrontRight.GetAbsolutePosition());
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnRearRight, m_encoderTurnRearRight.GetAbsolutePosition());
@@ -161,20 +171,22 @@ void DriveSubsystem::Home(const units::degree_t currentAngle) {
 void DriveSubsystem::InitializeTurnEncoderAngles() {
   auto ntInstance{nt::NetworkTableInstance::GetDefault()};
   auto ntTable{ntInstance.GetTable(ntKeys::tableName)};
-  auto homePositionTurnFrontLeft = ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnFrontLeft, 0);
-  auto homePositionTurnFrontRight = ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnFrontRight, 0);
-  auto homePositionTurnRearRight = ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnRearRight, 0);
-  auto homePositionTurnRearLeft = ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnRearLeft, 0);
+  // Read positions are in degrees
+  const auto homePositionTurnFrontLeft = units::make_unit<units::degree_t>(ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnFrontLeft, 0));
+  const auto homePositionTurnFrontRight = units::make_unit<units::degree_t>(ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnFrontRight, 0));
+  const auto homePositionTurnRearRight = units::make_unit<units::degree_t>(ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnRearRight, 0));
+  const auto homePositionTurnRearLeft = units::make_unit<units::degree_t>(ntTable->GetNumber(ntKeys::subsystemDrive::homePosition::turnRearLeft, 0));
 
-  auto curFrontLeftPosition = units::make_unit<units::degree_t>(m_encoderTurnFrontLeft.GetAbsolutePosition() - homePositionTurnFrontLeft);
-  auto curFrontRighPosition = units::make_unit<units::degree_t>(m_encoderTurnFrontRight.GetAbsolutePosition() - homePositionTurnFrontRight);
-  auto curRearRightPosition = units::make_unit<units::degree_t>(m_encoderTurnRearRight.GetAbsolutePosition() - homePositionTurnRearRight);
-  auto curRearLeftPosition = units::make_unit<units::degree_t>(m_encoderTurnRearLeft.GetAbsolutePosition() - homePositionTurnRearLeft);
+  const auto curFrontLeftPosition = units::make_unit<units::degree_t>(m_encoderTurnFrontLeft.GetAbsolutePosition()) - homePositionTurnFrontLeft;
+  const auto curFrontRighPosition = units::make_unit<units::degree_t>(m_encoderTurnFrontRight.GetAbsolutePosition()) - homePositionTurnFrontRight;
+  const auto curRearRightPosition = units::make_unit<units::degree_t>(m_encoderTurnRearRight.GetAbsolutePosition()) - homePositionTurnRearRight;
+  const auto curRearLeftPosition = units::make_unit<units::degree_t>(m_encoderTurnRearLeft.GetAbsolutePosition()) - homePositionTurnRearLeft;
 
+  // SetPosition expects a value in degrees
   m_encoderTurnFrontLeft.SetPosition(curFrontLeftPosition.to<double>(), 50);
   m_encoderTurnFrontRight.SetPosition(curFrontRighPosition.to<double>(), 50);
-  m_encoderTurnRearLeft.SetPosition(curRearRightPosition.to<double>(), 50);
-  m_encoderTurnRearRight.SetPosition(curRearLeftPosition.to<double>(), 50);
+  m_encoderTurnRearRight.SetPosition(curRearRightPosition.to<double>(), 50);
+  m_encoderTurnRearLeft.SetPosition(curRearLeftPosition.to<double>(), 50);
 }
 
 void DriveSubsystem::NTUpdate(NetworkTable* table,
