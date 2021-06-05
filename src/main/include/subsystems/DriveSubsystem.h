@@ -23,6 +23,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
   void Home(const units::degree_t currentAngle);
 
  private:
+  void InitializeTurnEncoderAngles();
   void NTUpdate(NetworkTable*, wpi::StringRef, nt::NetworkTableEntry, std::shared_ptr<nt::Value>, int);
 
   // Components (e.g. motor controllers and sensors) should generally be
