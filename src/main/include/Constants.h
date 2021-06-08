@@ -107,11 +107,11 @@ namespace controlLoop
   {
     namespace rotate
     {
-      constexpr double kP = 1.2;
-      constexpr double kI = 0.0;
+      constexpr double kP = 1.4;
+      constexpr double kI = 0.01;
       constexpr double kD = 0.0;
       constexpr double kF = 0.0;
-      constexpr double iZone = 0.0;
+      constexpr double iZone = 100.0;
       constexpr double allowableError = 0.0;
     }
   }
@@ -253,14 +253,14 @@ namespace motorConfig
 
 namespace controllerMap
 {
-  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,   0.5},
+  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,   1.0},
                                                         interpMapPoint{-0.15,  0.0},
                                                         interpMapPoint{ 0.15,  0.0},
-                                                        interpMapPoint{ 1.0,  -0.5} };
-  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -0.5},
+                                                        interpMapPoint{ 1.0,  -1.0} };
+  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -1.0},
                                                        interpMapPoint{-0.15,  0.0},
                                                        interpMapPoint{ 0.15,  0.0},
-                                                       interpMapPoint{ 1.0,   0.5} };
+                                                       interpMapPoint{ 1.0,   1.0} };
   [[maybe_unused]] constexpr std::array driveRotSpeed{ interpMapPoint{-1.0,  -0.5},
                                                        interpMapPoint{-0.15,  0.0},
                                                        interpMapPoint{ 0.15,  0.0},
