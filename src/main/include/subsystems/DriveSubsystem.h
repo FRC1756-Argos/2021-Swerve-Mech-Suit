@@ -25,6 +25,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
  private:
   void InitializeTurnEncoderAngles();
   void NTUpdate(NetworkTable*, wpi::StringRef, nt::NetworkTableEntry, std::shared_ptr<nt::Value>, int);
+  double ModuleDriveSpeed(const units::velocity::feet_per_second_t, const units::velocity::feet_per_second_t, const ctre::phoenix::motorcontrol::Faults);
 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.

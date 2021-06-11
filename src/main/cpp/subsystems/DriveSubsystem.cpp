@@ -137,16 +137,30 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
   frc::SmartDashboard::PutNumber("drive/rearRight/currentAngle", measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnRearRight.GetSelectedSensorPosition()).to<double>());
   frc::SmartDashboard::PutNumber("drive/rearLeft/currentAngle", measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnRearLeft.GetSelectedSensorPosition()).to<double>());
 
-  m_motorDriveFrontLeft.Set(moduleStates.at(ModuleIndex::frontLeft).speed / speedLimits::drive::maxVelocity);
+  ctre::phoenix::motorcontrol::Faults turnFrontLeftFaults, turnFrontRightFaults, turnRearRightFaults, turnRearLeftFaults;
+  m_motorTurnFrontLeft.GetFaults(turnFrontLeftFaults);
+  m_motorTurnFrontRight.GetFaults(turnFrontRightFaults);
+  m_motorTurnRearRight.GetFaults(turnRearRightFaults);
+  m_motorTurnRearLeft.GetFaults(turnRearLeftFaults);
+
+  m_motorDriveFrontLeft.Set(ModuleDriveSpeed(moduleStates.at(ModuleIndex::frontLeft).speed,
+                                             speedLimits::drive::maxVelocity,
+                                             turnFrontLeftFaults));
   m_motorTurnFrontLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
                            measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontLeft).angle.Degrees()));
-  m_motorDriveFrontRight.Set(moduleStates.at(ModuleIndex::frontRight).speed / speedLimits::drive::maxVelocity);
+  m_motorDriveFrontRight.Set(ModuleDriveSpeed(moduleStates.at(ModuleIndex::frontRight).speed,
+                                             speedLimits::drive::maxVelocity,
+                                             turnFrontRightFaults));
   m_motorTurnFrontRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
                             measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::frontRight).angle.Degrees()));
-  m_motorDriveRearRight.Set(moduleStates.at(ModuleIndex::rearRight).speed / speedLimits::drive::maxVelocity);
+  m_motorDriveRearRight.Set(ModuleDriveSpeed(moduleStates.at(ModuleIndex::rearRight).speed,
+                                             speedLimits::drive::maxVelocity,
+                                             turnRearRightFaults));
   m_motorTurnRearRight.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
                            measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearRight).angle.Degrees()));
-  m_motorDriveRearLeft.Set(moduleStates.at(ModuleIndex::rearLeft).speed / speedLimits::drive::maxVelocity);
+  m_motorDriveRearLeft.Set(ModuleDriveSpeed(moduleStates.at(ModuleIndex::rearLeft).speed,
+                                             speedLimits::drive::maxVelocity,
+                                             turnRearLeftFaults));
   m_motorTurnRearLeft.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::Position,
                           measureUp::sensorConversion::swerveRotate::fromAngle(moduleStates.at(ModuleIndex::rearLeft).angle.Degrees()));
 }
@@ -230,4 +244,14 @@ void DriveSubsystem::NTUpdate(NetworkTable* table,
     m_motorTurnRearLeft.ConfigAllowableClosedloopError(0, value->GetDouble());
     m_motorTurnRearRight.ConfigAllowableClosedloopError(0, value->GetDouble());
   }
+}
+
+double DriveSubsystem::ModuleDriveSpeed(const units::velocity::feet_per_second_t desiredSpeed,
+                                        const units::velocity::feet_per_second_t maxSpeed,
+                                        const ctre::phoenix::motorcontrol::Faults turnFaults) {
+  const bool fatalFault = turnFaults.RemoteLossOfSignal ||
+                          turnFaults.HardwareFailure ||
+                          turnFaults.APIError;
+  return fatalFault ? 0.0 :
+                      (desiredSpeed / maxSpeed).to<double>();
 }
