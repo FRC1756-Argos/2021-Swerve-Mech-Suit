@@ -39,15 +39,6 @@ class RobotContainer {
 
   // Commands
   ExampleCommand m_autonomousCommand;
-  frc2::InstantCommand m_homeSwerveModulesCommand{[this](){m_drive.Home(0_deg);}, {&m_drive}};
-
-  // Triggers
-  frc2::Trigger m_triggerHomeCombo{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kBumperLeft,
-                                                                                                        ArgosLib::XboxController::Button::kBumperRight});}};
-  frc2::Trigger m_driverTriggerSwapCombo{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
-                                                                                                              ArgosLib::XboxController::Button::kStart});}};
-  frc2::Trigger m_operatorTriggerSwapCombo{[this](){return m_controllers.operatorController().GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
-                                                                                                                  ArgosLib::XboxController::Button::kStart});}};
 
   interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()> m_driveLonSpeedMap;
   interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()> m_driveLatSpeedMap;

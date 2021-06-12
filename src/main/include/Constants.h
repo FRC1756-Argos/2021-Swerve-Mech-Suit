@@ -8,10 +8,12 @@
 #include <units/velocity.h>
 #include <units/angle.h>
 #include <units/angular_velocity.h>
+#include <frc/SPI.h>
 #include <ctre/phoenix/motorcontrol/NeutralMode.h>
 #include <ctre/phoenix/motorcontrol/can/BaseMotorController.h>
 #include <ctre/phoenix/sensors/SensorInitializationStrategy.h>
 #include <ctre/phoenix/sensors/AbsoluteSensorRange.h>
+#include <adi/ADIS16448_IMU.h>
 #include "general/interpolation.h"
 
 /**
@@ -149,6 +151,12 @@ namespace sensorConfig
       constexpr static auto range = ctre::phoenix::sensors::AbsoluteSensorRange::Unsigned_0_to_360;
       constexpr static auto magOffset = 0;
     };
+    namespace IMU
+    {
+      constexpr auto yawAxis = frc::ADIS16448_IMU::IMUAxis::kZ;
+      constexpr auto port = frc::SPI::Port::kMXP;
+      constexpr auto calTime = 5.0_s;
+    }
   }
 }
 

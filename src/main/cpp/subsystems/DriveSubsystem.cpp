@@ -18,7 +18,12 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
                                    m_encoderTurnFrontLeft(address::encoder::frontLeftTurn),
                                    m_encoderTurnFrontRight(address::encoder::frontRightTurn),
                                    m_encoderTurnRearRight(address::encoder::rearRightTurn),
-                                   m_encoderTurnRearLeft(address::encoder::rearLeftTurn)
+                                   m_encoderTurnRearLeft(address::encoder::rearLeftTurn),
+                                   m_IMU(sensorConfig::drive::IMU::yawAxis,
+                                         sensorConfig::drive::IMU::port,
+                                         sensorConfig::drive::IMU::calTime.to<uint16_t>()),
+                                   m_fieldOrientationOffset(0_deg),
+                                   m_activeControlMode(ControlMode::fieldCentric)
 {
   // Set lever arms for each module
   frc::Translation2d leverArmFrontLeft {  measureUp::chassis::length/2 - measureUp::drive::frontLeftLonInset,
@@ -70,6 +75,8 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   tuningSubtable->AddEntryListener([this](NetworkTable* table, wpi::StringRef key, nt::NetworkTableEntry entry, std::shared_ptr<nt::Value> value, int flags)
                                      {this->NTUpdate(table, key, entry, value, flags);},
                                    NT_NOTIFY_UPDATE);
+
+  m_IMU.Calibrate();
 }
 
 void DriveSubsystem::SwerveDrive(const double fwVelocity,
@@ -88,9 +95,7 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity,
     return;
   }
 
-  auto moduleStates = m_pSwerveKinematicsModel->ToSwerveModuleStates(frc::ChassisSpeeds{ speedLimits::drive::maxVelocity * fwVelocity,
-                                                                                         speedLimits::drive::maxVelocity * latVelocity,
-                                                                                         m_maxAngularRate * rotateVelocity });
+  auto moduleStates = RawModuleStates(fwVelocity, latVelocity, rotateVelocity);
 
   // Write desired angles to dashboard
   frc::SmartDashboard::PutNumber("drive/frontLeft/targetAngle", moduleStates.at(ModuleIndex::frontLeft).angle.Degrees().to<double>());
@@ -182,6 +187,22 @@ void DriveSubsystem::Home(const units::degree_t currentAngle) {
   ntTable->PutNumber(ntKeys::subsystemDrive::homePosition::turnRearLeft, m_encoderTurnRearLeft.GetAbsolutePosition());
 }
 
+void DriveSubsystem::SetFieldOrientation(const units::degree_t currentAngle) {
+  m_fieldOrientationOffset = m_IMU.GetRotation2d();
+}
+
+void DriveSubsystem::SetControlMode(const ControlMode newControlMode) {
+  switch(newControlMode) {
+    case ControlMode::fieldCentric:
+      printf("Switching to field-centric control\n");
+      break;
+    case ControlMode::robotCentric:
+      printf("Switching to robot-centric control\n");
+      break;
+  }
+  m_activeControlMode = newControlMode;
+}
+
 void DriveSubsystem::InitializeTurnEncoderAngles() {
   auto ntInstance{nt::NetworkTableInstance::GetDefault()};
   auto ntTable{ntInstance.GetTable(ntKeys::tableName)};
@@ -254,4 +275,25 @@ double DriveSubsystem::ModuleDriveSpeed(const units::velocity::feet_per_second_t
                           turnFaults.APIError;
   return fatalFault ? 0.0 :
                       (desiredSpeed / maxSpeed).to<double>();
+}
+
+wpi::array<frc::SwerveModuleState, 4> DriveSubsystem::RawModuleStates(const double fwVelocity, const double latVelocity, const double rotateVelocity) {
+  const auto desiredFwVelocity = speedLimits::drive::maxVelocity * fwVelocity;
+  const auto desiredLatVelocity = speedLimits::drive::maxVelocity * latVelocity;
+  const auto desiredRotVelocity = m_maxAngularRate * rotateVelocity;
+  switch(m_activeControlMode) {
+    case ControlMode::fieldCentric: {
+      const auto rotationToApply = m_IMU.GetRotation2d() - m_fieldOrientationOffset;
+      return m_pSwerveKinematicsModel->ToSwerveModuleStates(frc::ChassisSpeeds::FromFieldRelativeSpeeds( desiredFwVelocity,
+                                                                                                         desiredLatVelocity,
+                                                                                                         desiredRotVelocity,
+                                                                                                         -rotationToApply));
+    }
+    case ControlMode::robotCentric:
+      return m_pSwerveKinematicsModel->ToSwerveModuleStates(frc::ChassisSpeeds{ desiredFwVelocity,
+                                                                                desiredLatVelocity,
+                                                                                desiredRotVelocity });
+  }
+  // This shouldn't be reachable (and there will be a compiler warning if a switch case is unhandled), but stop if in unknown drive state
+  return m_pSwerveKinematicsModel->ToSwerveModuleStates(frc::ChassisSpeeds{ 0_mps, 0_mps, 0_rpm });
 }

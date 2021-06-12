@@ -43,12 +43,30 @@ RobotContainer::RobotContainer() : m_controllers(address::joystick::driver, addr
 
   m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBumperLeft, {500_ms, 0_ms});
   m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kBumperRight, {500_ms, 0_ms});
+
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kLeftTrigger, {500_ms, 0_ms});
+  m_controllers.driverController().SetButtonDebounce(ArgosLib::XboxController::Button::kRightTrigger, {500_ms, 0_ms});
 }
 
 void RobotContainer::ConfigureButtonBindings() {
+  // Triggers
+  frc2::Trigger triggerHomeCombo{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kBumperLeft,
+                                                                                                      ArgosLib::XboxController::Button::kBumperRight});}};
+  frc2::Trigger driverTriggerSwapCombo{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
+                                                                                                            ArgosLib::XboxController::Button::kStart});}};
+  frc2::Trigger operatorTriggerSwapCombo{[this](){return m_controllers.operatorController().GetDebouncedButton({ArgosLib::XboxController::Button::kBack,
+                                                                                                                ArgosLib::XboxController::Button::kStart});}};
+  frc2::Trigger triggerResetFieldOrientation{[this](){return m_controllers.driverController().GetDebouncedButton({ArgosLib::XboxController::Button::kLeftTrigger,
+                                                                                                                  ArgosLib::XboxController::Button::kRightTrigger});}};
+  auto robotCentricDriveTrigger = (frc2::Trigger{[this](){return m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kBumperRight);}} &&
+                                   frc2::Trigger{[this](){return !m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kBumperLeft);}});
+
   // Configure your button bindings here
-  m_triggerHomeCombo.WhenActive(&m_homeSwerveModulesCommand);
-  (m_driverTriggerSwapCombo || m_operatorTriggerSwapCombo).WhileActiveOnce(SwapControllersCommand(&m_controllers));
+  robotCentricDriveTrigger.WhenActive([this](){m_drive.SetControlMode(DriveSubsystem::ControlMode::robotCentric);}, {&m_drive});
+  robotCentricDriveTrigger.WhenInactive([this](){m_drive.SetControlMode(DriveSubsystem::ControlMode::fieldCentric);}, {&m_drive});
+  triggerHomeCombo.WhenActive([this](){m_drive.Home(0_deg);}, {&m_drive});
+  (driverTriggerSwapCombo || operatorTriggerSwapCombo).WhileActiveOnce(SwapControllersCommand(&m_controllers));
+  triggerResetFieldOrientation.WhenActive([this](){m_drive.SetFieldOrientation(0_deg);}, {&m_drive});
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
