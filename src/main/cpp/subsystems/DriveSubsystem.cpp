@@ -75,8 +75,6 @@ DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLe
   tuningSubtable->AddEntryListener([this](NetworkTable* table, wpi::StringRef key, nt::NetworkTableEntry entry, std::shared_ptr<nt::Value> value, int flags)
                                      {this->NTUpdate(table, key, entry, value, flags);},
                                    NT_NOTIFY_UPDATE);
-
-  m_IMU.Calibrate();
 }
 
 void DriveSubsystem::SwerveDrive(const double fwVelocity,
