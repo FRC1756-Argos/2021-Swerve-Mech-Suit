@@ -160,28 +160,28 @@ namespace motorConfig
     {
       constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase   = false;
-      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
       constexpr static double voltCompSat = 11.0;
     };
     struct frontRightDrive
     {
       constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase   = false;
-      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
       constexpr static double voltCompSat = 11.0;
     };
     struct rearRightDrive
     {
       constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase   = false;
-      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
       constexpr static double voltCompSat = 11.0;
     };
     struct rearLeftDrive
     {
       constexpr static auto inverted      = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase   = false;
-      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static auto neutralMode   = ctre::phoenix::motorcontrol::NeutralMode::Brake;
       constexpr static double voltCompSat = 11.0;
     };
     struct frontLeftTurn
@@ -253,18 +253,18 @@ namespace motorConfig
 
 namespace controllerMap
 {
-  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,   1.0},
+  [[maybe_unused]] constexpr std::array driveLongSpeed{ interpMapPoint{-1.0,   0.2},
                                                         interpMapPoint{-0.15,  0.0},
                                                         interpMapPoint{ 0.15,  0.0},
-                                                        interpMapPoint{ 1.0,  -1.0} };
-  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -1.0},
+                                                        interpMapPoint{ 1.0,  -0.2} };
+  [[maybe_unused]] constexpr std::array driveLatSpeed{ interpMapPoint{-1.0,  -0.2},
                                                        interpMapPoint{-0.15,  0.0},
                                                        interpMapPoint{ 0.15,  0.0},
-                                                       interpMapPoint{ 1.0,   1.0} };
-  [[maybe_unused]] constexpr std::array driveRotSpeed{ interpMapPoint{-1.0,  -0.5},
+                                                       interpMapPoint{ 1.0,   0.2} };
+  [[maybe_unused]] constexpr std::array driveRotSpeed{ interpMapPoint{-1.0,  -0.25},
                                                        interpMapPoint{-0.15,  0.0},
                                                        interpMapPoint{ 0.15,  0.0},
-                                                       interpMapPoint{ 1.0,   0.5} };
+                                                       interpMapPoint{ 1.0,   0.25} };
 }
 
 namespace ntKeys
