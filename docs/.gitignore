@@ -1,0 +1,3 @@
+# Doxygen is generated in GitHub action, don't commit local version
+html
+latex

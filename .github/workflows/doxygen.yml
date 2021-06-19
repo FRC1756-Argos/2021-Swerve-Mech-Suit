@@ -1,0 +1,31 @@
+name: Documentation
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-documentation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Generate Documentation
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+        working-directory: 'src/'
+        doxyfile-path: 'Doxyfile'
+        enable-latex: true
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./doc/html/
+        enable_jekyll: false
+        allow_empty_commit: false
+        force orphan: true
+        publish_branch: gh-pages

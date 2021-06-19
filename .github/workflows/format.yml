@@ -1,0 +1,41 @@
+# This is a basic workflow to build robot code.
+
+name: Format
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+on:
+  push
+  pull_request
+
+jobs:
+  wpiformat:
+    name: "wpiformat"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Fetch all history and metadata
+        run: |
+          git fetch --prune --unshallow
+          git checkout -b pr
+          git branch -f main origin/main
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install clang-format
+        run: sudo apt-get update -q && sudo apt-get install -y clang-format-10
+      - name: Install wpiformat
+        run: pip3 install wpiformat
+      - name: Run
+        run: wpiformat -clang 10
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --global user.name 'wpiformat'
+          git config --global user.email 'wpiformat-action@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated formatting changes"
+          git push
