@@ -1,5 +1,5 @@
 #include <chrono>
-#include "controller/Vibration.h"
+#include "argosLib/controller/Vibration.h"
 
 using namespace ArgosLib;
 

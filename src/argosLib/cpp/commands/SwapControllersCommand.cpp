@@ -1,4 +1,4 @@
-#include "commands/SwapControllersCommand.h"
+#include "argosLib/commands/SwapControllersCommand.h"
 
 SwapControllersCommand::SwapControllersCommand(SwappableControllersSubsystem* controllers) : m_pControllerSubsystem(controllers) {}
 

@@ -9,11 +9,11 @@
 #include <frc2/command/button/Trigger.h>
 
 #include "commands/ExampleCommand.h"
-#include "commands/SwapControllersCommand.h"
+#include "argosLib/commands/SwapControllersCommand.h"
 #include "subsystems/DriveSubsystem.h"
-#include "subsystems/SwappableControllersSubsystem.h"
-#include "general/interpolation.h"
-#include "controller/XboxController.h"
+#include "argosLib/subsystems/SwappableControllersSubsystem.h"
+#include "argosLib/general/interpolation.h"
+#include "argosLib/controller/XboxController.h"
 #include "Constants.h"
 
 /**

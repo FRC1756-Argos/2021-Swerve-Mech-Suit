@@ -2,7 +2,7 @@
 
 #include <array>
 #include <frc/GenericHID.h>
-#include "general/debounceSettings.h"
+#include "argosLib/general/debounceSettings.h"
 #include "Vibration.h"
 
 namespace ArgosLib{

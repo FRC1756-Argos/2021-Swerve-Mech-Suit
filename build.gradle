@@ -71,12 +71,15 @@ model {
             sources.cpp {
                 source {
                     srcDir 'src/main/cpp'
+                    srcDir 'src/argosLib/cpp'
                     include '**/*.cpp', '**/*.cc'
                 }
                 exportedHeaders {
                     srcDir 'src/main/include'
+                    srcDir 'src/argosLib/include'
                     if (includeSrcInIncludeRoot) {
                         srcDir 'src/main/cpp'
+                        srcDir 'src/argosLib/cpp'
                     }
                 }
             }

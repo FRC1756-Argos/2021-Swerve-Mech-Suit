@@ -14,7 +14,7 @@
 #include <ctre/phoenix/sensors/SensorInitializationStrategy.h>
 #include <ctre/phoenix/sensors/AbsoluteSensorRange.h>
 #include <adi/ADIS16448_IMU.h>
-#include "general/interpolation.h"
+#include "argosLib/general/interpolation.h"
 
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide

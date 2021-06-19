@@ -1,10 +1,10 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <networktables/NetworkTableInstance.h>
 
-#include "general/swerveUtils.h"
+#include "argosLib/general/swerveUtils.h"
 #include "subsystems/DriveSubsystem.h"
-#include "config/falconConfig.h"
-#include "config/canCoderConfig.h"
+#include "argosLib/config/falconConfig.h"
+#include "argosLib/config/canCoderConfig.h"
 #include "Constants.h"
 
 DriveSubsystem::DriveSubsystem() : m_motorDriveFrontLeft(address::motor::frontLeftDrive),

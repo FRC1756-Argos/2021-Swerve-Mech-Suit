@@ -1,7 +1,7 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include "controller/XboxController.h"
+#include "argosLib/controller/XboxController.h"
 
 class SwappableControllersSubsystem : public frc2::SubsystemBase {
   public:
