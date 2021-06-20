@@ -24,11 +24,21 @@ jobs:
       - name: Check for modified files
         id: git-check
         run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      - name: Get branch name
+        uses: nelonoel/branch-name@v1
       - name: Push changes
-        if: steps.git-check.outputs.modified == 'true'
-        run: |
-          git config --global user.name 'wpiformat'
-          git config --global user.email 'wpiformat-action@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Automated formatting changes"
-          git push
+        if: steps.git-check.outputs.modified == 'true' &&
+            ! (github.event_name == 'push' && ${BRANCH_NAME} == 'master')
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: wpiformat
+          message: Automated formatting changes
+      - name: Create Pull Request
+        if: steps.git-check.outputs.modified == 'true' &&
+            (github.event_name == 'push' && ${BRANCH_NAME} == 'master')
+        uses: peter-evans/create-pull-request@v3.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Automated formatting changes
+          author: wpiformat
+          title: Formatting Changes
