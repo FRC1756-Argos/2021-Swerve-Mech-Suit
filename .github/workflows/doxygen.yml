@@ -20,6 +20,7 @@ jobs:
           concurrent_skipping: 'same_content'
           skip_after_successful_duplicate: 'true'
           paths_ignore: '["**/README.md", "docs/**"]'
+          do_not_skip: '["pull_request"]'
   build-documentation:
     needs: pre_job
     if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
