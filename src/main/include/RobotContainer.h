@@ -1,16 +1,20 @@
+/// \copyright Copyright (c) Argos FRC Team 1756.
+///            Open Source Software; you can modify and/or share it under the terms of
+///            the license file in the root directory of this project.
+
 #pragma once
 
 #include <frc2/command/Command.h>
 #include <frc2/command/InstantCommand.h>
 #include <frc2/command/button/Trigger.h>
 
-#include "commands/ExampleCommand.h"
-#include "argosLib/commands/SwapControllersCommand.h"
-#include "subsystems/DriveSubsystem.h"
-#include "argosLib/subsystems/SwappableControllersSubsystem.h"
-#include "argosLib/general/interpolation.h"
-#include "argosLib/controller/XboxController.h"
 #include "Constants.h"
+#include "argosLib/commands/SwapControllersCommand.h"
+#include "argosLib/controller/XboxController.h"
+#include "argosLib/general/interpolation.h"
+#include "argosLib/subsystems/SwappableControllersSubsystem.h"
+#include "commands/ExampleCommand.h"
+#include "subsystems/DriveSubsystem.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -36,9 +40,12 @@ class RobotContainer {
   // Commands
   ExampleCommand m_autonomousCommand;
 
-  interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()> m_driveLonSpeedMap;
-  interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()> m_driveLatSpeedMap;
-  interpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()> m_driveRotSpeedMap;
+  interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()>
+      m_driveLonSpeedMap;
+  interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()>
+      m_driveLatSpeedMap;
+  interpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()>
+      m_driveRotSpeedMap;
 
   void ConfigureButtonBindings();
 };

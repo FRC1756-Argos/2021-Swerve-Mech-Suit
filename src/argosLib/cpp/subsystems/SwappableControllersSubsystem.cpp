@@ -1,8 +1,11 @@
+/// \copyright Copyright (c) Argos FRC Team 1756.
+///            Open Source Software; you can modify and/or share it under the terms of
+///            the license file in the root directory of this project.
+
 #include "argosLib/subsystems/SwappableControllersSubsystem.h"
 
-SwappableControllersSubsystem::SwappableControllersSubsystem(int driverControllerPort, int operatorControllerPort) : m_driverController(driverControllerPort),
-                                                                                                                     m_operatorController(operatorControllerPort),
-                                                                                                                     m_swapped(false) {}
+SwappableControllersSubsystem::SwappableControllersSubsystem(int driverControllerPort, int operatorControllerPort)
+    : m_driverController(driverControllerPort), m_operatorController(operatorControllerPort), m_swapped(false) {}
 
 void SwappableControllersSubsystem::Swap() {
   m_driverController.SwapSettings(m_operatorController);

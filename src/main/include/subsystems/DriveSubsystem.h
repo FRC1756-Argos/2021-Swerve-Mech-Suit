@@ -1,20 +1,21 @@
+/// \copyright Copyright (c) Argos FRC Team 1756.
+///            Open Source Software; you can modify and/or share it under the terms of
+///            the license file in the root directory of this project.
+
 #pragma once
 
-#include <memory>
-#include <frc2/command/SubsystemBase.h>
-#include <frc/kinematics/SwerveModuleState.h>
 #include <frc/kinematics/SwerveDriveKinematics.h>
+#include <frc/kinematics/SwerveModuleState.h>
+#include <frc2/command/SubsystemBase.h>
+
+#include <memory>
+
 #include "adi/ADIS16448_IMU.h"
 #include "ctre/Phoenix.h"
 
 class DriveSubsystem : public frc2::SubsystemBase {
  public:
-  enum ModuleIndex {
-    frontLeft,
-    frontRight,
-    rearRight,
-    rearLeft
-  };
+  enum ModuleIndex { frontLeft, frontRight, rearRight, rearLeft };
 
   enum class ControlMode {
     fieldCentric,
@@ -23,9 +24,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 
   DriveSubsystem();
 
-  void SwerveDrive(const double fwVelocity,
-                   const double latVelocity,
-                   const double rotateVelocity);
+  void SwerveDrive(const double fwVelocity, const double latVelocity, const double rotateVelocity);
 
   void Home(const units::degree_t currentAngle);
   void SetFieldOrientation(const units::degree_t);
@@ -35,7 +34,9 @@ class DriveSubsystem : public frc2::SubsystemBase {
  private:
   void InitializeTurnEncoderAngles();
   void NTUpdate(NetworkTable*, wpi::StringRef, nt::NetworkTableEntry, std::shared_ptr<nt::Value>, int);
-  double ModuleDriveSpeed(const units::velocity::feet_per_second_t, const units::velocity::feet_per_second_t, const ctre::phoenix::motorcontrol::Faults);
+  double ModuleDriveSpeed(const units::velocity::feet_per_second_t,
+                          const units::velocity::feet_per_second_t,
+                          const ctre::phoenix::motorcontrol::Faults);
   wpi::array<frc::SwerveModuleState, 4> RawModuleStates(const double, const double, const double);
 
   // Components (e.g. motor controllers and sensors) should generally be

@@ -1,15 +1,20 @@
+/// \copyright Copyright (c) Argos FRC Team 1756.
+///            Open Source Software; you can modify and/or share it under the terms of
+///            the license file in the root directory of this project.
+
 #pragma once
 
-#include "ctre/Phoenix.h"
 #include <units/time.h>
+
 #include "compileTimeMemberCheck.h"
+#include "ctre/Phoenix.h"
 
 HAS_MEMBER(direction)
 HAS_MEMBER(initMode)
 HAS_MEMBER(range)
 HAS_MEMBER(magOffset)
 
-template<typename T>
+template <typename T>
 bool CanCoderConfig(CANCoder& encoder, units::millisecond_t configTimeout) {
   ctre::phoenix::sensors::CANCoderConfiguration config;
   auto timeout = configTimeout.to<int>();
