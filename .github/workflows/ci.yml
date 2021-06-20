@@ -41,4 +41,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Compile and run tests on robot code
-      run: ./gradlew buildAthena # Just RoboRIO version for now
+      run: ./gradlew build
