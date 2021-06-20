@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <frc2/command/SubsystemBase.h>
 #include <frc/kinematics/SwerveModuleState.h>
 #include <frc/kinematics/SwerveDriveKinematics.h>

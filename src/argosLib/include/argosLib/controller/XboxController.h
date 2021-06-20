@@ -40,14 +40,14 @@ public:
   };
 
   XboxController() = delete;
-  XboxController(int port);
+  explicit XboxController(int port);
 
   void SetButtonDebounce(Button, debounceSetttings);
 
   void SwapSettings(XboxController&);
 
-  virtual double GetX(JoystickHand) const override;
-  virtual double GetY(JoystickHand) const override;
+  double GetX(JoystickHand) const override;
+  double GetY(JoystickHand) const override;
   double GetTriggerAxis(JoystickHand) const;
 
   bool GetDebouncedButton(Button);

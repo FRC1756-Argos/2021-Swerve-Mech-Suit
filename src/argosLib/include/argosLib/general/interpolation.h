@@ -8,10 +8,10 @@ struct interpMapPoint{
   T inVal;
   T outVal;
 
-  constexpr interpMapPoint(T in, T out): inVal(in), outVal(out) {};
+  constexpr interpMapPoint(T in, T out): inVal(in), outVal(out) {}
 
-  constexpr bool operator<(const interpMapPoint<T>& other){ return inVal < other.inVal; };
-  constexpr bool operator==(const interpMapPoint<T>& other){ return inVal == other.inVal; };
+  constexpr bool operator<(const interpMapPoint<T>& other){ return inVal < other.inVal; }
+  constexpr bool operator==(const interpMapPoint<T>& other){ return inVal == other.inVal; }
 };
 
 template<class T>
@@ -27,7 +27,7 @@ class interpolationMap{
     constexpr interpolationMap(std::array<interpMapPoint<T>, size> initArray) : m_mapArray(initArray){
       // assert(("Map must contain at least one value.", !initArray.empty()));
       // assert(("Map values must be sorted.", std::is_sorted(initArray.cbegin(), initArray.cend())));
-    };
+    }
 
     constexpr T map(const T inVal){
       if(inVal >= m_mapArray.back().inVal){
@@ -40,10 +40,10 @@ class interpolationMap{
         const auto lerpPct = (inVal - beforePoint->inVal) / (afterPoint->inVal - beforePoint->inVal);
         return beforePoint->outVal + lerpPct * (afterPoint->outVal - beforePoint->outVal);
       }
-    };
+    }
     constexpr T operator()(const T inVal){
       return map(inVal);
-    };
+    }
 
   private:
     std::array<interpMapPoint<T>, size> m_mapArray;
