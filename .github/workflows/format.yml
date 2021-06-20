@@ -27,8 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -37,6 +35,9 @@ jobs:
         run: sudo apt-get update -q && sudo apt-get install -y clang-format-10
       - name: Install wpiformat
         run: pip3 install wpiformat
+      - name: Rename branch
+        if ${{ github.ref != 'refs/heads/master' }}
+        run: git checkout -b master HEAD
       - name: Run
         run: wpiformat -clang 10
       - name: Check for modified files
