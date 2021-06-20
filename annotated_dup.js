@@ -1,6 +1,6 @@
 var annotated_dup =
 [
-    [ "ArgosLib", null, [
+    [ "ArgosLib", "namespace_argos_lib.html", [
       [ "VibrationStatus", "struct_argos_lib_1_1_vibration_status.html", "struct_argos_lib_1_1_vibration_status" ],
       [ "XboxController", "class_argos_lib_1_1_xbox_controller.html", "class_argos_lib_1_1_xbox_controller" ]
     ] ],

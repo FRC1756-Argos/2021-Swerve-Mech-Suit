@@ -86,58 +86,61 @@ $(document).ready(function(){initNavTree('interpolation_8h_source.html',''); ini
 <div class="title">interpolation.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structinterp_map_point.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structinterp_map_point.html">interpMapPoint</a>{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  T inVal;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  T outVal;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  constexpr <a class="code" href="structinterp_map_point.html">interpMapPoint</a>(T in, T out): inVal(in), outVal(out) {}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  constexpr <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; other){ <span class="keywordflow">return</span> inVal &lt; other.inVal; }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  constexpr <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; other){ <span class="keywordflow">return</span> inVal == other.inVal; }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structinterp_map_point.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structinterp_map_point.html">interpMapPoint</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  T inVal;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  T outVal;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  constexpr <a class="code" href="structinterp_map_point.html">interpMapPoint</a>(T in, T out) : inVal(in), outVal(out) {}</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;constexpr <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; a, <span class="keyword">const</span> T&amp; b) { <span class="keywordflow">return</span> a.inVal &lt; b; }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;constexpr <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; b) { <span class="keywordflow">return</span> a &lt; b.inVal; }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> size&gt;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classinterpolation_map.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classinterpolation_map.html">interpolationMap</a>{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classinterpolation_map.html">interpolationMap</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    constexpr <a class="code" href="classinterpolation_map.html">interpolationMap</a>(std::array&lt;<a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>, size&gt; initArray) : m_mapArray(initArray){</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="comment">// assert((&quot;Map must contain at least one value.&quot;, !initArray.empty()));</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="comment">// assert((&quot;Map values must be sorted.&quot;, std::is_sorted(initArray.cbegin(), initArray.cend())));</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    constexpr T map(<span class="keyword">const</span> T inVal){</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <span class="keywordflow">if</span>(inVal &gt;= m_mapArray.back().inVal){</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> m_mapArray.back().outVal;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(inVal &lt;= m_mapArray.front().inVal){</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> m_mapArray.front().outVal;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      } <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">auto</span> afterPoint{std::lower_bound(m_mapArray.cbegin(), m_mapArray.cend(), inVal)};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">auto</span> beforePoint{std::prev(afterPoint)};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> lerpPct = (inVal - beforePoint-&gt;inVal) / (afterPoint-&gt;inVal - beforePoint-&gt;inVal);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> beforePoint-&gt;outVal + lerpPct * (afterPoint-&gt;outVal - beforePoint-&gt;outVal);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    constexpr T operator()(<span class="keyword">const</span> T inVal){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keywordflow">return</span> map(inVal);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::array&lt;interpMapPoint&lt;T&gt;, size&gt; m_mapArray;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
-<div class="ttc" id="aclassinterpolation_map_html"><div class="ttname"><a href="classinterpolation_map.html">interpolationMap</a></div><div class="ttdef"><b>Definition:</b> interpolation.h:24</div></div>
-<div class="ttc" id="astructinterp_map_point_html"><div class="ttname"><a href="structinterp_map_point.html">interpMapPoint</a></div><div class="ttdef"><b>Definition:</b> interpolation.h:7</div></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  constexpr <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; other) { <span class="keywordflow">return</span> inVal &lt; other.inVal; }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  constexpr <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; other) { <span class="keywordflow">return</span> inVal == other.inVal; }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;constexpr <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; a, <span class="keyword">const</span> T&amp; b) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordflow">return</span> a.inVal &lt; b;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;constexpr <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> <a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>&amp; b) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">return</span> a &lt; b.inVal;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">int</span> size&gt;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classinterpolation_map.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classinterpolation_map.html">interpolationMap</a> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classinterpolation_map.html">interpolationMap</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  constexpr <a class="code" href="classinterpolation_map.html">interpolationMap</a>(std::array&lt;<a class="code" href="structinterp_map_point.html">interpMapPoint&lt;T&gt;</a>, size&gt; initArray) : m_mapArray(initArray) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// assert((&quot;Map must contain at least one value.&quot;, !initArray.empty()));</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// assert((&quot;Map values must be sorted.&quot;, std::is_sorted(initArray.cbegin(), initArray.cend())));</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  constexpr T map(<span class="keyword">const</span> T inVal) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (inVal &gt;= m_mapArray.back().inVal) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keywordflow">return</span> m_mapArray.back().outVal;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (inVal &lt;= m_mapArray.front().inVal) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <span class="keywordflow">return</span> m_mapArray.front().outVal;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keyword">auto</span> afterPoint{std::lower_bound(m_mapArray.cbegin(), m_mapArray.cend(), inVal)};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keyword">auto</span> beforePoint{std::prev(afterPoint)};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> lerpPct = (inVal - beforePoint-&gt;inVal) / (afterPoint-&gt;inVal - beforePoint-&gt;inVal);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keywordflow">return</span> beforePoint-&gt;outVal + lerpPct * (afterPoint-&gt;outVal - beforePoint-&gt;outVal);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  constexpr T operator()(<span class="keyword">const</span> T inVal) { <span class="keywordflow">return</span> map(inVal); }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::array&lt;interpMapPoint&lt;T&gt;, size&gt; m_mapArray;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="ttc" id="aclassinterpolation_map_html"><div class="ttname"><a href="classinterpolation_map.html">interpolationMap</a></div><div class="ttdef"><b>Definition:</b> interpolation.h:32</div></div>
+<div class="ttc" id="astructinterp_map_point_html"><div class="ttname"><a href="structinterp_map_point.html">interpMapPoint</a></div><div class="ttdef"><b>Definition:</b> interpolation.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
