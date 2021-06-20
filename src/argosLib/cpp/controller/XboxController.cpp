@@ -1,9 +1,12 @@
+/// \copyright Copyright (c) Argos FRC Team 1756.
+///            Open Source Software; you can modify and/or share it under the terms of
+///            the license file in the root directory of this project.
+
 #include "argosLib/controller/XboxController.h"
 
 using namespace ArgosLib;
 
-XboxController::XboxController(int port) : frc::GenericHID(port),
-                                           m_vibrationModel(VibrationOff()) {
+XboxController::XboxController(int port) : frc::GenericHID(port), m_vibrationModel(VibrationOff()) {
   m_buttonDebounceSettings.fill({0_ms, 0_ms});
   m_buttonDebounceStatus.fill(false);
   m_rawButtonStatus.fill(false);
@@ -37,86 +40,92 @@ double XboxController::GetTriggerAxis(JoystickHand hand) const {
   return GetRawAxis(static_cast<int>(hand == kLeftHand ? Axis::kLeftTrigger : Axis::kRightTrigger));
 }
 
-bool XboxController::GetDebouncedButton(Button buttonIdx){
+bool XboxController::GetDebouncedButton(Button buttonIdx) {
   return UpdateButton(buttonIdx).debounceActive;
 }
 
-bool XboxController::GetDebouncedButtonPressed(Button buttonIdx){
+bool XboxController::GetDebouncedButtonPressed(Button buttonIdx) {
   return UpdateButton(buttonIdx).debouncePress;
 }
 
-bool XboxController::GetDebouncedButtonReleased(Button buttonIdx){
+bool XboxController::GetDebouncedButtonReleased(Button buttonIdx) {
   return UpdateButton(buttonIdx).debounceRelease;
 }
 
-bool XboxController::GetDebouncedButton(std::initializer_list<Button> buttonCombo){
+bool XboxController::GetDebouncedButton(std::initializer_list<Button> buttonCombo) {
   std::vector<UpdateStatus> updates;
   updates.reserve(buttonCombo.size());
-  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
-                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates), [this](Button buttonIdx) {
+    return UpdateButton(buttonIdx);
+  });
 
-  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceActive; });
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.debounceActive; });
 }
 
-bool XboxController::GetDebouncedButtonPressed(std::initializer_list<Button> buttonCombo){
+bool XboxController::GetDebouncedButtonPressed(std::initializer_list<Button> buttonCombo) {
   std::vector<UpdateStatus> updates;
   updates.reserve(buttonCombo.size());
-  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
-                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates), [this](Button buttonIdx) {
+    return UpdateButton(buttonIdx);
+  });
 
-  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceActive; }) &&
-         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debouncePress; });
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.debounceActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.debouncePress; });
 }
 
-bool XboxController::GetDebouncedButtonReleased(std::initializer_list<Button> buttonCombo){
+bool XboxController::GetDebouncedButtonReleased(std::initializer_list<Button> buttonCombo) {
   std::vector<UpdateStatus> updates;
   updates.reserve(buttonCombo.size());
-  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
-                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates), [this](Button buttonIdx) {
+    return UpdateButton(buttonIdx);
+  });
 
-  return std::none_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceActive; }) &&
-         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.debounceRelease; });
+  return std::none_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.debounceActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.debounceRelease; });
 }
 
-bool XboxController::GetRawButton(Button buttonIdx){
+bool XboxController::GetRawButton(Button buttonIdx) {
   return UpdateButton(buttonIdx).rawActive;
 }
 
-bool XboxController::GetRawButtonPressed(Button buttonIdx){
+bool XboxController::GetRawButtonPressed(Button buttonIdx) {
   return UpdateButton(buttonIdx).pressed;
 }
 
-bool XboxController::GetRawButtonReleased(Button buttonIdx){
+bool XboxController::GetRawButtonReleased(Button buttonIdx) {
   return UpdateButton(buttonIdx).released;
 }
 
-bool XboxController::GetRawButton(std::initializer_list<Button> buttonCombo){
+bool XboxController::GetRawButton(std::initializer_list<Button> buttonCombo) {
   std::vector<UpdateStatus> updates;
   updates.reserve(buttonCombo.size());
-  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
-                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates), [this](Button buttonIdx) {
+    return UpdateButton(buttonIdx);
+  });
 
-  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.rawActive; });
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.rawActive; });
 }
 
-bool XboxController::GetRawButtonPressed(std::initializer_list<Button> buttonCombo){
+bool XboxController::GetRawButtonPressed(std::initializer_list<Button> buttonCombo) {
   std::vector<UpdateStatus> updates;
   updates.reserve(buttonCombo.size());
-  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
-                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates), [this](Button buttonIdx) {
+    return UpdateButton(buttonIdx);
+  });
 
-  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.rawActive; }) &&
-         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.pressed; });
+  return std::all_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.rawActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.pressed; });
 }
 
-bool XboxController::GetRawButtonReleased(std::initializer_list<Button> buttonCombo){
+bool XboxController::GetRawButtonReleased(std::initializer_list<Button> buttonCombo) {
   std::vector<UpdateStatus> updates;
   updates.reserve(buttonCombo.size());
-  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates),
-                 [this](Button buttonIdx){ return UpdateButton(buttonIdx); });
+  std::transform(buttonCombo.begin(), buttonCombo.end(), std::back_inserter(updates), [this](Button buttonIdx) {
+    return UpdateButton(buttonIdx);
+  });
 
-  return std::none_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.rawActive; }) &&
-         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState){ return newState.released; });
+  return std::none_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.rawActive; }) &&
+         std::any_of(updates.begin(), updates.end(), [](UpdateStatus newState) { return newState.released; });
 }
 
 void XboxController::SetVibration(VibrationModel newVibrationModel) {
@@ -134,7 +143,7 @@ XboxController::UpdateStatus XboxController::UpdateButton(Button buttonIdx) {
   UpdateStatus retVal;
 
   bool newVal;
-  switch(buttonIdx) {
+  switch (buttonIdx) {
     case Button::kA:
     case Button::kB:
     case Button::kX:
@@ -175,16 +184,17 @@ XboxController::UpdateStatus XboxController::UpdateButton(Button buttonIdx) {
   const auto activeStableTime = m_buttonDebounceStableTime.at(static_cast<int>(buttonIdx));
   const auto curTime = std::chrono::steady_clock::now();
 
-  if(newVal != activeDebounceVal) {
-    const auto timeSinceStable = units::millisecond_t{static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(curTime - activeStableTime).count())};
-    if(newVal) {
-      if(timeSinceStable > m_buttonDebounceSettings.at(static_cast<int>(buttonIdx)).activateTime) {
+  if (newVal != activeDebounceVal) {
+    const auto timeSinceStable = units::millisecond_t{
+        static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(curTime - activeStableTime).count())};
+    if (newVal) {
+      if (timeSinceStable > m_buttonDebounceSettings.at(static_cast<int>(buttonIdx)).activateTime) {
         retVal.debouncePress = true;
         m_buttonDebounceStableTime.at(static_cast<int>(buttonIdx)) = curTime;
         m_buttonDebounceStatus.at(static_cast<int>(buttonIdx)) = newVal;
       }
     } else {
-      if(timeSinceStable > m_buttonDebounceSettings.at(static_cast<int>(buttonIdx)).clearTime) {
+      if (timeSinceStable > m_buttonDebounceSettings.at(static_cast<int>(buttonIdx)).clearTime) {
         retVal.debounceRelease = true;
         m_buttonDebounceStableTime.at(static_cast<int>(buttonIdx)) = curTime;
         m_buttonDebounceStatus.at(static_cast<int>(buttonIdx)) = newVal;
@@ -204,8 +214,8 @@ XboxController::UpdateStatus XboxController::UpdateButton(Button buttonIdx) {
 
 XboxController::DPadButtons XboxController::GetPOVButtons() {
   const auto povAngle{GetPOV()};
-  return DPadButtons{(povAngle >= 0   && povAngle <= 45) || povAngle >= 315,
-                      povAngle >= 45  && povAngle <= 135,
-                      povAngle >= 135 && povAngle <= 225,
-                      povAngle >= 225 && povAngle <= 315};
+  return DPadButtons{(povAngle >= 0 && povAngle <= 45) || povAngle >= 315,
+                     povAngle >= 45 && povAngle <= 135,
+                     povAngle >= 135 && povAngle <= 225,
+                     povAngle >= 225 && povAngle <= 315};
 }

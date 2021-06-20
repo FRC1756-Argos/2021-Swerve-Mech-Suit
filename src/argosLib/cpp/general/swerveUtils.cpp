@@ -1,5 +1,11 @@
-#include <cmath>
+/// \copyright Copyright (c) Argos FRC Team 1756.
+///            Open Source Software; you can modify and/or share it under the terms of
+///            the license file in the root directory of this project.
+
 #include "argosLib/general/swerveUtils.h"
+
+#include <cmath>
+
 #include "Constants.h"
 
 units::degree_t nearestAngle(units::degree_t desiredAngle, units::degree_t referenceAngle) {
@@ -9,8 +15,7 @@ units::degree_t nearestAngle(units::degree_t desiredAngle, units::degree_t refer
   auto angleDiff = normalizedDesiredAngle - normalizedReferenceAngle;
 
   // Closest equivalent angle is across discontinuity point
-  if(units::math::fabs(angleDiff) > 180_deg)
-  {
+  if (units::math::fabs(angleDiff) > 180_deg) {
     angleDiff = units::math::copysign(360_deg - units::math::fabs(angleDiff), angleDiff * -1.0);
   }
 
@@ -27,7 +32,7 @@ units::degree_t invertedAngle(units::degree_t desiredAngle, units::degree_t refe
 units::degree_t constrainAngle(units::degree_t inVal, units::degree_t minVal, units::degree_t maxVal) {
   const auto range = maxVal - minVal;
   inVal = units::math::fmod(inVal - minVal, maxVal - minVal);
-  if(inVal < 0_deg) {
+  if (inVal < 0_deg) {
     inVal += range;
   }
   return inVal + minVal;
@@ -36,7 +41,8 @@ units::degree_t constrainAngle(units::degree_t inVal, units::degree_t minVal, un
 double constrainAngle(double inVal, double minVal, double maxVal) {
   return constrainAngle(units::make_unit<units::degree_t>(inVal),
                         units::make_unit<units::degree_t>(minVal),
-                        units::make_unit<units::degree_t>(maxVal)).to<double>();
+                        units::make_unit<units::degree_t>(maxVal))
+      .to<double>();
 }
 
 frc::SwerveModuleState Optimize(frc::SwerveModuleState desiredState,
@@ -56,14 +62,15 @@ frc::SwerveModuleState Optimize(frc::SwerveModuleState desiredState,
   [[maybe_unused]] const auto velPreferFwd = currentModuleDriveVel > speedLimits::drive::maxVelocity / 2;
   const auto velPreferRev = currentModuleDriveVel < -speedLimits::drive::maxVelocity / 2;
   const auto angVelHasPreference = units::math::fabs(currentModuleAngularRate) > 20_deg_per_s;
-  [[maybe_unused]] const auto angVelPreferFwd = angVelHasPreference && fwdTurnSign == std::signbit(currentModuleAngularRate.to<double>());
-  const auto angVelPreferRev = angVelHasPreference && revTurnSign == std::signbit(currentModuleAngularRate.to<double>());
+  [[maybe_unused]] const auto angVelPreferFwd =
+      angVelHasPreference && fwdTurnSign == std::signbit(currentModuleAngularRate.to<double>());
+  const auto angVelPreferRev =
+      angVelHasPreference && revTurnSign == std::signbit(currentModuleAngularRate.to<double>());
 
   const auto fwdDist = units::math::fabs(closestForwardState.angle.Degrees() - currentModuleAngle);
   const auto revDist = 180_deg - fwdDist;
 
-  if(fwdDist < revDist &&
-     !(velPreferRev && angVelPreferRev)) {
+  if (fwdDist < revDist && !(velPreferRev && angVelPreferRev)) {
     return closestForwardState;
   }
   return closestInverseState;
