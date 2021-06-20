@@ -24,20 +24,14 @@ jobs:
       - name: Check for modified files
         id: git-check
         run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
-      - name: Get branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: get_branch
       - name: Push changes
-        if: steps.git-check.outputs.modified == 'true' &&
-            ! (github.event_name == 'push' && ${{ steps.get_branch.outputs.branch }} == 'master')
+        if: ${{ steps.git-check.outputs.modified == 'true' && !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         uses: EndBug/add-and-commit@v7
         with:
           author_name: wpiformat
           message: Automated formatting changes
       - name: Create pull request
-        if: steps.git-check.outputs.modified == 'true' &&
-            (github.event_name == 'push' && ${{ steps.get_branch.outputs.branch }} == 'master')
+        if: ${{ steps.git-check.outputs.modified == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         uses: peter-evans/create-pull-request@v3.10.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
