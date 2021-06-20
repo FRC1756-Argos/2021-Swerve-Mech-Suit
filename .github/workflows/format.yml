@@ -36,5 +36,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Automated formatting changes
-          author: wpiformat
+          committer: GitHub <noreply@github.com>
+          author: wpiformat <${{ github.actor }}@users.noreply.github.com>
           title: Formatting Changes
