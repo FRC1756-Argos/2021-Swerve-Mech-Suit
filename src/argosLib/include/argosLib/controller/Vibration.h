@@ -4,8 +4,9 @@
 
 #pragma once
 
-#include <functional>
 #include <units/time.h>
+
+#include <functional>
 
 namespace ArgosLib {
 
