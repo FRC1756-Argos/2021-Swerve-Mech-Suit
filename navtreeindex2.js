@@ -1,5 +1,20 @@
 var NAVTREEINDEX2 =
 {
+"structmotor_config_1_1drive_1_1front_left_turn.html#a9d211ad3b0276903f7ba04342edbb200":[1,0,1,0,4,12],
+"structmotor_config_1_1drive_1_1front_left_turn.html#aa172308331f0f044d89bcc77199f0353":[1,0,1,0,4,8],
+"structmotor_config_1_1drive_1_1front_left_turn.html#aa646d4ac90bda7f0959007c2e5c4d569":[1,0,1,0,4,1],
+"structmotor_config_1_1drive_1_1front_left_turn.html#aa7a039b04e585edd90ccb836a431a4dc":[1,0,1,0,4,0],
+"structmotor_config_1_1drive_1_1front_left_turn.html#ac20f76a1babe8a90acf319e870bac881":[1,0,1,0,4,11],
+"structmotor_config_1_1drive_1_1front_left_turn.html#ac7ce2cb14649e8a0f334824d079aced6":[1,0,1,0,4,10],
+"structmotor_config_1_1drive_1_1front_left_turn.html#ac89c3e13bc035eb3e2366570516dd6b3":[1,0,1,0,4,2],
+"structmotor_config_1_1drive_1_1front_left_turn.html#ad90693aa194a42ddb76d284920c4b990":[1,0,1,0,4,9],
+"structmotor_config_1_1drive_1_1front_right_drive.html":[1,0,1,0,1],
+"structmotor_config_1_1drive_1_1front_right_drive.html#a0f021a144dce5135220bfef85a65859a":[1,0,1,0,1,1],
+"structmotor_config_1_1drive_1_1front_right_drive.html#a1ba362b7d1b5a28ee6f0f67e4eb8ea2d":[1,0,1,0,1,0],
+"structmotor_config_1_1drive_1_1front_right_drive.html#a7d75f9dd985d15e0ecb572a9077d0c7a":[1,0,1,0,1,2],
+"structmotor_config_1_1drive_1_1front_right_drive.html#adc9646a37e13cbe0aee38ca0712b4d47":[1,0,1,0,1,3],
+"structmotor_config_1_1drive_1_1front_right_turn.html":[1,0,1,0,5],
+"structmotor_config_1_1drive_1_1front_right_turn.html#a2855c3f7bee8c0095cdfbb5ab4892474":[1,0,1,0,5,7],
 "structmotor_config_1_1drive_1_1front_right_turn.html#a43d3bc61cdd83d64ce0eedbe8e6e9b45":[1,0,1,0,5,9],
 "structmotor_config_1_1drive_1_1front_right_turn.html#a4864c0c7e84eba0308690a0fbb5ee163":[1,0,1,0,5,8],
 "structmotor_config_1_1drive_1_1front_right_turn.html#a488ed1f95effcd6c01baa0a9d41ea408":[1,0,1,0,5,5],
@@ -50,6 +65,10 @@ var NAVTREEINDEX2 =
 "structmotor_config_1_1drive_1_1rear_right_turn.html#ad033dac1b5635e6f8b4dc17a49d1639e":[1,0,1,0,6,11],
 "structmotor_config_1_1drive_1_1rear_right_turn.html#aeb889b1123d0c48db8eecf89fe117b4c":[1,0,1,0,6,5],
 "structmotor_config_1_1drive_1_1rear_right_turn.html#afd1d1ff97fdaf9abdf23bc97d574197e":[1,0,1,0,6,1],
+"structmotor_config_1_1intake_1_1intake_motor.html":[1,0,1,1,0],
+"structmotor_config_1_1intake_1_1intake_motor.html#a076e278660d9ba963b5fa7da1237bc3a":[1,0,1,1,0,0],
+"structmotor_config_1_1intake_1_1intake_motor.html#a72e15178cd68fd8555b7152948648245":[1,0,1,1,0,2],
+"structmotor_config_1_1intake_1_1intake_motor.html#a9bfcea7ce6bb48a2b0361b3d51c7efba":[1,0,1,1,0,1],
 "structsensor_config_1_1drive_1_1front_left_turn.html":[1,0,2,0,0],
 "structsensor_config_1_1drive_1_1front_left_turn.html#a3eeffdfcfc26f52b3fdafe8bed96665a":[1,0,2,0,0,3],
 "structsensor_config_1_1drive_1_1front_left_turn.html#a4f99b4351c3417e80010691080153550":[1,0,2,0,0,2],
@@ -82,5 +101,8 @@ var NAVTREEINDEX2 =
 "swerve_utils_8h.html#abf1b0b4df165f2f9c33eacfb7553db97":[2,0,0,0,1,0,3,2,3],
 "swerve_utils_8h.html#ac5442024dd02453296995015a44c31e0":[2,0,0,0,1,0,3,2,0],
 "swerve_utils_8h.html#ad66e3c1ed007f0a65bd0f9d038085f84":[2,0,0,0,1,0,3,2,4],
-"swerve_utils_8h_source.html":[2,0,0,0,1,0,3,2]
+"swerve_utils_8h_source.html":[2,0,0,0,1,0,3,2],
+"talon_s_r_x_config_8h.html":[2,0,0,0,1,0,1,3],
+"talon_s_r_x_config_8h.html#a6367c77f538ac7bc6725ad5cf7988dd9":[2,0,0,0,1,0,1,3,26],
+"talon_s_r_x_config_8h_source.html":[2,0,0,0,1,0,1,3]
 };

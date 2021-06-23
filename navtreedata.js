@@ -60,8 +60,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_constants_8h.html",
-"debounce_settings_8h.html",
-"structmotor_config_1_1drive_1_1front_right_turn.html#a43d3bc61cdd83d64ce0eedbe8e6e9b45"
+"class_swappable_controllers_subsystem.html#aa92dfe982482b6449509fcea7edd6ab7",
+"structmotor_config_1_1drive_1_1front_left_turn.html#a9d211ad3b0276903f7ba04342edbb200"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -14,6 +14,9 @@ var annotated_dup =
         [ "frontRightTurn", "structmotor_config_1_1drive_1_1front_right_turn.html", "structmotor_config_1_1drive_1_1front_right_turn" ],
         [ "rearRightTurn", "structmotor_config_1_1drive_1_1rear_right_turn.html", "structmotor_config_1_1drive_1_1rear_right_turn" ],
         [ "rearLeftTurn", "structmotor_config_1_1drive_1_1rear_left_turn.html", "structmotor_config_1_1drive_1_1rear_left_turn" ]
+      ] ],
+      [ "intake", "namespacemotor_config_1_1intake.html", [
+        [ "intakeMotor", "structmotor_config_1_1intake_1_1intake_motor.html", "structmotor_config_1_1intake_1_1intake_motor" ]
       ] ]
     ] ],
     [ "sensorConfig", "namespacesensor_config.html", [
@@ -62,6 +65,7 @@ var annotated_dup =
     [ "has_sensorPhase< T, decltype((void) T::sensorPhase, void())>", "structhas__sensor_phase_3_01_t_00_01decltype_07_07void_08_01_t_1_1sensor_phase_00_01void_07_08_08_4.html", null ],
     [ "has_voltCompSat", "structhas__volt_comp_sat.html", null ],
     [ "has_voltCompSat< T, decltype((void) T::voltCompSat, void())>", "structhas__volt_comp_sat_3_01_t_00_01decltype_07_07void_08_01_t_1_1volt_comp_sat_00_01void_07_08_08_4.html", null ],
+    [ "IntakeSubsystem", "class_intake_subsystem.html", "class_intake_subsystem" ],
     [ "interpMapPoint", "structinterp_map_point.html", "structinterp_map_point" ],
     [ "interpolationMap", "classinterpolation_map.html", "classinterpolation_map" ],
     [ "Robot", "class_robot.html", "class_robot" ],

@@ -9,5 +9,6 @@ var class_robot_container =
     [ "m_driveLatSpeedMap", "class_robot_container.html#a75904ca0441478e49bdc033c4bc1b097", null ],
     [ "m_driveLonSpeedMap", "class_robot_container.html#af29a76cfc80fd8c44cd3034136ea3cf3", null ],
     [ "m_driveRotSpeedMap", "class_robot_container.html#a41270c43aba084cae9baac3fdddf05ff", null ],
-    [ "m_exampleSubsystem", "class_robot_container.html#a8f9623dabad6d2423f7232f9c1e13d71", null ]
+    [ "m_exampleSubsystem", "class_robot_container.html#a8f9623dabad6d2423f7232f9c1e13d71", null ],
+    [ "m_intake", "class_robot_container.html#ac524c1d088a263a7e25bb54ba7b8dbc5", null ]
 ];
