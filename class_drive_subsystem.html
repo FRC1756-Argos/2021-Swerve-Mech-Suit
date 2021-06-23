@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('class_drive_subsystem.html',''); initR
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_drive_subsystem-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">DriveSubsystem Class Reference</div>  </div>
@@ -101,14 +103,14 @@ Inheritance diagram for DriveSubsystem:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1ae6a4186bcdd2edd3795067bb4dd89b"><td class="memItemLeft" align="right" valign="top"><a id="a1ae6a4186bcdd2edd3795067bb4dd89b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ModuleIndex</b> { <b>frontLeft</b>
-, <b>frontRight</b>
-, <b>rearRight</b>
-, <b>rearLeft</b>
+<tr class="memitem:a1ae6a4186bcdd2edd3795067bb4dd89b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89b">ModuleIndex</a> { <a class="el" href="class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89ba7536fb2975c4b1846612d129c011d9d9">frontLeft</a>
+, <a class="el" href="class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89ba4719d8539a7c523c22406112c4750df2">frontRight</a>
+, <a class="el" href="class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89ba61fdda06930a7985aefd1e8b23a2bb72">rearRight</a>
+, <a class="el" href="class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89ba7c6f5fc81c6413d542892ae0c06ebbeb">rearLeft</a>
  }</td></tr>
 <tr class="separator:a1ae6a4186bcdd2edd3795067bb4dd89b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbbe91a7fd62cf12702601070d50b6eb"><td class="memItemLeft" align="right" valign="top"><a id="adbbe91a7fd62cf12702601070d50b6eb"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>ControlMode</b> { <b>fieldCentric</b>
-, <b>robotCentric</b>
+<tr class="memitem:adbbe91a7fd62cf12702601070d50b6eb"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">ControlMode</a> { <a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eba55efec4ee17a7b943946c17278dd01fd">fieldCentric</a>
+, <a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6ebabe561afe30537000a6028e685a926a79">robotCentric</a>
  }</td></tr>
 <tr class="separator:adbbe91a7fd62cf12702601070d50b6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -116,22 +118,113 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3407432f9123b97c5d0bfc8601db76c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3407432f9123b97c5d0bfc8601db76c2">DriveSubsystem</a> ()</td></tr>
 <tr class="separator:a3407432f9123b97c5d0bfc8601db76c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f5fe56e12d9b30195b9c2039089a4d1"><td class="memItemLeft" align="right" valign="top"><a id="a6f5fe56e12d9b30195b9c2039089a4d1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SwerveDrive</b> (const double fwVelocity, const double latVelocity, const double rotateVelocity)</td></tr>
+<tr class="memitem:a6f5fe56e12d9b30195b9c2039089a4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a6f5fe56e12d9b30195b9c2039089a4d1">SwerveDrive</a> (const double fwVelocity, const double latVelocity, const double rotateVelocity)</td></tr>
 <tr class="separator:a6f5fe56e12d9b30195b9c2039089a4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28743f54dc2c97c75c0e3a8026075de4"><td class="memItemLeft" align="right" valign="top"><a id="a28743f54dc2c97c75c0e3a8026075de4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Home</b> (const units::degree_t currentAngle)</td></tr>
+<tr class="memitem:a28743f54dc2c97c75c0e3a8026075de4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a28743f54dc2c97c75c0e3a8026075de4">Home</a> (const units::degree_t currentAngle)</td></tr>
 <tr class="separator:a28743f54dc2c97c75c0e3a8026075de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acedcee7a0c3247a6d7c7ac4e2b513479"><td class="memItemLeft" align="right" valign="top"><a id="acedcee7a0c3247a6d7c7ac4e2b513479"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFieldOrientation</b> (const units::degree_t)</td></tr>
+<tr class="memitem:acedcee7a0c3247a6d7c7ac4e2b513479"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#acedcee7a0c3247a6d7c7ac4e2b513479">SetFieldOrientation</a> (const units::degree_t)</td></tr>
 <tr class="separator:acedcee7a0c3247a6d7c7ac4e2b513479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3363b35250ec52dab64b7fae65de020d"><td class="memItemLeft" align="right" valign="top"><a id="a3363b35250ec52dab64b7fae65de020d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetControlMode</b> (const ControlMode)</td></tr>
+<tr class="memitem:a3363b35250ec52dab64b7fae65de020d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3363b35250ec52dab64b7fae65de020d">SetControlMode</a> (const <a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">ControlMode</a>)</td></tr>
 <tr class="separator:a3363b35250ec52dab64b7fae65de020d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a3bc0dff46dd7b3cf9046f04784e902de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3bc0dff46dd7b3cf9046f04784e902de">InitializeTurnEncoderAngles</a> ()</td></tr>
+<tr class="separator:a3bc0dff46dd7b3cf9046f04784e902de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8580fd41f51a94651055c0904fe1e484"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a8580fd41f51a94651055c0904fe1e484">NTUpdate</a> (NetworkTable *, wpi::StringRef, nt::NetworkTableEntry, std::shared_ptr&lt; nt::Value &gt;, int)</td></tr>
+<tr class="separator:a8580fd41f51a94651055c0904fe1e484"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12648a8ecbcd2729bb396e2ce43b8de7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a12648a8ecbcd2729bb396e2ce43b8de7">ModuleDriveSpeed</a> (const units::velocity::feet_per_second_t, const units::velocity::feet_per_second_t, const ctre::phoenix::motorcontrol::Faults)</td></tr>
+<tr class="separator:a12648a8ecbcd2729bb396e2ce43b8de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a80f38ecf11e9f950130b5912674563"><td class="memItemLeft" align="right" valign="top">wpi::array&lt; frc::SwerveModuleState, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a9a80f38ecf11e9f950130b5912674563">RawModuleStates</a> (const double, const double, const double)</td></tr>
+<tr class="separator:a9a80f38ecf11e9f950130b5912674563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:afd9120a2479bb6976356c20ff6d6e6cf"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#afd9120a2479bb6976356c20ff6d6e6cf">m_motorDriveFrontLeft</a></td></tr>
+<tr class="separator:afd9120a2479bb6976356c20ff6d6e6cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95aca280cf8fc49aaa0c716b2c0ff4fe"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a95aca280cf8fc49aaa0c716b2c0ff4fe">m_motorDriveFrontRight</a></td></tr>
+<tr class="separator:a95aca280cf8fc49aaa0c716b2c0ff4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3500a928901a70a03aba613ada1497ad"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3500a928901a70a03aba613ada1497ad">m_motorDriveRearRight</a></td></tr>
+<tr class="separator:a3500a928901a70a03aba613ada1497ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f8e91c24303030929b2ce4f06bf8e7b"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a8f8e91c24303030929b2ce4f06bf8e7b">m_motorDriveRearLeft</a></td></tr>
+<tr class="separator:a8f8e91c24303030929b2ce4f06bf8e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f1cbc3c92d4ddf3d175bbebf2e3d4b9"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a9f1cbc3c92d4ddf3d175bbebf2e3d4b9">m_motorTurnFrontLeft</a></td></tr>
+<tr class="separator:a9f1cbc3c92d4ddf3d175bbebf2e3d4b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac5b2b9179c8af81ad989a604ea3d6a6"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#aac5b2b9179c8af81ad989a604ea3d6a6">m_motorTurnFrontRight</a></td></tr>
+<tr class="separator:aac5b2b9179c8af81ad989a604ea3d6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bf08f9e9191f5f76ff3eb3f9d07bcd0"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a0bf08f9e9191f5f76ff3eb3f9d07bcd0">m_motorTurnRearRight</a></td></tr>
+<tr class="separator:a0bf08f9e9191f5f76ff3eb3f9d07bcd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7663af4eb76c401391e226558a2b8112"><td class="memItemLeft" align="right" valign="top">WPI_TalonFX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a7663af4eb76c401391e226558a2b8112">m_motorTurnRearLeft</a></td></tr>
+<tr class="separator:a7663af4eb76c401391e226558a2b8112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68630469c93ee7fc5d4c581a7c3a5ab6"><td class="memItemLeft" align="right" valign="top">CANCoder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a68630469c93ee7fc5d4c581a7c3a5ab6">m_encoderTurnFrontLeft</a></td></tr>
+<tr class="separator:a68630469c93ee7fc5d4c581a7c3a5ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc15d8e731ec6da29b7e25474211fde8"><td class="memItemLeft" align="right" valign="top">CANCoder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#adc15d8e731ec6da29b7e25474211fde8">m_encoderTurnFrontRight</a></td></tr>
+<tr class="separator:adc15d8e731ec6da29b7e25474211fde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71ecc4a9e61959cd47e77fe0cb872e64"><td class="memItemLeft" align="right" valign="top">CANCoder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a71ecc4a9e61959cd47e77fe0cb872e64">m_encoderTurnRearRight</a></td></tr>
+<tr class="separator:a71ecc4a9e61959cd47e77fe0cb872e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d831b5b7bfad94e611a82aef9d3c0c"><td class="memItemLeft" align="right" valign="top">CANCoder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a34d831b5b7bfad94e611a82aef9d3c0c">m_encoderTurnRearLeft</a></td></tr>
+<tr class="separator:a34d831b5b7bfad94e611a82aef9d3c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82d6669e7385923b43cb8c3c59699afb"><td class="memItemLeft" align="right" valign="top">frc::ADIS16448_IMU&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a82d6669e7385923b43cb8c3c59699afb">m_IMU</a></td></tr>
+<tr class="separator:a82d6669e7385923b43cb8c3c59699afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64f14c8170a588dd4f8c99fa7ff2bb03"><td class="memItemLeft" align="right" valign="top">frc::Rotation2d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a64f14c8170a588dd4f8c99fa7ff2bb03">m_fieldOrientationOffset</a></td></tr>
+<tr class="separator:a64f14c8170a588dd4f8c99fa7ff2bb03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e1081e1f4fe062a5ec0097d948e1b1"><td class="memItemLeft" align="right" valign="top">units::angular_velocity::degrees_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a35e1081e1f4fe062a5ec0097d948e1b1">m_maxAngularRate</a></td></tr>
+<tr class="separator:a35e1081e1f4fe062a5ec0097d948e1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2834011a21774f369a7811a304540b29"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; frc::SwerveDriveKinematics&lt; 4 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a2834011a21774f369a7811a304540b29">m_pSwerveKinematicsModel</a></td></tr>
+<tr class="separator:a2834011a21774f369a7811a304540b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fbb3099c470cc6d5103bc5dccfeeb7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">ControlMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3fbb3099c470cc6d5103bc5dccfeeb7e">m_activeControlMode</a></td></tr>
+<tr class="separator:a3fbb3099c470cc6d5103bc5dccfeeb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) Argos FRC Team 1756. Open Source Software; you can modify and/or share it under the terms of the license file in the root directory of this project. </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="adbbe91a7fd62cf12702601070d50b6eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbbe91a7fd62cf12702601070d50b6eb">&#9670;&nbsp;</a></span>ControlMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">DriveSubsystem::ControlMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adbbe91a7fd62cf12702601070d50b6eba55efec4ee17a7b943946c17278dd01fd"></a>fieldCentric&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adbbe91a7fd62cf12702601070d50b6ebabe561afe30537000a6028e685a926a79"></a>robotCentric&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a1ae6a4186bcdd2edd3795067bb4dd89b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae6a4186bcdd2edd3795067bb4dd89b">&#9670;&nbsp;</a></span>ModuleIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89b">DriveSubsystem::ModuleIndex</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1ae6a4186bcdd2edd3795067bb4dd89ba7536fb2975c4b1846612d129c011d9d9"></a>frontLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1ae6a4186bcdd2edd3795067bb4dd89ba4719d8539a7c523c22406112c4750df2"></a>frontRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1ae6a4186bcdd2edd3795067bb4dd89ba61fdda06930a7985aefd1e8b23a2bb72"></a>rearRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1ae6a4186bcdd2edd3795067bb4dd89ba7c6f5fc81c6413d542892ae0c06ebbeb"></a>rearLeft&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3407432f9123b97c5d0bfc8601db76c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3407432f9123b97c5d0bfc8601db76c2">&#9670;&nbsp;</a></span>DriveSubsystem()</h2>
 
@@ -150,9 +243,636 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetControlMode</b> (c
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a28743f54dc2c97c75c0e3a8026075de4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28743f54dc2c97c75c0e3a8026075de4">&#9670;&nbsp;</a></span>Home()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveSubsystem::Home </td>
+          <td>(</td>
+          <td class="paramtype">const units::degree_t&#160;</td>
+          <td class="paramname"><em>currentAngle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bc0dff46dd7b3cf9046f04784e902de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc0dff46dd7b3cf9046f04784e902de">&#9670;&nbsp;</a></span>InitializeTurnEncoderAngles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveSubsystem::InitializeTurnEncoderAngles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12648a8ecbcd2729bb396e2ce43b8de7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12648a8ecbcd2729bb396e2ce43b8de7">&#9670;&nbsp;</a></span>ModuleDriveSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DriveSubsystem::ModuleDriveSpeed </td>
+          <td>(</td>
+          <td class="paramtype">const units::velocity::feet_per_second_t&#160;</td>
+          <td class="paramname"><em>desiredSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const units::velocity::feet_per_second_t&#160;</td>
+          <td class="paramname"><em>maxSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ctre::phoenix::motorcontrol::Faults&#160;</td>
+          <td class="paramname"><em>turnFaults</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8580fd41f51a94651055c0904fe1e484"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8580fd41f51a94651055c0904fe1e484">&#9670;&nbsp;</a></span>NTUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveSubsystem::NTUpdate </td>
+          <td>(</td>
+          <td class="paramtype">NetworkTable *&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wpi::StringRef&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">nt::NetworkTableEntry&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; nt::Value &gt;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a80f38ecf11e9f950130b5912674563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a80f38ecf11e9f950130b5912674563">&#9670;&nbsp;</a></span>RawModuleStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">wpi::array&lt; frc::SwerveModuleState, 4 &gt; DriveSubsystem::RawModuleStates </td>
+          <td>(</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>fwVelocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>latVelocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>rotateVelocity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3363b35250ec52dab64b7fae65de020d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3363b35250ec52dab64b7fae65de020d">&#9670;&nbsp;</a></span>SetControlMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveSubsystem::SetControlMode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">ControlMode</a>&#160;</td>
+          <td class="paramname"><em>newControlMode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acedcee7a0c3247a6d7c7ac4e2b513479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acedcee7a0c3247a6d7c7ac4e2b513479">&#9670;&nbsp;</a></span>SetFieldOrientation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveSubsystem::SetFieldOrientation </td>
+          <td>(</td>
+          <td class="paramtype">const units::degree_t&#160;</td>
+          <td class="paramname"><em>currentAngle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f5fe56e12d9b30195b9c2039089a4d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f5fe56e12d9b30195b9c2039089a4d1">&#9670;&nbsp;</a></span>SwerveDrive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DriveSubsystem::SwerveDrive </td>
+          <td>(</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>fwVelocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>latVelocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>rotateVelocity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3fbb3099c470cc6d5103bc5dccfeeb7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fbb3099c470cc6d5103bc5dccfeeb7e">&#9670;&nbsp;</a></span>m_activeControlMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">ControlMode</a> DriveSubsystem::m_activeControlMode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68630469c93ee7fc5d4c581a7c3a5ab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68630469c93ee7fc5d4c581a7c3a5ab6">&#9670;&nbsp;</a></span>m_encoderTurnFrontLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CANCoder DriveSubsystem::m_encoderTurnFrontLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc15d8e731ec6da29b7e25474211fde8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc15d8e731ec6da29b7e25474211fde8">&#9670;&nbsp;</a></span>m_encoderTurnFrontRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CANCoder DriveSubsystem::m_encoderTurnFrontRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34d831b5b7bfad94e611a82aef9d3c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d831b5b7bfad94e611a82aef9d3c0c">&#9670;&nbsp;</a></span>m_encoderTurnRearLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CANCoder DriveSubsystem::m_encoderTurnRearLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a71ecc4a9e61959cd47e77fe0cb872e64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71ecc4a9e61959cd47e77fe0cb872e64">&#9670;&nbsp;</a></span>m_encoderTurnRearRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CANCoder DriveSubsystem::m_encoderTurnRearRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64f14c8170a588dd4f8c99fa7ff2bb03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64f14c8170a588dd4f8c99fa7ff2bb03">&#9670;&nbsp;</a></span>m_fieldOrientationOffset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">frc::Rotation2d DriveSubsystem::m_fieldOrientationOffset</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82d6669e7385923b43cb8c3c59699afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82d6669e7385923b43cb8c3c59699afb">&#9670;&nbsp;</a></span>m_IMU</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">frc::ADIS16448_IMU DriveSubsystem::m_IMU</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35e1081e1f4fe062a5ec0097d948e1b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e1081e1f4fe062a5ec0097d948e1b1">&#9670;&nbsp;</a></span>m_maxAngularRate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">units::angular_velocity::degrees_per_second_t DriveSubsystem::m_maxAngularRate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd9120a2479bb6976356c20ff6d6e6cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9120a2479bb6976356c20ff6d6e6cf">&#9670;&nbsp;</a></span>m_motorDriveFrontLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorDriveFrontLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95aca280cf8fc49aaa0c716b2c0ff4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95aca280cf8fc49aaa0c716b2c0ff4fe">&#9670;&nbsp;</a></span>m_motorDriveFrontRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorDriveFrontRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f8e91c24303030929b2ce4f06bf8e7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f8e91c24303030929b2ce4f06bf8e7b">&#9670;&nbsp;</a></span>m_motorDriveRearLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorDriveRearLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3500a928901a70a03aba613ada1497ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3500a928901a70a03aba613ada1497ad">&#9670;&nbsp;</a></span>m_motorDriveRearRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorDriveRearRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f1cbc3c92d4ddf3d175bbebf2e3d4b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f1cbc3c92d4ddf3d175bbebf2e3d4b9">&#9670;&nbsp;</a></span>m_motorTurnFrontLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorTurnFrontLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac5b2b9179c8af81ad989a604ea3d6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac5b2b9179c8af81ad989a604ea3d6a6">&#9670;&nbsp;</a></span>m_motorTurnFrontRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorTurnFrontRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7663af4eb76c401391e226558a2b8112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7663af4eb76c401391e226558a2b8112">&#9670;&nbsp;</a></span>m_motorTurnRearLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorTurnRearLeft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0bf08f9e9191f5f76ff3eb3f9d07bcd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bf08f9e9191f5f76ff3eb3f9d07bcd0">&#9670;&nbsp;</a></span>m_motorTurnRearRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">WPI_TalonFX DriveSubsystem::m_motorTurnRearRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2834011a21774f369a7811a304540b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2834011a21774f369a7811a304540b29">&#9670;&nbsp;</a></span>m_pSwerveKinematicsModel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;frc::SwerveDriveKinematics&lt;4&gt; &gt; DriveSubsystem::m_pSwerveKinematicsModel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/main/include/subsystems/<a class="el" href="_drive_subsystem_8h_source.html">DriveSubsystem.h</a></li>
-<li>src/main/cpp/subsystems/DriveSubsystem.cpp</li>
+<li>src/main/cpp/subsystems/<a class="el" href="_drive_subsystem_8cpp.html">DriveSubsystem.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

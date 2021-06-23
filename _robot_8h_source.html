@@ -86,47 +86,53 @@ $(document).ready(function(){initNavTree('_robot_8h_source.html',''); initResiza
 <div class="title">Robot.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="_robot_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;frc/TimedRobot.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;frc2/command/Command.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;RobotContainer.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_robot_container_8h.html">RobotContainer.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_robot.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_robot.html">Robot</a> : <span class="keyword">public</span> frc::TimedRobot {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a66f23dae271748d525cf3ab046375f79">RobotInit</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a8fad82c2250bcfb83b743b5c0dd6ed27">RobotPeriodic</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a810e6143a208a6314491366e3c714357">DisabledInit</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> DisabledPeriodic() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a8c7309f5f1cb242ea8c74f1abf03b540">DisabledPeriodic</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a2136cfc015936285218c8a8db984d6bc">AutonomousInit</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> AutonomousPeriodic() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> TeleopInit() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#ac11143dd674e0e02fef5329e2df24830">AutonomousPeriodic</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#aa3e246794bfbbb4406fc87f351762038">TeleopInit</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a324322627c63b3870daf7c7ddc5bea63">TeleopPeriodic</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_robot.html#af0ac44a962e609e9b042285e699d1db8">TestPeriodic</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// Have it null by default so that if testing teleop it</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// doesn&#39;t have undefined behavior and potentially crash.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  frc2::Command* m_autonomousCommand = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_robot.html#a393c04c962bc37c3f64a31c2cf8c1a18">   27</a></span>&#160;  frc2::Command* <a class="code" href="class_robot.html#a393c04c962bc37c3f64a31c2cf8c1a18">m_autonomousCommand</a> = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="class_robot_container.html">RobotContainer</a> m_container;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_robot.html#ae31bf18f9afb23bab45458605fb73ea7">   29</a></span>&#160;  <a class="code" href="class_robot_container.html">RobotContainer</a> <a class="code" href="class_robot.html#ae31bf18f9afb23bab45458605fb73ea7">m_container</a>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="ttc" id="a_robot_container_8h_html"><div class="ttname"><a href="_robot_container_8h.html">RobotContainer.h</a></div></div>
 <div class="ttc" id="aclass_robot_container_html"><div class="ttname"><a href="class_robot_container.html">RobotContainer</a></div><div class="ttdef"><b>Definition:</b> RobotContainer.h:26</div></div>
 <div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdef"><b>Definition:</b> Robot.h:12</div></div>
 <div class="ttc" id="aclass_robot_html_a2136cfc015936285218c8a8db984d6bc"><div class="ttname"><a href="class_robot.html#a2136cfc015936285218c8a8db984d6bc">Robot::AutonomousInit</a></div><div class="ttdeci">void AutonomousInit() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:37</div></div>
 <div class="ttc" id="aclass_robot_html_a324322627c63b3870daf7c7ddc5bea63"><div class="ttname"><a href="class_robot.html#a324322627c63b3870daf7c7ddc5bea63">Robot::TeleopPeriodic</a></div><div class="ttdeci">void TeleopPeriodic() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:61</div></div>
+<div class="ttc" id="aclass_robot_html_a393c04c962bc37c3f64a31c2cf8c1a18"><div class="ttname"><a href="class_robot.html#a393c04c962bc37c3f64a31c2cf8c1a18">Robot::m_autonomousCommand</a></div><div class="ttdeci">frc2::Command * m_autonomousCommand</div><div class="ttdef"><b>Definition:</b> Robot.h:27</div></div>
 <div class="ttc" id="aclass_robot_html_a66f23dae271748d525cf3ab046375f79"><div class="ttname"><a href="class_robot.html#a66f23dae271748d525cf3ab046375f79">Robot::RobotInit</a></div><div class="ttdeci">void RobotInit() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:10</div></div>
 <div class="ttc" id="aclass_robot_html_a810e6143a208a6314491366e3c714357"><div class="ttname"><a href="class_robot.html#a810e6143a208a6314491366e3c714357">Robot::DisabledInit</a></div><div class="ttdeci">void DisabledInit() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:29</div></div>
+<div class="ttc" id="aclass_robot_html_a8c7309f5f1cb242ea8c74f1abf03b540"><div class="ttname"><a href="class_robot.html#a8c7309f5f1cb242ea8c74f1abf03b540">Robot::DisabledPeriodic</a></div><div class="ttdeci">void DisabledPeriodic() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:31</div></div>
 <div class="ttc" id="aclass_robot_html_a8fad82c2250bcfb83b743b5c0dd6ed27"><div class="ttname"><a href="class_robot.html#a8fad82c2250bcfb83b743b5c0dd6ed27">Robot::RobotPeriodic</a></div><div class="ttdeci">void RobotPeriodic() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:20</div></div>
+<div class="ttc" id="aclass_robot_html_aa3e246794bfbbb4406fc87f351762038"><div class="ttname"><a href="class_robot.html#aa3e246794bfbbb4406fc87f351762038">Robot::TeleopInit</a></div><div class="ttdeci">void TeleopInit() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:47</div></div>
+<div class="ttc" id="aclass_robot_html_ac11143dd674e0e02fef5329e2df24830"><div class="ttname"><a href="class_robot.html#ac11143dd674e0e02fef5329e2df24830">Robot::AutonomousPeriodic</a></div><div class="ttdeci">void AutonomousPeriodic() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:45</div></div>
+<div class="ttc" id="aclass_robot_html_ae31bf18f9afb23bab45458605fb73ea7"><div class="ttname"><a href="class_robot.html#ae31bf18f9afb23bab45458605fb73ea7">Robot::m_container</a></div><div class="ttdeci">RobotContainer m_container</div><div class="ttdef"><b>Definition:</b> Robot.h:29</div></div>
 <div class="ttc" id="aclass_robot_html_af0ac44a962e609e9b042285e699d1db8"><div class="ttname"><a href="class_robot.html#af0ac44a962e609e9b042285e699d1db8">Robot::TestPeriodic</a></div><div class="ttdeci">void TestPeriodic() override</div><div class="ttdef"><b>Definition:</b> Robot.cpp:66</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li><li class="navelem"><a class="el" href="dir_df3bee86fdbfb464c3a94507855b0bdc.html">include</a></li><li class="navelem"><b>Robot.h</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li><li class="navelem"><a class="el" href="dir_df3bee86fdbfb464c3a94507855b0bdc.html">include</a></li><li class="navelem"><a class="el" href="_robot_8h.html">Robot.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

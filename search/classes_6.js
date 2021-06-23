@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vibrationstatus_54',['VibrationStatus',['../struct_argos_lib_1_1_vibration_status.html',1,'ArgosLib']]]
+  ['swapcontrollerscommand_369',['SwapControllersCommand',['../class_swap_controllers_command.html',1,'']]],
+  ['swappablecontrollerssubsystem_370',['SwappableControllersSubsystem',['../class_swappable_controllers_subsystem.html',1,'']]]
 ];

@@ -86,45 +86,52 @@ $(document).ready(function(){initNavTree('can_coder_config_8h_source.html',''); 
 <div class="title">canCoderConfig.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="can_coder_config_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;units/time.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;compileTimeMemberCheck.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="compile_time_member_check_8h.html">compileTimeMemberCheck.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;ctre/Phoenix.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;HAS_MEMBER(direction)</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;HAS_MEMBER(initMode)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;HAS_MEMBER(range)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;HAS_MEMBER(magOffset)</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structhas__direction.html">   12</a></span>&#160;<a class="code" href="compile_time_member_check_8h.html#a1f1b8f32581c639f261367d751c6e0aa">HAS_MEMBER</a>(direction)</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structhas__init_mode.html">   13</a></span>&#160;<a class="code" href="compile_time_member_check_8h.html#a1f1b8f32581c639f261367d751c6e0aa">HAS_MEMBER</a>(initMode)</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structhas__range.html">   14</a></span>&#160;<a class="code" href="compile_time_member_check_8h.html#a1f1b8f32581c639f261367d751c6e0aa">HAS_MEMBER</a>(range)</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structhas__mag_offset.html">   15</a></span>&#160;<a class="code" href="compile_time_member_check_8h.html#a1f1b8f32581c639f261367d751c6e0aa">HAS_MEMBER</a>(magOffset)</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> CanCoderConfig(CANCoder&amp; encoder, units::millisecond_t configTimeout) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  ctre::phoenix::sensors::CANCoderConfiguration config;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">auto</span> timeout = configTimeout.to&lt;<span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordflow">if</span> constexpr (has_direction&lt;T&gt;{}) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    config.sensorDirection = T::direction;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">if</span> constexpr (has_initMode&lt;T&gt;{}) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    config.initializationStrategy = T::initMode;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">if</span> constexpr (has_range&lt;T&gt;{}) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    config.absoluteSensorRange = T::range;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">if</span> constexpr (has_magOffset&lt;T&gt;{}) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    config.magnetOffsetDegrees = T::magOffset;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">return</span> 0 != encoder.ConfigAllSettings(config, timeout);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;template &lt;typename T&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="can_coder_config_8h.html#ac371a8187563db0b6f950c539d8d0b7b">   29</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="can_coder_config_8h.html#ac371a8187563db0b6f950c539d8d0b7b">CanCoderConfig</a>(CANCoder&amp; encoder, units::millisecond_t configTimeout) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  ctre::phoenix::sensors::CANCoderConfiguration config;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">auto</span> timeout = configTimeout.to&lt;<span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">if</span> constexpr (<a class="code" href="structhas__direction.html">has_direction&lt;T&gt;</a>{}) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    config.sensorDirection = T::direction;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">if</span> constexpr (<a class="code" href="structhas__init_mode.html">has_initMode&lt;T&gt;</a>{}) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    config.initializationStrategy = T::initMode;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> constexpr (<a class="code" href="structhas__range.html">has_range&lt;T&gt;</a>{}) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    config.absoluteSensorRange = T::range;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> constexpr (<a class="code" href="structhas__mag_offset.html">has_magOffset&lt;T&gt;</a>{}) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    config.magnetOffsetDegrees = T::magOffset;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">return</span> 0 != encoder.ConfigAllSettings(config, timeout);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="ttc" id="acan_coder_config_8h_html_ac371a8187563db0b6f950c539d8d0b7b"><div class="ttname"><a href="can_coder_config_8h.html#ac371a8187563db0b6f950c539d8d0b7b">CanCoderConfig</a></div><div class="ttdeci">bool CanCoderConfig(CANCoder &amp;encoder, units::millisecond_t configTimeout)</div><div class="ttdoc">Configures a CTRE CanCoder with only the fields provided. All other fields are given the factory defa...</div><div class="ttdef"><b>Definition:</b> canCoderConfig.h:29</div></div>
+<div class="ttc" id="acompile_time_member_check_8h_html"><div class="ttname"><a href="compile_time_member_check_8h.html">compileTimeMemberCheck.h</a></div></div>
+<div class="ttc" id="acompile_time_member_check_8h_html_a1f1b8f32581c639f261367d751c6e0aa"><div class="ttname"><a href="compile_time_member_check_8h.html#a1f1b8f32581c639f261367d751c6e0aa">HAS_MEMBER</a></div><div class="ttdeci">#define HAS_MEMBER(X)</div><div class="ttdoc">Helper function generator to detect if a namespace has a member defined.</div><div class="ttdef"><b>Definition:</b> compileTimeMemberCheck.h:14</div></div>
+<div class="ttc" id="astructhas__direction_html"><div class="ttname"><a href="structhas__direction.html">has_direction</a></div><div class="ttdef"><b>Definition:</b> canCoderConfig.h:12</div></div>
+<div class="ttc" id="astructhas__init_mode_html"><div class="ttname"><a href="structhas__init_mode.html">has_initMode</a></div><div class="ttdef"><b>Definition:</b> canCoderConfig.h:13</div></div>
+<div class="ttc" id="astructhas__mag_offset_html"><div class="ttname"><a href="structhas__mag_offset.html">has_magOffset</a></div><div class="ttdef"><b>Definition:</b> canCoderConfig.h:15</div></div>
+<div class="ttc" id="astructhas__range_html"><div class="ttname"><a href="structhas__range.html">has_range</a></div><div class="ttdef"><b>Definition:</b> canCoderConfig.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f907d664ece03cc1e68889f3bb8ca77e.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_57c5ffddb5cc6d023eed2a33d4a22045.html">include</a></li><li class="navelem"><a class="el" href="dir_93ad06a5311d2d6c45665933a839f5e3.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_c3debc94ae0bec25e7b4fb2daea03ef7.html">config</a></li><li class="navelem"><b>canCoderConfig.h</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f907d664ece03cc1e68889f3bb8ca77e.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_57c5ffddb5cc6d023eed2a33d4a22045.html">include</a></li><li class="navelem"><a class="el" href="dir_93ad06a5311d2d6c45665933a839f5e3.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_c3debc94ae0bec25e7b4fb2daea03ef7.html">config</a></li><li class="navelem"><a class="el" href="can_coder_config_8h.html">canCoderConfig.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

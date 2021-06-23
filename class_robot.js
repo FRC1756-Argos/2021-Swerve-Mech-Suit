@@ -8,5 +8,7 @@ var class_robot =
     [ "RobotPeriodic", "class_robot.html#a8fad82c2250bcfb83b743b5c0dd6ed27", null ],
     [ "TeleopInit", "class_robot.html#aa3e246794bfbbb4406fc87f351762038", null ],
     [ "TeleopPeriodic", "class_robot.html#a324322627c63b3870daf7c7ddc5bea63", null ],
-    [ "TestPeriodic", "class_robot.html#af0ac44a962e609e9b042285e699d1db8", null ]
+    [ "TestPeriodic", "class_robot.html#af0ac44a962e609e9b042285e699d1db8", null ],
+    [ "m_autonomousCommand", "class_robot.html#a393c04c962bc37c3f64a31c2cf8c1a18", null ],
+    [ "m_container", "class_robot.html#ae31bf18f9afb23bab45458605fb73ea7", null ]
 ];

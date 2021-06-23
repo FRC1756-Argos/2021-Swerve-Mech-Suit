@@ -1,5 +1,7 @@
 var class_argos_lib_1_1_xbox_controller =
 [
+    [ "DPadButtons", "struct_argos_lib_1_1_xbox_controller_1_1_d_pad_buttons.html", "struct_argos_lib_1_1_xbox_controller_1_1_d_pad_buttons" ],
+    [ "UpdateStatus", "struct_argos_lib_1_1_xbox_controller_1_1_update_status.html", "struct_argos_lib_1_1_xbox_controller_1_1_update_status" ],
     [ "Axis", "class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149", [
       [ "kLeftX", "class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a6f34c4ab25a9eaae98c6e7fd9ba4049e", null ],
       [ "kLeftY", "class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a53cca6638285b0e8cd52fc9b00f86e3c", null ],
@@ -36,6 +38,7 @@ var class_argos_lib_1_1_xbox_controller =
     [ "GetDebouncedButtonPressed", "class_argos_lib_1_1_xbox_controller.html#a7212c8dc817a7d69b1c933b9a91bf3ad", null ],
     [ "GetDebouncedButtonReleased", "class_argos_lib_1_1_xbox_controller.html#a923a29f96249ea41705375dde7788a91", null ],
     [ "GetDebouncedButtonReleased", "class_argos_lib_1_1_xbox_controller.html#ac13e2ce0708074c5a1a1236ee65f12cd", null ],
+    [ "GetPOVButtons", "class_argos_lib_1_1_xbox_controller.html#ad81f3f85b46a5d104f8fed6d276a7d4a", null ],
     [ "GetRawButton", "class_argos_lib_1_1_xbox_controller.html#a266f7fcc414285e71cdaf380958c9f51", null ],
     [ "GetRawButton", "class_argos_lib_1_1_xbox_controller.html#a45fa22f075a348f2e5ac5c3640cb3c48", null ],
     [ "GetRawButtonPressed", "class_argos_lib_1_1_xbox_controller.html#a29a02155f2520fc7cacefaef611980a8", null ],
@@ -48,5 +51,12 @@ var class_argos_lib_1_1_xbox_controller =
     [ "SetButtonDebounce", "class_argos_lib_1_1_xbox_controller.html#a9aba98cf389db8f3da43c561c800cf4f", null ],
     [ "SetVibration", "class_argos_lib_1_1_xbox_controller.html#af61238af151fd4fca38902de8174e73b", null ],
     [ "SwapSettings", "class_argos_lib_1_1_xbox_controller.html#ada9bde8f073488279ea48a7bcff203c5", null ],
-    [ "UpdateVibration", "class_argos_lib_1_1_xbox_controller.html#a37e4539aa4e0cc854c05ffb9a24ba6db", null ]
+    [ "UpdateButton", "class_argos_lib_1_1_xbox_controller.html#aff4f4614aec278b87abed8cb7d1f1b4d", null ],
+    [ "UpdateVibration", "class_argos_lib_1_1_xbox_controller.html#a37e4539aa4e0cc854c05ffb9a24ba6db", null ],
+    [ "analogTriggerThresh", "class_argos_lib_1_1_xbox_controller.html#ae877de9bf0d7a9775225adc239f610eb", null ],
+    [ "m_buttonDebounceSettings", "class_argos_lib_1_1_xbox_controller.html#aeebede3c8d8eaa41479d57e567193a05", null ],
+    [ "m_buttonDebounceStableTime", "class_argos_lib_1_1_xbox_controller.html#a533189d621b5c854dc2f9b34ce14d414", null ],
+    [ "m_buttonDebounceStatus", "class_argos_lib_1_1_xbox_controller.html#a76be1a1d6afd58a67e0c7ae1325ae153", null ],
+    [ "m_rawButtonStatus", "class_argos_lib_1_1_xbox_controller.html#af0bc91ed7a269d1af6bfe4ff344e1746", null ],
+    [ "m_vibrationModel", "class_argos_lib_1_1_xbox_controller.html#a05a97ff9651867db9156d2601137dba7", null ]
 ];

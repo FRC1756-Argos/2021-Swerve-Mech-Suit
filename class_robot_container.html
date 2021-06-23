@@ -84,6 +84,8 @@ $(document).ready(function(){initNavTree('class_robot_container.html',''); initR
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_robot_container-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">RobotContainer Class Reference</div>  </div>
@@ -96,9 +98,30 @@ $(document).ready(function(){initNavTree('class_robot_container.html',''); initR
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac508e6c51edfa97eb18e3412fe83ad8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#ac508e6c51edfa97eb18e3412fe83ad8f">RobotContainer</a> ()</td></tr>
 <tr class="separator:ac508e6c51edfa97eb18e3412fe83ad8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ac35c4eade0422c19b5d1e037cc7647"><td class="memItemLeft" align="right" valign="top"><a id="a4ac35c4eade0422c19b5d1e037cc7647"></a>
-frc2::Command *&#160;</td><td class="memItemRight" valign="bottom"><b>GetAutonomousCommand</b> ()</td></tr>
+<tr class="memitem:a4ac35c4eade0422c19b5d1e037cc7647"><td class="memItemLeft" align="right" valign="top">frc2::Command *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#a4ac35c4eade0422c19b5d1e037cc7647">GetAutonomousCommand</a> ()</td></tr>
 <tr class="separator:a4ac35c4eade0422c19b5d1e037cc7647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa1b33cbe7d850dfd456ad0b352b82ba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#aa1b33cbe7d850dfd456ad0b352b82ba5">ConfigureButtonBindings</a> ()</td></tr>
+<tr class="separator:aa1b33cbe7d850dfd456ad0b352b82ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a904c3c1d5eed0316195fd5fe26015a54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_drive_subsystem.html">DriveSubsystem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#a904c3c1d5eed0316195fd5fe26015a54">m_drive</a></td></tr>
+<tr class="separator:a904c3c1d5eed0316195fd5fe26015a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f9623dabad6d2423f7232f9c1e13d71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_example_subsystem.html">ExampleSubsystem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#a8f9623dabad6d2423f7232f9c1e13d71">m_exampleSubsystem</a></td></tr>
+<tr class="separator:a8f9623dabad6d2423f7232f9c1e13d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07086f80025ededba4e447fb76dfd21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_swappable_controllers_subsystem.html">SwappableControllersSubsystem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#ab07086f80025ededba4e447fb76dfd21">m_controllers</a></td></tr>
+<tr class="separator:ab07086f80025ededba4e447fb76dfd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3812fccd14fb5b0f6d380f117eaac62d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_example_command.html">ExampleCommand</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#a3812fccd14fb5b0f6d380f117eaac62d">m_autonomousCommand</a></td></tr>
+<tr class="separator:a3812fccd14fb5b0f6d380f117eaac62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29a76cfc80fd8c44cd3034136ea3cf3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classinterpolation_map.html">interpolationMap</a>&lt; decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#af29a76cfc80fd8c44cd3034136ea3cf3">m_driveLonSpeedMap</a></td></tr>
+<tr class="separator:af29a76cfc80fd8c44cd3034136ea3cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75904ca0441478e49bdc033c4bc1b097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classinterpolation_map.html">interpolationMap</a>&lt; decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#a75904ca0441478e49bdc033c4bc1b097">m_driveLatSpeedMap</a></td></tr>
+<tr class="separator:a75904ca0441478e49bdc033c4bc1b097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41270c43aba084cae9baac3fdddf05ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classinterpolation_map.html">interpolationMap</a>&lt; decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot_container.html#a41270c43aba084cae9baac3fdddf05ff">m_driveRotSpeedMap</a></td></tr>
+<tr class="separator:a41270c43aba084cae9baac3fdddf05ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) Argos FRC Team 1756. Open Source Software; you can modify and/or share it under the terms of the license file in the root directory of this project. This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very little robot logic should actually be handled in the <a class="el" href="class_robot.html">Robot</a> periodic methods (other than the scheduler calls). Instead, the structure of the robot (including subsystems, commands, and button mappings) should be declared here. </dd></dl>
@@ -121,9 +144,207 @@ frc2::Command *&#160;</td><td class="memItemRight" valign="bottom"><b>GetAutonom
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa1b33cbe7d850dfd456ad0b352b82ba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1b33cbe7d850dfd456ad0b352b82ba5">&#9670;&nbsp;</a></span>ConfigureButtonBindings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RobotContainer::ConfigureButtonBindings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ac35c4eade0422c19b5d1e037cc7647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ac35c4eade0422c19b5d1e037cc7647">&#9670;&nbsp;</a></span>GetAutonomousCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">frc2::Command * RobotContainer::GetAutonomousCommand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3812fccd14fb5b0f6d380f117eaac62d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3812fccd14fb5b0f6d380f117eaac62d">&#9670;&nbsp;</a></span>m_autonomousCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_example_command.html">ExampleCommand</a> RobotContainer::m_autonomousCommand</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab07086f80025ededba4e447fb76dfd21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab07086f80025ededba4e447fb76dfd21">&#9670;&nbsp;</a></span>m_controllers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_swappable_controllers_subsystem.html">SwappableControllersSubsystem</a> RobotContainer::m_controllers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a904c3c1d5eed0316195fd5fe26015a54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904c3c1d5eed0316195fd5fe26015a54">&#9670;&nbsp;</a></span>m_drive</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_drive_subsystem.html">DriveSubsystem</a> RobotContainer::m_drive</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75904ca0441478e49bdc033c4bc1b097"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75904ca0441478e49bdc033c4bc1b097">&#9670;&nbsp;</a></span>m_driveLatSpeedMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classinterpolation_map.html">interpolationMap</a>&lt;decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()&gt; RobotContainer::m_driveLatSpeedMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af29a76cfc80fd8c44cd3034136ea3cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29a76cfc80fd8c44cd3034136ea3cf3">&#9670;&nbsp;</a></span>m_driveLonSpeedMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classinterpolation_map.html">interpolationMap</a>&lt;decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()&gt; RobotContainer::m_driveLonSpeedMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41270c43aba084cae9baac3fdddf05ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41270c43aba084cae9baac3fdddf05ff">&#9670;&nbsp;</a></span>m_driveRotSpeedMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classinterpolation_map.html">interpolationMap</a>&lt;decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()&gt; RobotContainer::m_driveRotSpeedMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f9623dabad6d2423f7232f9c1e13d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9623dabad6d2423f7232f9c1e13d71">&#9670;&nbsp;</a></span>m_exampleSubsystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_example_subsystem.html">ExampleSubsystem</a> RobotContainer::m_exampleSubsystem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/main/include/<a class="el" href="_robot_container_8h_source.html">RobotContainer.h</a></li>
-<li>src/main/cpp/RobotContainer.cpp</li>
+<li>src/main/cpp/<a class="el" href="_robot_container_8cpp.html">RobotContainer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

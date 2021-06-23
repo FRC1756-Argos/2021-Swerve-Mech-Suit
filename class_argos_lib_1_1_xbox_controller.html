@@ -86,11 +86,16 @@ $(document).ready(function(){initNavTree('class_argos_lib_1_1_xbox_controller.ht
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_argos_lib_1_1_xbox_controller-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ArgosLib::XboxController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_xbox_controller_8h_source.html">XboxController.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ArgosLib::XboxController:</div>
 <div class="dyncontent">
@@ -98,112 +103,803 @@ Inheritance diagram for ArgosLib::XboxController:</div>
   <img src="class_argos_lib_1_1_xbox_controller.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_argos_lib_1_1_xbox_controller_1_1_d_pad_buttons.html">DPadButtons</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_argos_lib_1_1_xbox_controller_1_1_update_status.html">UpdateStatus</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad3be0303bd93ce9bb5c8c9382125cbd9"><td class="memItemLeft" align="right" valign="top"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Button</b> { <br />
-&#160;&#160;<b>kA</b> = 1
-, <b>kB</b> = 2
-, <b>kX</b> = 3
-, <b>kY</b> = 4
+<tr class="memitem:ad3be0303bd93ce9bb5c8c9382125cbd9"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> { <br />
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a30f767aa191cd5d261e767fd78393607">kA</a> = 1
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a3e56c011b37f0bc78fb9eb175c1181c6">kB</a> = 2
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a0ac0dd65e82e143ab04d378a0133bf9e">kX</a> = 3
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a39b629a97c6f6ac91423cf042154dd86">kY</a> = 4
 , <br />
-&#160;&#160;<b>kBumperLeft</b> = 5
-, <b>kBumperRight</b> = 6
-, <b>kBack</b> = 7
-, <b>kStart</b> = 8
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a2128e444a5ea03bbc16a607139800b6e">kBumperLeft</a> = 5
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a1dc1fc92125ac8ace7255f69415d9845">kBumperRight</a> = 6
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a1aa843cfb007a05d484edf751fdc905d">kBack</a> = 7
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a127f8e8149d57253ad94c9d2c752113d">kStart</a> = 8
 , <br />
-&#160;&#160;<b>kStickLeft</b> = 9
-, <b>kStickRight</b> = 10
-, <b>kLeftTrigger</b> = 11
-, <b>kRightTrigger</b> = 12
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a7a5854def4bae2b036ead0ec71aa487c">kStickLeft</a> = 9
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9aae5bfe2afd04fdba6fa361acf9d7fa92">kStickRight</a> = 10
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a5ca9b01dc72630050103311fe84c2972">kLeftTrigger</a> = 11
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a3c77ef6a8e347f61ef35bd485f14878a">kRightTrigger</a> = 12
 , <br />
-&#160;&#160;<b>kUp</b> = 13
-, <b>kRight</b> = 14
-, <b>kDown</b> = 15
-, <b>kLeft</b> = 16
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a8a9e8c8811f2a710615e133456229ee5">kUp</a> = 13
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a2dd2b017192f8a09367d48c7648213c9">kRight</a> = 14
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a3bc2ec3237c6d119b0b5c4225122a07e">kDown</a> = 15
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a2d5fde1d924910a2a01ecd8e70a87c28">kLeft</a> = 16
 , <br />
-&#160;&#160;<b>COUNT</b>
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">COUNT</a>
 <br />
  }</td></tr>
 <tr class="separator:ad3be0303bd93ce9bb5c8c9382125cbd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88c0d9390eae229a759c643719bfd149"><td class="memItemLeft" align="right" valign="top"><a id="a88c0d9390eae229a759c643719bfd149"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Axis</b> { <br />
-&#160;&#160;<b>kLeftX</b> = 0
-, <b>kLeftY</b> = 1
-, <b>kLeftTrigger</b> = 2
-, <b>kRightTrigger</b> = 3
+<tr class="memitem:a88c0d9390eae229a759c643719bfd149"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149">Axis</a> { <br />
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a6f34c4ab25a9eaae98c6e7fd9ba4049e">kLeftX</a> = 0
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a53cca6638285b0e8cd52fc9b00f86e3c">kLeftY</a> = 1
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a5ca9b01dc72630050103311fe84c2972">kLeftTrigger</a> = 2
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a3c77ef6a8e347f61ef35bd485f14878a">kRightTrigger</a> = 3
 , <br />
-&#160;&#160;<b>kRightX</b> = 4
-, <b>kRightY</b> = 5
-, <b>COUNT</b>
+&#160;&#160;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a2cfcb1616ef97872feca854c7f29f360">kRightX</a> = 4
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149ae26bb0251a83bfaf870833ca25811eb7">kRightY</a> = 5
+, <a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149a4905ac9d6a22bdfc1ae096094ce6248d">COUNT</a>
 <br />
  }</td></tr>
 <tr class="separator:a88c0d9390eae229a759c643719bfd149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa5ac0b7eae496aaf61aa1fe5bca0fa37"><td class="memItemLeft" align="right" valign="top"><a id="aa5ac0b7eae496aaf61aa1fe5bca0fa37"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>XboxController</b> (int port)</td></tr>
+<tr class="memitem:a00b775189695d4e9415ca235cbcdb078"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a00b775189695d4e9415ca235cbcdb078">XboxController</a> ()=delete</td></tr>
+<tr class="separator:a00b775189695d4e9415ca235cbcdb078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ac0b7eae496aaf61aa1fe5bca0fa37"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#aa5ac0b7eae496aaf61aa1fe5bca0fa37">XboxController</a> (int port)</td></tr>
 <tr class="separator:aa5ac0b7eae496aaf61aa1fe5bca0fa37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aba98cf389db8f3da43c561c800cf4f"><td class="memItemLeft" align="right" valign="top"><a id="a9aba98cf389db8f3da43c561c800cf4f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetButtonDebounce</b> (Button, <a class="el" href="structdebounce_setttings.html">debounceSetttings</a>)</td></tr>
+<tr class="memitem:a9aba98cf389db8f3da43c561c800cf4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a9aba98cf389db8f3da43c561c800cf4f">SetButtonDebounce</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>, <a class="el" href="structdebounce_setttings.html">debounceSetttings</a>)</td></tr>
 <tr class="separator:a9aba98cf389db8f3da43c561c800cf4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada9bde8f073488279ea48a7bcff203c5"><td class="memItemLeft" align="right" valign="top"><a id="ada9bde8f073488279ea48a7bcff203c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SwapSettings</b> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html">XboxController</a> &amp;)</td></tr>
+<tr class="memitem:ada9bde8f073488279ea48a7bcff203c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ada9bde8f073488279ea48a7bcff203c5">SwapSettings</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html">XboxController</a> &amp;)</td></tr>
 <tr class="separator:ada9bde8f073488279ea48a7bcff203c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850b894910513a6384a5f96c51019652"><td class="memItemLeft" align="right" valign="top"><a id="a850b894910513a6384a5f96c51019652"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>GetX</b> (JoystickHand) const override</td></tr>
+<tr class="memitem:a850b894910513a6384a5f96c51019652"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a850b894910513a6384a5f96c51019652">GetX</a> (JoystickHand) const override</td></tr>
 <tr class="separator:a850b894910513a6384a5f96c51019652"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac844ef120497620aafd92792f1a442a2"><td class="memItemLeft" align="right" valign="top"><a id="ac844ef120497620aafd92792f1a442a2"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>GetY</b> (JoystickHand) const override</td></tr>
+<tr class="memitem:ac844ef120497620aafd92792f1a442a2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ac844ef120497620aafd92792f1a442a2">GetY</a> (JoystickHand) const override</td></tr>
 <tr class="separator:ac844ef120497620aafd92792f1a442a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8bdc6ee9ead7be55a606386f1c66736"><td class="memItemLeft" align="right" valign="top"><a id="ab8bdc6ee9ead7be55a606386f1c66736"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>GetTriggerAxis</b> (JoystickHand) const</td></tr>
+<tr class="memitem:ab8bdc6ee9ead7be55a606386f1c66736"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ab8bdc6ee9ead7be55a606386f1c66736">GetTriggerAxis</a> (JoystickHand) const</td></tr>
 <tr class="separator:ab8bdc6ee9ead7be55a606386f1c66736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a183b221d1295bfb93b062fac7477e5f9"><td class="memItemLeft" align="right" valign="top"><a id="a183b221d1295bfb93b062fac7477e5f9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetDebouncedButton</b> (Button)</td></tr>
+<tr class="memitem:a183b221d1295bfb93b062fac7477e5f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a183b221d1295bfb93b062fac7477e5f9">GetDebouncedButton</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
 <tr class="separator:a183b221d1295bfb93b062fac7477e5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad174982d19515e2865b3f5277ac325e1"><td class="memItemLeft" align="right" valign="top"><a id="ad174982d19515e2865b3f5277ac325e1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetDebouncedButtonPressed</b> (Button)</td></tr>
+<tr class="memitem:ad174982d19515e2865b3f5277ac325e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad174982d19515e2865b3f5277ac325e1">GetDebouncedButtonPressed</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
 <tr class="separator:ad174982d19515e2865b3f5277ac325e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a923a29f96249ea41705375dde7788a91"><td class="memItemLeft" align="right" valign="top"><a id="a923a29f96249ea41705375dde7788a91"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetDebouncedButtonReleased</b> (Button)</td></tr>
+<tr class="memitem:a923a29f96249ea41705375dde7788a91"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a923a29f96249ea41705375dde7788a91">GetDebouncedButtonReleased</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
 <tr class="separator:a923a29f96249ea41705375dde7788a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb50a46273eeae81818c614227f86a18"><td class="memItemLeft" align="right" valign="top"><a id="afb50a46273eeae81818c614227f86a18"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetDebouncedButton</b> (std::initializer_list&lt; Button &gt;)</td></tr>
+<tr class="memitem:afb50a46273eeae81818c614227f86a18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#afb50a46273eeae81818c614227f86a18">GetDebouncedButton</a> (std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;)</td></tr>
 <tr class="separator:afb50a46273eeae81818c614227f86a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7212c8dc817a7d69b1c933b9a91bf3ad"><td class="memItemLeft" align="right" valign="top"><a id="a7212c8dc817a7d69b1c933b9a91bf3ad"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetDebouncedButtonPressed</b> (std::initializer_list&lt; Button &gt;)</td></tr>
+<tr class="memitem:a7212c8dc817a7d69b1c933b9a91bf3ad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a7212c8dc817a7d69b1c933b9a91bf3ad">GetDebouncedButtonPressed</a> (std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;)</td></tr>
 <tr class="separator:a7212c8dc817a7d69b1c933b9a91bf3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac13e2ce0708074c5a1a1236ee65f12cd"><td class="memItemLeft" align="right" valign="top"><a id="ac13e2ce0708074c5a1a1236ee65f12cd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetDebouncedButtonReleased</b> (std::initializer_list&lt; Button &gt;)</td></tr>
+<tr class="memitem:ac13e2ce0708074c5a1a1236ee65f12cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ac13e2ce0708074c5a1a1236ee65f12cd">GetDebouncedButtonReleased</a> (std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;)</td></tr>
 <tr class="separator:ac13e2ce0708074c5a1a1236ee65f12cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a266f7fcc414285e71cdaf380958c9f51"><td class="memItemLeft" align="right" valign="top"><a id="a266f7fcc414285e71cdaf380958c9f51"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawButton</b> (Button)</td></tr>
+<tr class="memitem:a266f7fcc414285e71cdaf380958c9f51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a266f7fcc414285e71cdaf380958c9f51">GetRawButton</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
 <tr class="separator:a266f7fcc414285e71cdaf380958c9f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29a02155f2520fc7cacefaef611980a8"><td class="memItemLeft" align="right" valign="top"><a id="a29a02155f2520fc7cacefaef611980a8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawButtonPressed</b> (Button)</td></tr>
+<tr class="memitem:a29a02155f2520fc7cacefaef611980a8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a29a02155f2520fc7cacefaef611980a8">GetRawButtonPressed</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
 <tr class="separator:a29a02155f2520fc7cacefaef611980a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a622afa53ccfef37ae772b70f6876130d"><td class="memItemLeft" align="right" valign="top"><a id="a622afa53ccfef37ae772b70f6876130d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawButtonReleased</b> (Button)</td></tr>
+<tr class="memitem:a622afa53ccfef37ae772b70f6876130d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a622afa53ccfef37ae772b70f6876130d">GetRawButtonReleased</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
 <tr class="separator:a622afa53ccfef37ae772b70f6876130d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45fa22f075a348f2e5ac5c3640cb3c48"><td class="memItemLeft" align="right" valign="top"><a id="a45fa22f075a348f2e5ac5c3640cb3c48"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawButton</b> (std::initializer_list&lt; Button &gt;)</td></tr>
+<tr class="memitem:a45fa22f075a348f2e5ac5c3640cb3c48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a45fa22f075a348f2e5ac5c3640cb3c48">GetRawButton</a> (std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;)</td></tr>
 <tr class="separator:a45fa22f075a348f2e5ac5c3640cb3c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5fb7815804ee697f9e0e1d32936aae9"><td class="memItemLeft" align="right" valign="top"><a id="ad5fb7815804ee697f9e0e1d32936aae9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawButtonPressed</b> (std::initializer_list&lt; Button &gt;)</td></tr>
+<tr class="memitem:ad5fb7815804ee697f9e0e1d32936aae9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad5fb7815804ee697f9e0e1d32936aae9">GetRawButtonPressed</a> (std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;)</td></tr>
 <tr class="separator:ad5fb7815804ee697f9e0e1d32936aae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac48b346ce79738775b8aa169eaafa7e3"><td class="memItemLeft" align="right" valign="top"><a id="ac48b346ce79738775b8aa169eaafa7e3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRawButtonReleased</b> (std::initializer_list&lt; Button &gt;)</td></tr>
+<tr class="memitem:ac48b346ce79738775b8aa169eaafa7e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ac48b346ce79738775b8aa169eaafa7e3">GetRawButtonReleased</a> (std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;)</td></tr>
 <tr class="separator:ac48b346ce79738775b8aa169eaafa7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af61238af151fd4fca38902de8174e73b"><td class="memItemLeft" align="right" valign="top"><a id="af61238af151fd4fca38902de8174e73b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVibration</b> (VibrationModel)</td></tr>
+<tr class="memitem:af61238af151fd4fca38902de8174e73b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#af61238af151fd4fca38902de8174e73b">SetVibration</a> (<a class="el" href="namespace_argos_lib.html#a2a703d017a9aa851195cc811e2e4959b">VibrationModel</a>)</td></tr>
 <tr class="separator:af61238af151fd4fca38902de8174e73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37e4539aa4e0cc854c05ffb9a24ba6db"><td class="memItemLeft" align="right" valign="top"><a id="a37e4539aa4e0cc854c05ffb9a24ba6db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateVibration</b> ()</td></tr>
+<tr class="memitem:a37e4539aa4e0cc854c05ffb9a24ba6db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a37e4539aa4e0cc854c05ffb9a24ba6db">UpdateVibration</a> ()</td></tr>
 <tr class="separator:a37e4539aa4e0cc854c05ffb9a24ba6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aff4f4614aec278b87abed8cb7d1f1b4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_argos_lib_1_1_xbox_controller_1_1_update_status.html">UpdateStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#aff4f4614aec278b87abed8cb7d1f1b4d">UpdateButton</a> (<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>)</td></tr>
+<tr class="separator:aff4f4614aec278b87abed8cb7d1f1b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad81f3f85b46a5d104f8fed6d276a7d4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_argos_lib_1_1_xbox_controller_1_1_d_pad_buttons.html">DPadButtons</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad81f3f85b46a5d104f8fed6d276a7d4a">GetPOVButtons</a> ()</td></tr>
+<tr class="separator:ad81f3f85b46a5d104f8fed6d276a7d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aeebede3c8d8eaa41479d57e567193a05"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="structdebounce_setttings.html">debounceSetttings</a>, static_cast&lt; int &gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#aeebede3c8d8eaa41479d57e567193a05">m_buttonDebounceSettings</a></td></tr>
+<tr class="separator:aeebede3c8d8eaa41479d57e567193a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76be1a1d6afd58a67e0c7ae1325ae153"><td class="memItemLeft" align="right" valign="top">std::array&lt; bool, static_cast&lt; int &gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a76be1a1d6afd58a67e0c7ae1325ae153">m_buttonDebounceStatus</a></td></tr>
+<tr class="separator:a76be1a1d6afd58a67e0c7ae1325ae153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0bc91ed7a269d1af6bfe4ff344e1746"><td class="memItemLeft" align="right" valign="top">std::array&lt; bool, static_cast&lt; int &gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#af0bc91ed7a269d1af6bfe4ff344e1746">m_rawButtonStatus</a></td></tr>
+<tr class="separator:af0bc91ed7a269d1af6bfe4ff344e1746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533189d621b5c854dc2f9b34ce14d414"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::chrono::time_point&lt; std::chrono::steady_clock &gt;, static_cast&lt; int &gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a533189d621b5c854dc2f9b34ce14d414">m_buttonDebounceStableTime</a></td></tr>
+<tr class="separator:a533189d621b5c854dc2f9b34ce14d414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05a97ff9651867db9156d2601137dba7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_argos_lib.html#a2a703d017a9aa851195cc811e2e4959b">VibrationModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#a05a97ff9651867db9156d2601137dba7">m_vibrationModel</a></td></tr>
+<tr class="separator:a05a97ff9651867db9156d2601137dba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ae877de9bf0d7a9775225adc239f610eb"><td class="memItemLeft" align="right" valign="top">constexpr static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ae877de9bf0d7a9775225adc239f610eb">analogTriggerThresh</a> = 0.5</td></tr>
+<tr class="separator:ae877de9bf0d7a9775225adc239f610eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a88c0d9390eae229a759c643719bfd149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c0d9390eae229a759c643719bfd149">&#9670;&nbsp;</a></span>Axis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149">ArgosLib::XboxController::Axis</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149a6f34c4ab25a9eaae98c6e7fd9ba4049e"></a>kLeftX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149a53cca6638285b0e8cd52fc9b00f86e3c"></a>kLeftY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149a5ca9b01dc72630050103311fe84c2972"></a>kLeftTrigger&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149a3c77ef6a8e347f61ef35bd485f14878a"></a>kRightTrigger&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149a2cfcb1616ef97872feca854c7f29f360"></a>kRightX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149ae26bb0251a83bfaf870833ca25811eb7"></a>kRightY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a88c0d9390eae229a759c643719bfd149a4905ac9d6a22bdfc1ae096094ce6248d"></a>COUNT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="ad3be0303bd93ce9bb5c8c9382125cbd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3be0303bd93ce9bb5c8c9382125cbd9">&#9670;&nbsp;</a></span>Button</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">ArgosLib::XboxController::Button</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a30f767aa191cd5d261e767fd78393607"></a>kA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a3e56c011b37f0bc78fb9eb175c1181c6"></a>kB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a0ac0dd65e82e143ab04d378a0133bf9e"></a>kX&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a39b629a97c6f6ac91423cf042154dd86"></a>kY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a2128e444a5ea03bbc16a607139800b6e"></a>kBumperLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a1dc1fc92125ac8ace7255f69415d9845"></a>kBumperRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a1aa843cfb007a05d484edf751fdc905d"></a>kBack&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a127f8e8149d57253ad94c9d2c752113d"></a>kStart&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a7a5854def4bae2b036ead0ec71aa487c"></a>kStickLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9aae5bfe2afd04fdba6fa361acf9d7fa92"></a>kStickRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a5ca9b01dc72630050103311fe84c2972"></a>kLeftTrigger&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a3c77ef6a8e347f61ef35bd485f14878a"></a>kRightTrigger&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a8a9e8c8811f2a710615e133456229ee5"></a>kUp&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a2dd2b017192f8a09367d48c7648213c9"></a>kRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a3bc2ec3237c6d119b0b5c4225122a07e"></a>kDown&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a2d5fde1d924910a2a01ecd8e70a87c28"></a>kLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d"></a>COUNT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a00b775189695d4e9415ca235cbcdb078"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b775189695d4e9415ca235cbcdb078">&#9670;&nbsp;</a></span>XboxController() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArgosLib::XboxController::XboxController </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa5ac0b7eae496aaf61aa1fe5bca0fa37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ac0b7eae496aaf61aa1fe5bca0fa37">&#9670;&nbsp;</a></span>XboxController() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">XboxController::XboxController </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a183b221d1295bfb93b062fac7477e5f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a183b221d1295bfb93b062fac7477e5f9">&#9670;&nbsp;</a></span>GetDebouncedButton() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetDebouncedButton </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb50a46273eeae81818c614227f86a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb50a46273eeae81818c614227f86a18">&#9670;&nbsp;</a></span>GetDebouncedButton() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetDebouncedButton </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;&#160;</td>
+          <td class="paramname"><em>buttonCombo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad174982d19515e2865b3f5277ac325e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad174982d19515e2865b3f5277ac325e1">&#9670;&nbsp;</a></span>GetDebouncedButtonPressed() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetDebouncedButtonPressed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7212c8dc817a7d69b1c933b9a91bf3ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7212c8dc817a7d69b1c933b9a91bf3ad">&#9670;&nbsp;</a></span>GetDebouncedButtonPressed() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetDebouncedButtonPressed </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;&#160;</td>
+          <td class="paramname"><em>buttonCombo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a923a29f96249ea41705375dde7788a91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923a29f96249ea41705375dde7788a91">&#9670;&nbsp;</a></span>GetDebouncedButtonReleased() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetDebouncedButtonReleased </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac13e2ce0708074c5a1a1236ee65f12cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac13e2ce0708074c5a1a1236ee65f12cd">&#9670;&nbsp;</a></span>GetDebouncedButtonReleased() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetDebouncedButtonReleased </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;&#160;</td>
+          <td class="paramname"><em>buttonCombo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad81f3f85b46a5d104f8fed6d276a7d4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad81f3f85b46a5d104f8fed6d276a7d4a">&#9670;&nbsp;</a></span>GetPOVButtons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_argos_lib_1_1_xbox_controller_1_1_d_pad_buttons.html">XboxController::DPadButtons</a> XboxController::GetPOVButtons </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a266f7fcc414285e71cdaf380958c9f51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a266f7fcc414285e71cdaf380958c9f51">&#9670;&nbsp;</a></span>GetRawButton() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetRawButton </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45fa22f075a348f2e5ac5c3640cb3c48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45fa22f075a348f2e5ac5c3640cb3c48">&#9670;&nbsp;</a></span>GetRawButton() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetRawButton </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;&#160;</td>
+          <td class="paramname"><em>buttonCombo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29a02155f2520fc7cacefaef611980a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29a02155f2520fc7cacefaef611980a8">&#9670;&nbsp;</a></span>GetRawButtonPressed() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetRawButtonPressed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5fb7815804ee697f9e0e1d32936aae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5fb7815804ee697f9e0e1d32936aae9">&#9670;&nbsp;</a></span>GetRawButtonPressed() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetRawButtonPressed </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;&#160;</td>
+          <td class="paramname"><em>buttonCombo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a622afa53ccfef37ae772b70f6876130d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622afa53ccfef37ae772b70f6876130d">&#9670;&nbsp;</a></span>GetRawButtonReleased() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetRawButtonReleased </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac48b346ce79738775b8aa169eaafa7e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac48b346ce79738775b8aa169eaafa7e3">&#9670;&nbsp;</a></span>GetRawButtonReleased() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XboxController::GetRawButtonReleased </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a> &gt;&#160;</td>
+          <td class="paramname"><em>buttonCombo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8bdc6ee9ead7be55a606386f1c66736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8bdc6ee9ead7be55a606386f1c66736">&#9670;&nbsp;</a></span>GetTriggerAxis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double XboxController::GetTriggerAxis </td>
+          <td>(</td>
+          <td class="paramtype">JoystickHand&#160;</td>
+          <td class="paramname"><em>hand</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a850b894910513a6384a5f96c51019652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a850b894910513a6384a5f96c51019652">&#9670;&nbsp;</a></span>GetX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double XboxController::GetX </td>
+          <td>(</td>
+          <td class="paramtype">JoystickHand&#160;</td>
+          <td class="paramname"><em>hand</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac844ef120497620aafd92792f1a442a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac844ef120497620aafd92792f1a442a2">&#9670;&nbsp;</a></span>GetY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double XboxController::GetY </td>
+          <td>(</td>
+          <td class="paramtype">JoystickHand&#160;</td>
+          <td class="paramname"><em>hand</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9aba98cf389db8f3da43c561c800cf4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aba98cf389db8f3da43c561c800cf4f">&#9670;&nbsp;</a></span>SetButtonDebounce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XboxController::SetButtonDebounce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>targetButton</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structdebounce_setttings.html">debounceSetttings</a>&#160;</td>
+          <td class="paramname"><em>newSettings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af61238af151fd4fca38902de8174e73b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af61238af151fd4fca38902de8174e73b">&#9670;&nbsp;</a></span>SetVibration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XboxController::SetVibration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_argos_lib.html#a2a703d017a9aa851195cc811e2e4959b">VibrationModel</a>&#160;</td>
+          <td class="paramname"><em>newVibrationModel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada9bde8f073488279ea48a7bcff203c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9bde8f073488279ea48a7bcff203c5">&#9670;&nbsp;</a></span>SwapSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XboxController::SwapSettings </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html">XboxController</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff4f4614aec278b87abed8cb7d1f1b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff4f4614aec278b87abed8cb7d1f1b4d">&#9670;&nbsp;</a></span>UpdateButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_argos_lib_1_1_xbox_controller_1_1_update_status.html">XboxController::UpdateStatus</a> XboxController::UpdateButton </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9">Button</a>&#160;</td>
+          <td class="paramname"><em>buttonIdx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37e4539aa4e0cc854c05ffb9a24ba6db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e4539aa4e0cc854c05ffb9a24ba6db">&#9670;&nbsp;</a></span>UpdateVibration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XboxController::UpdateVibration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae877de9bf0d7a9775225adc239f610eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae877de9bf0d7a9775225adc239f610eb">&#9670;&nbsp;</a></span>analogTriggerThresh</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static double ArgosLib::XboxController::analogTriggerThresh = 0.5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeebede3c8d8eaa41479d57e567193a05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeebede3c8d8eaa41479d57e567193a05">&#9670;&nbsp;</a></span>m_buttonDebounceSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;<a class="el" href="structdebounce_setttings.html">debounceSetttings</a>, static_cast&lt;int&gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt; ArgosLib::XboxController::m_buttonDebounceSettings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a533189d621b5c854dc2f9b34ce14d414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a533189d621b5c854dc2f9b34ce14d414">&#9670;&nbsp;</a></span>m_buttonDebounceStableTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;std::chrono::time_point&lt;std::chrono::steady_clock&gt;, static_cast&lt;int&gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt; ArgosLib::XboxController::m_buttonDebounceStableTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76be1a1d6afd58a67e0c7ae1325ae153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76be1a1d6afd58a67e0c7ae1325ae153">&#9670;&nbsp;</a></span>m_buttonDebounceStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;bool, static_cast&lt;int&gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt; ArgosLib::XboxController::m_buttonDebounceStatus</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0bc91ed7a269d1af6bfe4ff344e1746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0bc91ed7a269d1af6bfe4ff344e1746">&#9670;&nbsp;</a></span>m_rawButtonStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;bool, static_cast&lt;int&gt;<a class="el" href="class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9a4905ac9d6a22bdfc1ae096094ce6248d">Button::COUNT</a>)&gt; ArgosLib::XboxController::m_rawButtonStatus</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05a97ff9651867db9156d2601137dba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05a97ff9651867db9156d2601137dba7">&#9670;&nbsp;</a></span>m_vibrationModel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_argos_lib.html#a2a703d017a9aa851195cc811e2e4959b">VibrationModel</a> ArgosLib::XboxController::m_vibrationModel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/argosLib/include/argosLib/controller/<a class="el" href="_xbox_controller_8h_source.html">XboxController.h</a></li>
-<li>src/argosLib/cpp/controller/XboxController.cpp</li>
+<li>src/argosLib/cpp/controller/<a class="el" href="_xbox_controller_8cpp.html">XboxController.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -86,33 +86,37 @@ $(document).ready(function(){initNavTree('_swap_controllers_command_8h_source.ht
 <div class="title">SwapControllersCommand.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="_swap_controllers_command_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;frc2/command/CommandBase.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;frc2/command/CommandHelper.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;argosLib/subsystems/SwappableControllersSubsystem.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_swappable_controllers_subsystem_8h.html">argosLib/subsystems/SwappableControllersSubsystem.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_swap_controllers_command.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_swap_controllers_command.html">SwapControllersCommand</a> : <span class="keyword">public</span> frc2::CommandHelper&lt;frc2::CommandBase, SwapControllersCommand&gt; {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="class_swap_controllers_command.html#a929edca7fc392dba4ff0c45903642cc5">SwapControllersCommand</a>(<a class="code" href="class_swappable_controllers_subsystem.html">SwappableControllersSubsystem</a>*);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> Initialize() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> End(<span class="keywordtype">bool</span>) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_swap_controllers_command.html#aee37eb53ea8beb23636d6332bbe2294b">Initialize</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_swap_controllers_command.html#a096e86b1c6ede8e0f3eee2aabcbab305">End</a>(<span class="keywordtype">bool</span>) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="class_swappable_controllers_subsystem.html">SwappableControllersSubsystem</a>* m_pControllerSubsystem;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_swap_controllers_command.html#a0ce253e70c7000e4ea10001a3a3ad6b9">   20</a></span>&#160;  <a class="code" href="class_swappable_controllers_subsystem.html">SwappableControllersSubsystem</a>* <a class="code" href="class_swap_controllers_command.html#a0ce253e70c7000e4ea10001a3a3ad6b9">m_pControllerSubsystem</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="ttc" id="a_swappable_controllers_subsystem_8h_html"><div class="ttname"><a href="_swappable_controllers_subsystem_8h.html">SwappableControllersSubsystem.h</a></div></div>
 <div class="ttc" id="aclass_swap_controllers_command_html"><div class="ttname"><a href="class_swap_controllers_command.html">SwapControllersCommand</a></div><div class="ttdef"><b>Definition:</b> SwapControllersCommand.h:12</div></div>
+<div class="ttc" id="aclass_swap_controllers_command_html_a096e86b1c6ede8e0f3eee2aabcbab305"><div class="ttname"><a href="class_swap_controllers_command.html#a096e86b1c6ede8e0f3eee2aabcbab305">SwapControllersCommand::End</a></div><div class="ttdeci">void End(bool) override</div><div class="ttdef"><b>Definition:</b> SwapControllersCommand.cpp:14</div></div>
+<div class="ttc" id="aclass_swap_controllers_command_html_a0ce253e70c7000e4ea10001a3a3ad6b9"><div class="ttname"><a href="class_swap_controllers_command.html#a0ce253e70c7000e4ea10001a3a3ad6b9">SwapControllersCommand::m_pControllerSubsystem</a></div><div class="ttdeci">SwappableControllersSubsystem * m_pControllerSubsystem</div><div class="ttdef"><b>Definition:</b> SwapControllersCommand.h:20</div></div>
 <div class="ttc" id="aclass_swap_controllers_command_html_a929edca7fc392dba4ff0c45903642cc5"><div class="ttname"><a href="class_swap_controllers_command.html#a929edca7fc392dba4ff0c45903642cc5">SwapControllersCommand::SwapControllersCommand</a></div><div class="ttdeci">SwapControllersCommand(SwappableControllersSubsystem *)</div><div class="ttdef"><b>Definition:</b> SwapControllersCommand.cpp:7</div></div>
+<div class="ttc" id="aclass_swap_controllers_command_html_aee37eb53ea8beb23636d6332bbe2294b"><div class="ttname"><a href="class_swap_controllers_command.html#aee37eb53ea8beb23636d6332bbe2294b">SwapControllersCommand::Initialize</a></div><div class="ttdeci">void Initialize() override</div><div class="ttdef"><b>Definition:</b> SwapControllersCommand.cpp:10</div></div>
 <div class="ttc" id="aclass_swappable_controllers_subsystem_html"><div class="ttname"><a href="class_swappable_controllers_subsystem.html">SwappableControllersSubsystem</a></div><div class="ttdef"><b>Definition:</b> SwappableControllersSubsystem.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f907d664ece03cc1e68889f3bb8ca77e.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_57c5ffddb5cc6d023eed2a33d4a22045.html">include</a></li><li class="navelem"><a class="el" href="dir_93ad06a5311d2d6c45665933a839f5e3.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_177c3607b1f7d37b7c5c0f97caa5c9e1.html">commands</a></li><li class="navelem"><b>SwapControllersCommand.h</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f907d664ece03cc1e68889f3bb8ca77e.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_57c5ffddb5cc6d023eed2a33d4a22045.html">include</a></li><li class="navelem"><a class="el" href="dir_93ad06a5311d2d6c45665933a839f5e3.html">argosLib</a></li><li class="navelem"><a class="el" href="dir_177c3607b1f7d37b7c5c0f97caa5c9e1.html">commands</a></li><li class="navelem"><a class="el" href="_swap_controllers_command_8h.html">SwapControllersCommand.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
