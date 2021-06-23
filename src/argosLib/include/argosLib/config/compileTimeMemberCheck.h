@@ -6,7 +6,11 @@
 
 #include <type_traits>
 
-// Helper function generator to detect if a namespace has a member defined
+/**
+ * @brief Helper function generator to detect if a namespace has a member defined
+ *
+ * @param X Name of member to detect
+ */
 #define HAS_MEMBER(X)                    \
   template <typename T, typename = void> \
   struct has_##X : std::false_type {};   \

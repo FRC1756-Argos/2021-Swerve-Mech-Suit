@@ -23,6 +23,19 @@ HAS_MEMBER(pid0_kF)
 HAS_MEMBER(pid0_iZone)
 HAS_MEMBER(pid0_allowableError)
 
+/**
+ * @brief Configures a CTRE Falcon with only the fields provided.  All other fields
+ *        are given the factory default values.
+ *
+ * @tparam T Structure containing any combination of the following members:
+ *           inverted, sensorPhase, neutralMode, voltCompSat, remoteFilter0_addr,
+ *           remoteFilter0_type, pid0_selectedSensor, pid0_kP, pid0_kI, pid0_kD,
+ *           pid0_kF, pid0_iZone, pid0_allowableError
+ * @param motorController Falcon object to configure
+ * @param configTimeout Time to wait for response from Falcon
+ * @return true Configuration succeeded
+ * @return false Configuration failed
+ */
 template <typename T>
 bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeout) {
   TalonFXConfiguration config;

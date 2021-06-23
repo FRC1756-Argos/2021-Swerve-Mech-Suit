@@ -14,6 +14,17 @@ HAS_MEMBER(initMode)
 HAS_MEMBER(range)
 HAS_MEMBER(magOffset)
 
+/**
+ * @brief Configures a CTRE CanCoder with only the fields provided.  All other fields
+ *        are given the factory default values.
+ *
+ * @tparam T Structure containing any combination of the following members:
+ *           direction, initMode, range, magOffset
+ * @param encoder CANCoder object to configure
+ * @param configTimeout Time to wait for response from CANCoder
+ * @return true Configuration succeeded
+ * @return false Configuration failed
+ */
 template <typename T>
 bool CanCoderConfig(CANCoder& encoder, units::millisecond_t configTimeout) {
   ctre::phoenix::sensors::CANCoderConfiguration config;
