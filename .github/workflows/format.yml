@@ -3,7 +3,13 @@
 name: Format
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-on: [ push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   wpiformat:
@@ -19,6 +25,9 @@ jobs:
         run: sudo apt-get update -q && sudo apt-get install -y clang-format-10
       - name: Install wpiformat
         run: pip3 install wpiformat
+      - name: Rename branch
+        if: ${{ github.ref != 'refs/heads/master' }}
+        run: git checkout -b master HEAD
       - name: Run
         run: wpiformat -clang 10
       - name: Check for modified files
@@ -28,6 +37,7 @@ jobs:
         if: ${{ steps.git-check.outputs.modified == 'true' && !(github.event_name == 'push' && github.ref == 'refs/heads/master') }}
         uses: EndBug/add-and-commit@v7
         with:
+          default_author: github_actions
           author_name: wpiformat
           message: Automated formatting changes
       - name: Create pull request
@@ -38,4 +48,7 @@ jobs:
           commit-message: Automated formatting changes
           committer: GitHub <noreply@github.com>
           author: wpiformat <${{ github.actor }}@users.noreply.github.com>
+          branch: wpiformat/auto_format_changes
+          delete-branch: true
           title: Formatting Changes
+          labels: style
