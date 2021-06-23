@@ -33,6 +33,8 @@ namespace address {
     constexpr int secondary = 1;
   }  // namespace joystick
   namespace motor {
+    constexpr int intake = 3;
+
     constexpr int frontLeftDrive = 10;
     constexpr int frontRightDrive = 11;
     constexpr int rearRightDrive = 12;
@@ -238,6 +240,13 @@ namespace motorConfig {
       constexpr static auto pid0_allowableError = controlLoop::drive::rotate::allowableError;
     };
   }  // namespace drive
+  namespace intake {
+    struct intakeMotor {
+      constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
+      constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+      constexpr static double voltCompSat = 11.0;
+    };
+  }  // namespace intake
 }  // namespace motorConfig
 
 namespace controllerMap {

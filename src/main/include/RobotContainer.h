@@ -15,6 +15,7 @@
 #include "argosLib/subsystems/SwappableControllersSubsystem.h"
 #include "commands/ExampleCommand.h"
 #include "subsystems/DriveSubsystem.h"
+#include "subsystems/IntakeSubsystem.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -34,6 +35,7 @@ class RobotContainer {
 
   // Subsystems
   DriveSubsystem m_drive;
+  IntakeSubsystem m_intake;
   ExampleSubsystem m_exampleSubsystem;
   SwappableControllersSubsystem m_controllers;
 

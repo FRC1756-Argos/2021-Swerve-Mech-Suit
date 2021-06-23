@@ -74,12 +74,30 @@ void RobotContainer::ConfigureButtonBindings() {
        frc2::Trigger{[this]() {
          return !m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kBumperLeft);
        }});
+  auto intakeForwardTrigger =
+      (frc2::Trigger{[this]() {
+         return m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kRightTrigger);
+       }} &&
+       frc2::Trigger{[this]() {
+         return !m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kLeftTrigger);
+       }});
+  auto intakeReverseTrigger =
+      (frc2::Trigger{[this]() {
+         return m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kLeftTrigger);
+       }} &&
+       frc2::Trigger{[this]() {
+         return !m_controllers.driverController().GetRawButton(ArgosLib::XboxController::Button::kRightTrigger);
+       }});
 
   // Configure your button bindings here
   robotCentricDriveTrigger.WhenActive([this]() { m_drive.SetControlMode(DriveSubsystem::ControlMode::robotCentric); },
                                       {&m_drive});
   robotCentricDriveTrigger.WhenInactive([this]() { m_drive.SetControlMode(DriveSubsystem::ControlMode::fieldCentric); },
                                         {&m_drive});
+  intakeForwardTrigger.WhenActive([this]() { m_intake.Intake(); }, {&m_intake});
+  intakeForwardTrigger.WhenInactive([this]() { m_intake.Stop(); }, {&m_intake});
+  intakeReverseTrigger.WhenActive([this]() { m_intake.Eject(); }, {&m_intake});
+  intakeReverseTrigger.WhenInactive([this]() { m_intake.Stop(); }, {&m_intake});
   triggerHomeCombo.WhenActive([this]() { m_drive.Home(0_deg); }, {&m_drive});
   (driverTriggerSwapCombo || operatorTriggerSwapCombo).WhileActiveOnce(SwapControllersCommand(&m_controllers));
   triggerResetFieldOrientation.WhenActive([this]() { m_drive.SetFieldOrientation(0_deg); }, {&m_drive});
