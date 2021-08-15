@@ -98,10 +98,12 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a1decfc72bda466e411019ca26de426c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2cb0045dd1fa4f2d6d2b2486b24a79c"><td class="memItemLeft" align="right" valign="top">constexpr static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmotor_config_1_1drive_1_1front_left_drive.html#af2cb0045dd1fa4f2d6d2b2486b24a79c">sensorPhase</a> = false</td></tr>
 <tr class="separator:af2cb0045dd1fa4f2d6d2b2486b24a79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1b0d53d860519a481389d312b19365"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmotor_config_1_1drive_1_1front_left_drive.html#aff1b0d53d860519a481389d312b19365">neutralDeadband</a> = 0.001</td></tr>
+<tr class="separator:aff1b0d53d860519a481389d312b19365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a356e110f87f368145a743415c8672a65"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmotor_config_1_1drive_1_1front_left_drive.html#a356e110f87f368145a743415c8672a65">neutralMode</a> = ctre::phoenix::motorcontrol::NeutralMode::Brake</td></tr>
 <tr class="separator:a356e110f87f368145a743415c8672a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9de0d2240328ad0dea739095de8f9ad6"><td class="memItemLeft" align="right" valign="top">constexpr static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmotor_config_1_1drive_1_1front_left_drive.html#a9de0d2240328ad0dea739095de8f9ad6">voltCompSat</a> = 11.0</td></tr>
-<tr class="separator:a9de0d2240328ad0dea739095de8f9ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645c67f9f69da58a108e1dc4f0b058f7"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmotor_config_1_1drive_1_1front_left_drive.html#a645c67f9f69da58a108e1dc4f0b058f7">voltCompSat</a> = 11.0_V</td></tr>
+<tr class="separator:a645c67f9f69da58a108e1dc4f0b058f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a1decfc72bda466e411019ca26de426c0"></a>
@@ -115,6 +117,28 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">constexpr static auto motorConfig::drive::frontLeftDrive::inverted = ctre::phoenix::motorcontrol::InvertType::None</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff1b0d53d860519a481389d312b19365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1b0d53d860519a481389d312b19365">&#9670;&nbsp;</a></span>neutralDeadband</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto motorConfig::drive::frontLeftDrive::neutralDeadband = 0.001</td>
         </tr>
       </table>
   </td>
@@ -170,8 +194,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9de0d2240328ad0dea739095de8f9ad6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9de0d2240328ad0dea739095de8f9ad6">&#9670;&nbsp;</a></span>voltCompSat</h2>
+<a id="a645c67f9f69da58a108e1dc4f0b058f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a645c67f9f69da58a108e1dc4f0b058f7">&#9670;&nbsp;</a></span>voltCompSat</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -180,7 +204,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr static double motorConfig::drive::frontLeftDrive::voltCompSat = 11.0</td>
+          <td class="memname">constexpr static auto motorConfig::drive::frontLeftDrive::voltCompSat = 11.0_V</td>
         </tr>
       </table>
   </td>

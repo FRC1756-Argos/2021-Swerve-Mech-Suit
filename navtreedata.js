@@ -61,7 +61,7 @@ var NAVTREEINDEX =
 [
 "_constants_8h.html",
 "class_swappable_controllers_subsystem.html#aa92dfe982482b6449509fcea7edd6ab7",
-"structmotor_config_1_1drive_1_1front_left_turn.html#a9d211ad3b0276903f7ba04342edbb200"
+"structhas__supply_current_threshold_time_3_01_t_00_01decltype_07_07void_08_01_t_1_1supply_curren3fa30c8ecaf7482aa3292ba7a023b768.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

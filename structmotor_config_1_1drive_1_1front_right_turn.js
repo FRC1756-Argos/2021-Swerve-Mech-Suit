@@ -1,6 +1,7 @@
 var structmotor_config_1_1drive_1_1front_right_turn =
 [
     [ "inverted", "structmotor_config_1_1drive_1_1front_right_turn.html#ae9b5d4e25ad70fa32352c62d87ea1d5f", null ],
+    [ "neutralDeadband", "structmotor_config_1_1drive_1_1front_right_turn.html#ad7c4a452f482dff97c7c26923b15f757", null ],
     [ "neutralMode", "structmotor_config_1_1drive_1_1front_right_turn.html#ab724ab34bd1ad975016de98f0abcfcd8", null ],
     [ "pid0_allowableError", "structmotor_config_1_1drive_1_1front_right_turn.html#a6eac0f7cc22f11d96b675c7523a8b662", null ],
     [ "pid0_iZone", "structmotor_config_1_1drive_1_1front_right_turn.html#a814c416a2255f67042fadc24b85645eb", null ],
@@ -12,5 +13,5 @@ var structmotor_config_1_1drive_1_1front_right_turn =
     [ "remoteFilter0_addr", "structmotor_config_1_1drive_1_1front_right_turn.html#a43d3bc61cdd83d64ce0eedbe8e6e9b45", null ],
     [ "remoteFilter0_type", "structmotor_config_1_1drive_1_1front_right_turn.html#ad7158b17ac9a7cefd14e6e00ead36861", null ],
     [ "sensorPhase", "structmotor_config_1_1drive_1_1front_right_turn.html#aa3dba271973e1e89e3049bd4a2874f30", null ],
-    [ "voltCompSat", "structmotor_config_1_1drive_1_1front_right_turn.html#a99bf02f3bf9c872ad17b8e5ee71dfff9", null ]
+    [ "voltCompSat", "structmotor_config_1_1drive_1_1front_right_turn.html#ab9dcbb43e95dc78f92e0cc10ac92a0d6", null ]
 ];
