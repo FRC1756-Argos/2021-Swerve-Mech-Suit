@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include <units/time.h>
 #include <units/current.h>
+#include <units/time.h>
 
 #include "compileTimeMemberCheck.h"
 #include "ctre/Phoenix.h"
@@ -117,9 +117,7 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
   if constexpr (has_pid0_allowableError<T>{}) {
     config.slot0.allowableClosedloopError = T::pid0_allowableError;
   }
-  if constexpr (has_supplyCurrentLimit<T>{} ||
-                has_supplyCurrentThreshold<T>{} ||
-                has_supplyCurrentThresholdTime<T>{} ) {
+  if constexpr (has_supplyCurrentLimit<T>{} || has_supplyCurrentThreshold<T>{} || has_supplyCurrentThresholdTime<T>{}) {
     config.supplyCurrLimit.enable = true;
     if constexpr (has_supplyCurrentLimit<T>{}) {
       constexpr units::ampere_t currentLimit = T::supplyCurrentLimit;
@@ -137,9 +135,7 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
       config.supplyCurrLimit.triggerThresholdTime = currentThresholdTime.to<double>();
     }
   }
-  if constexpr (has_forwardLimit_source<T>{} ||
-                has_forwardLimit_deviceID<T>{} ||
-                has_forwardLimit_normalState<T>{}) {
+  if constexpr (has_forwardLimit_source<T>{} || has_forwardLimit_deviceID<T>{} || has_forwardLimit_normalState<T>{}) {
     if constexpr (has_forwardLimit_source<T>{}) {
       constexpr ctre::phoenix::motorcontrol::LimitSwitchSource source = T::forwardLimit_source;
       if constexpr (source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated &&
@@ -147,15 +143,16 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
         static_assert(has_forwardLimit_deviceID<T>{}, "Forward limit switch requires remote source device ID");
       }
       if constexpr (source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated) {
-        static_assert(has_forwardLimit_normalState<T>{} && T::forwardLimit_normalState != ctre::phoenix::motorcontrol::LimitSwitchNormal_Disabled,
+        static_assert(has_forwardLimit_normalState<T>{} &&
+                          T::forwardLimit_normalState != ctre::phoenix::motorcontrol::LimitSwitchNormal_Disabled,
                       "Forward limit switch configuration requires both source and normal state");
       }
       config.forwardLimitSwitchSource = T::forwardLimit_source;
     }
     if constexpr (has_forwardLimit_deviceID<T>{}) {
-      static_assert (has_forwardLimit_source<T>{} &&
-                    T::forwardLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated &&
-                    T::forwardLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_FeedbackConnector,
+      static_assert(has_forwardLimit_source<T>{} &&
+                        T::forwardLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated &&
+                        T::forwardLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_FeedbackConnector,
                     "Forward limit switch device ID has no effect when limit source is not remote");
       config.forwardLimitSwitchDeviceID = T::forwardLimit_deviceID;
     }
@@ -166,9 +163,7 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
       config.forwardLimitSwitchNormal = T::forwardLimit_normalState;
     }
   }
-  if constexpr (has_reverseLimit_source<T>{} ||
-                has_reverseLimit_deviceID<T>{} ||
-                has_reverseLimit_normalState<T>{}) {
+  if constexpr (has_reverseLimit_source<T>{} || has_reverseLimit_deviceID<T>{} || has_reverseLimit_normalState<T>{}) {
     if constexpr (has_reverseLimit_source<T>{}) {
       constexpr ctre::phoenix::motorcontrol::LimitSwitchSource source = T::reverseLimit_source;
       if constexpr (source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated &&
@@ -176,15 +171,16 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
         static_assert(has_reverseLimit_deviceID<T>{}, "Reverse limit switch requires remote source device ID");
       }
       if constexpr (source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated) {
-        static_assert(has_reverseLimit_normalState<T>{} && T::reverseLimit_normalState != ctre::phoenix::motorcontrol::LimitSwitchNormal_Disabled,
+        static_assert(has_reverseLimit_normalState<T>{} &&
+                          T::reverseLimit_normalState != ctre::phoenix::motorcontrol::LimitSwitchNormal_Disabled,
                       "Reverse limit switch configuration requires both source and normal state");
       }
       config.reverseLimitSwitchSource = T::reverseLimit_source;
     }
     if constexpr (has_reverseLimit_deviceID<T>{}) {
       static_assert(has_reverseLimit_source<T>{} &&
-                    T::reverseLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated &&
-                    T::reverseLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_FeedbackConnector,
+                        T::reverseLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_Deactivated &&
+                        T::reverseLimit_source != ctre::phoenix::motorcontrol::LimitSwitchSource_FeedbackConnector,
                     "Reverse limit switch device ID has no effect when limit source is not remote");
       config.reverseLimitSwitchDeviceID = T::reverseLimit_deviceID;
     }
