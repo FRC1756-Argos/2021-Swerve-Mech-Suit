@@ -11,15 +11,18 @@
 
 HAS_MEMBER(direction)
 HAS_MEMBER(initMode)
-HAS_MEMBER(range)
 HAS_MEMBER(magOffset)
+HAS_MEMBER(range)
 
 /**
  * @brief Configures a CTRE CanCoder with only the fields provided.  All other fields
  *        are given the factory default values.
  *
  * @tparam T Structure containing any combination of the following members:
- *           direction, initMode, range, magOffset
+ *           - direction
+ *           - initMode
+ *           - magOffset
+ *           - range
  * @param encoder CANCoder object to configure
  * @param configTimeout Time to wait for response from CANCoder
  * @return true Configuration succeeded

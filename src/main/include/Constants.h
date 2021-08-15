@@ -12,8 +12,10 @@
 #include <frc/SPI.h>
 #include <units/angle.h>
 #include <units/angular_velocity.h>
+#include <units/current.h>
 #include <units/length.h>
 #include <units/velocity.h>
+#include <units/voltage.h>
 
 #include "argosLib/general/interpolation.h"
 
@@ -154,32 +156,37 @@ namespace motorConfig {
     struct frontLeftDrive {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
     };
     struct frontRightDrive {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
     };
     struct rearRightDrive {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
     };
     struct rearLeftDrive {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
     };
     struct frontLeftTurn {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
       constexpr static auto remoteFilter0_addr = address::encoder::frontLeftTurn;
       constexpr static auto remoteFilter0_type =
           ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
@@ -194,8 +201,9 @@ namespace motorConfig {
     struct frontRightTurn {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
       constexpr static auto remoteFilter0_addr = address::encoder::frontRightTurn;
       constexpr static auto remoteFilter0_type =
           ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
@@ -210,8 +218,9 @@ namespace motorConfig {
     struct rearRightTurn {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
       constexpr static auto remoteFilter0_addr = address::encoder::rearRightTurn;
       constexpr static auto remoteFilter0_type =
           ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
@@ -226,8 +235,9 @@ namespace motorConfig {
     struct rearLeftTurn {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static bool sensorPhase = false;
+      constexpr static auto neutralDeadband = 0.001;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Brake;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
       constexpr static auto remoteFilter0_addr = address::encoder::rearLeftTurn;
       constexpr static auto remoteFilter0_type =
           ctre::phoenix::motorcontrol::RemoteSensorSource::RemoteSensorSource_CANCoder;
@@ -244,7 +254,7 @@ namespace motorConfig {
     struct intakeMotor {
       constexpr static auto inverted = ctre::phoenix::motorcontrol::InvertType::None;
       constexpr static auto neutralMode = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-      constexpr static double voltCompSat = 11.0;
+      constexpr static auto voltCompSat = 11.0_V;
     };
   }  // namespace intake
 }  // namespace motorConfig

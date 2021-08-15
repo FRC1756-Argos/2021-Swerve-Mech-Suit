@@ -5,32 +5,43 @@
 #pragma once
 
 #include <units/time.h>
+#include <units/voltage.h>
 
 #include "compileTimeMemberCheck.h"
 #include "ctre/Phoenix.h"
 
 HAS_MEMBER(inverted)
-HAS_MEMBER(sensorPhase)
 HAS_MEMBER(neutralMode)
-HAS_MEMBER(voltCompSat)
-HAS_MEMBER(remoteFilter0_addr)
-HAS_MEMBER(remoteFilter0_type)
-HAS_MEMBER(pid0_selectedSensor)
-HAS_MEMBER(pid0_kP)
-HAS_MEMBER(pid0_kI)
+HAS_MEMBER(pid0_allowableError)
+HAS_MEMBER(pid0_iZone)
 HAS_MEMBER(pid0_kD)
 HAS_MEMBER(pid0_kF)
-HAS_MEMBER(pid0_iZone)
-HAS_MEMBER(pid0_allowableError)
+HAS_MEMBER(pid0_kI)
+HAS_MEMBER(pid0_kP)
+HAS_MEMBER(pid0_selectedSensor)
+HAS_MEMBER(remoteFilter0_addr)
+HAS_MEMBER(remoteFilter0_type)
+HAS_MEMBER(sensorPhase)
+HAS_MEMBER(voltCompSat)
 
 /**
  * @brief Configures a CTRE TalonSRX with only the fields provided.  All other fields
  *        are given the factory default values.
  *
  * @tparam T Structure containing any combination of the following members:
- *           inverted, sensorPhase, neutralMode, voltCompSat, remoteFilter0_addr,
- *           remoteFilter0_type, pid0_selectedSensor, pid0_kP, pid0_kI, pid0_kD,
- *           pid0_kF, pid0_iZone, pid0_allowableError
+ *           - inverted
+ *           - neutralMode
+ *           - pid0_allowableError
+ *           - pid0_iZone
+ *           - pid0_kD,
+ *           - pid0_kF
+ *           - pid0_kI
+ *           - pid0_kP
+ *           - pid0_selectedSensor
+ *           - remoteFilter0_addr,
+ *           - remoteFilter0_type
+ *           - sensorPhase
+ *           - voltCompSat
  * @param motorController TalonSRX object to configure
  * @param configTimeout Time to wait for response from TalonSRX
  * @return true Configuration succeeded
@@ -53,7 +64,8 @@ bool TalonSRXConfig(WPI_TalonSRX& motorController, units::millisecond_t configTi
     motorController.SetNeutralMode(T::neutralMode);
   }
   if constexpr (has_voltCompSat<T>{}) {
-    config.voltageCompSaturation = T::voltCompSat;
+    constexpr units::volt_t voltage = T::voltCompSat;
+    config.voltageCompSaturation = voltage.to<double>();
     motorController.EnableVoltageCompensation(true);
   } else {
     motorController.EnableVoltageCompensation(false);
