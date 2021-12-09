@@ -225,6 +225,7 @@ void DriveSubsystem::Home(const units::degree_t currentAngle) {
 }
 
 void DriveSubsystem::SetFieldOrientation(const units::degree_t currentAngle) {
+  /// @TODO: Apply offset instead of always set to 0
   m_fieldOrientationOffset = m_IMU.GetRotation2d();
 }
 
