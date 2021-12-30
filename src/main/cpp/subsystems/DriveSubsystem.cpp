@@ -130,22 +130,26 @@ void DriveSubsystem::SwerveDrive(const double fwVelocity, const double latVeloci
       Optimize(moduleStates.at(ModuleIndex::frontLeft),
                measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontLeft.GetSelectedSensorPosition()),
                measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnFrontLeft.GetSelectedSensorVelocity()),
-               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveFrontLeft.GetSelectedSensorVelocity()));
+               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveFrontLeft.GetSelectedSensorVelocity()),
+               speedLimits::drive::maxVelocity);
   moduleStates.at(ModuleIndex::frontRight) =
       Optimize(moduleStates.at(ModuleIndex::frontRight),
                measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnFrontRight.GetSelectedSensorPosition()),
                measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnFrontRight.GetSelectedSensorVelocity()),
-               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveFrontRight.GetSelectedSensorVelocity()));
+               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveFrontRight.GetSelectedSensorVelocity()),
+               speedLimits::drive::maxVelocity);
   moduleStates.at(ModuleIndex::rearRight) =
       Optimize(moduleStates.at(ModuleIndex::rearRight),
                measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnRearRight.GetSelectedSensorPosition()),
                measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnRearRight.GetSelectedSensorVelocity()),
-               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveRearRight.GetSelectedSensorVelocity()));
+               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveRearRight.GetSelectedSensorVelocity()),
+               speedLimits::drive::maxVelocity);
   moduleStates.at(ModuleIndex::rearLeft) =
       Optimize(moduleStates.at(ModuleIndex::rearLeft),
                measureUp::sensorConversion::swerveRotate::toAngle(m_motorTurnRearLeft.GetSelectedSensorPosition()),
                measureUp::sensorConversion::swerveRotate::toAngVel(m_motorTurnRearLeft.GetSelectedSensorVelocity()),
-               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveRearLeft.GetSelectedSensorVelocity()));
+               measureUp::sensorConversion::swerveDrive::toVel(m_motorDriveRearLeft.GetSelectedSensorVelocity()),
+               speedLimits::drive::maxVelocity);
 
   // Write optimized angles to dashboard
   frc::SmartDashboard::PutNumber("drive/frontLeft/optimizedTargetAngle",

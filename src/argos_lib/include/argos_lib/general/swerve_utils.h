@@ -60,12 +60,14 @@ namespace argos_lib {
      * @param currentModuleAngle Module rotation angle in relative or absolute position
      * @param currentModuleAngularRate Current module rotation speed.  To prevent rapid changes in rotation direction.
      * @param currentModuleDriveVel Current module drive velocity.  To prevent rapid changes in drive motor velocity.
+     * @param maxVelocity Max velocity for determining max transition change thresholds
      * @return Optimized swerve module state that results in same motion as desiredState
      */
     frc::SwerveModuleState Optimize(frc::SwerveModuleState desiredState,
                                     units::degree_t currentModuleAngle,
                                     units::degrees_per_second_t currentModuleAngularRate,
-                                    units::feet_per_second_t currentModuleDriveVel);
+                                    units::feet_per_second_t currentModuleDriveVel,
+                                    units::feet_per_second_t maxVelocity);
 
     /**
      * @brief Representation of the absolute encoder position of each module at home position
