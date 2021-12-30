@@ -42,42 +42,42 @@ namespace argos_lib {
     HAS_MEMBER(voltCompSat)
 
     /**
- * @brief Configures a CTRE Falcon with only the fields provided.  All other fields
- *        are given the factory default values.
- *
- * @tparam T Structure containing any combination of the following members:
- *           - forwardLimit_deviceID
- *           - forwardLimit_normalState
- *           - forwardLimit_source
- *           - inverted
- *           - neutralDeadband
- *           - neutralMode
- *           - nominalOutputForward
- *           - nominalOutputReverse
- *           - peakOutputForward
- *           - peakOutputReverse
- *           - pid0_allowableError
- *           - pid0_iZone
- *           - pid0_kD
- *           - pid0_kF
- *           - pid0_kI
- *           - pid0_kP
- *           - pid0_selectedSensor
- *           - remoteFilter0_addr
- *           - remoteFilter0_type
- *           - reverseLimit_deviceID
- *           - reverseLimit_normalState
- *           - reverseLimit_source
- *           - sensorPhase
- *           - supplyCurrentLimit
- *           - supplyCurrentThreshold
- *           - supplyCurrentThresholdTime
- *           - voltCompSat
- * @param motorController Falcon object to configure
- * @param configTimeout Time to wait for response from Falcon
- * @return true Configuration succeeded
- * @return false Configuration failed
- */
+     * @brief Configures a CTRE Falcon with only the fields provided.  All other fields
+     *        are given the factory default values.
+     *
+     * @tparam T Structure containing any combination of the following members:
+     *           - forwardLimit_deviceID
+     *           - forwardLimit_normalState
+     *           - forwardLimit_source
+     *           - inverted
+     *           - neutralDeadband
+     *           - neutralMode
+     *           - nominalOutputForward
+     *           - nominalOutputReverse
+     *           - peakOutputForward
+     *           - peakOutputReverse
+     *           - pid0_allowableError
+     *           - pid0_iZone
+     *           - pid0_kD
+     *           - pid0_kF
+     *           - pid0_kI
+     *           - pid0_kP
+     *           - pid0_selectedSensor
+     *           - remoteFilter0_addr
+     *           - remoteFilter0_type
+     *           - reverseLimit_deviceID
+     *           - reverseLimit_normalState
+     *           - reverseLimit_source
+     *           - sensorPhase
+     *           - supplyCurrentLimit
+     *           - supplyCurrentThreshold
+     *           - supplyCurrentThresholdTime
+     *           - voltCompSat
+     * @param motorController Falcon object to configure
+     * @param configTimeout Time to wait for response from Falcon
+     * @return true Configuration succeeded
+     * @return false Configuration failed
+     */
     template <typename T>
     bool FalconConfig(TalonFX& motorController, units::millisecond_t configTimeout) {
       TalonFXConfiguration config;

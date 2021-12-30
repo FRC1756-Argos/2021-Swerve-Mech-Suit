@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "adi/ADIS16448_IMU.h"
+#include "argos_lib/general/swerve_utils.h"
 #include "ctre/Phoenix.h"
 
 class DriveSubsystem : public frc2::SubsystemBase {
@@ -22,7 +23,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
     robotCentric,
   };
 
-  DriveSubsystem();
+  explicit DriveSubsystem(std::unique_ptr<argos_lib::swerve::SwerveHomeStorageInterface> homingStorage);
 
   void SwerveDrive(const double fwVelocity, const double latVelocity, const double rotateVelocity);
 
@@ -61,6 +62,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
   units::angular_velocity::degrees_per_second_t m_maxAngularRate;
 
   std::unique_ptr<frc::SwerveDriveKinematics<4>> m_pSwerveKinematicsModel;
+  std::unique_ptr<argos_lib::swerve::SwerveHomeStorageInterface> m_pHomingStorage;
 
   ControlMode m_activeControlMode;
 };
