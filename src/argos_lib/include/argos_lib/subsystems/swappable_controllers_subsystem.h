@@ -10,8 +10,8 @@
 
 namespace argos_lib {
 
-class SwappableControllersSubsystem : public frc2::SubsystemBase {
-  public:
+  class SwappableControllersSubsystem : public frc2::SubsystemBase {
+   public:
     SwappableControllersSubsystem() = delete;
     /**
      * @brief Construct a new Swappable Controllers Subsystem object with two controllers
@@ -49,15 +49,15 @@ class SwappableControllersSubsystem : public frc2::SubsystemBase {
      */
     void VibrateAll(argos_lib::VibrationModel newModel);
 
-  private:
-    argos_lib::XboxController m_driverController; ///< Managed driver controller
-    argos_lib::XboxController m_operatorController; ///< Managed operator controller
-    bool m_swapped; ///< Indicates if controllers are currently swapped
+   private:
+    argos_lib::XboxController m_driverController;    ///< Managed driver controller
+    argos_lib::XboxController m_operatorController;  ///< Managed operator controller
+    bool m_swapped;                                  ///< Indicates if controllers are currently swapped
 
     /**
      * @brief Update vibration on both controllers based on their active vibration models
      */
     void UpdateVibration();
-};
+  };
 
-} // namespace argos_lib
+}  // namespace argos_lib

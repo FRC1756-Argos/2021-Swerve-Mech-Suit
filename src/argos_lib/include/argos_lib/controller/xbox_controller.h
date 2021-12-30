@@ -8,8 +8,8 @@
 
 #include <array>
 
-#include "vibration.h"
 #include "argos_lib/general/debounce_settings.h"
+#include "vibration.h"
 
 namespace argos_lib {
 
@@ -197,22 +197,22 @@ namespace argos_lib {
      * @brief State of an individual button
      */
     struct UpdateStatus {
-      bool pressed = false; ///< Transitioned from inactive to active
-      bool released = false; ///< Transitioned from active to inactive
-      bool debouncePress = false; ///< Transitioned from inactive to active after debounce applied
-      bool debounceRelease = false; ///< Transitioned from active to inactive after debounce applied
-      bool rawActive = false; ///< Raw button status
-      bool debounceActive = false; ///< Button status after debounce applied
+      bool pressed = false;          ///< Transitioned from inactive to active
+      bool released = false;         ///< Transitioned from active to inactive
+      bool debouncePress = false;    ///< Transitioned from inactive to active after debounce applied
+      bool debounceRelease = false;  ///< Transitioned from active to inactive after debounce applied
+      bool rawActive = false;        ///< Raw button status
+      bool debounceActive = false;   ///< Button status after debounce applied
     };
 
     /**
      * @brief Parsed directional pad button states
      */
     struct DPadButtons {
-      bool up = false; ///< Up active (including adjacent diagonals)
-      bool right = false; ///< Right active (including adjacent diagonals)
-      bool down = false; ///< Down active (including adjacent diagonals)
-      bool left = false; ///< Left active (including adjacent diagonals)
+      bool up = false;     ///< Up active (including adjacent diagonals)
+      bool right = false;  ///< Right active (including adjacent diagonals)
+      bool down = false;   ///< Down active (including adjacent diagonals)
+      bool left = false;   ///< Left active (including adjacent diagonals)
     };
 
     /**
@@ -231,7 +231,7 @@ namespace argos_lib {
      */
     DPadButtons GetPOVButtons();
 
-    constexpr static double analogTriggerThresh = 0.5; ///< Percent trigger pressed to consider as a button press
+    constexpr static double analogTriggerThresh = 0.5;  ///< Percent trigger pressed to consider as a button press
 
     std::array<DebounceSettings, static_cast<int>(Button::COUNT)> m_buttonDebounceSettings;
     std::array<bool, static_cast<int>(Button::COUNT)> m_buttonDebounceStatus;
@@ -239,7 +239,7 @@ namespace argos_lib {
     std::array<std::chrono::time_point<std::chrono::steady_clock>, static_cast<int>(Button::COUNT)>
         m_buttonDebounceStableTime;
 
-    VibrationModel m_vibrationModel; ///< Active vibration model
+    VibrationModel m_vibrationModel;  ///< Active vibration model
   };
 
 }  // namespace argos_lib

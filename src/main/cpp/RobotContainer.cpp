@@ -99,7 +99,8 @@ void RobotContainer::ConfigureButtonBindings() {
   intakeReverseTrigger.WhenActive([this]() { m_intake.Eject(); }, {&m_intake});
   intakeReverseTrigger.WhenInactive([this]() { m_intake.Stop(); }, {&m_intake});
   triggerHomeCombo.WhenActive([this]() { m_drive.Home(0_deg); }, {&m_drive});
-  (driverTriggerSwapCombo || operatorTriggerSwapCombo).WhileActiveOnce(argos_lib::SwapControllersCommand(&m_controllers));
+  (driverTriggerSwapCombo || operatorTriggerSwapCombo)
+      .WhileActiveOnce(argos_lib::SwapControllersCommand(&m_controllers));
   triggerResetFieldOrientation.WhenActive([this]() { m_drive.SetFieldOrientation(0_deg); }, {&m_drive});
 }
 

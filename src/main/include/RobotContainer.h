@@ -17,9 +17,6 @@
 #include "subsystems/DriveSubsystem.h"
 #include "subsystems/IntakeSubsystem.h"
 
-using argos_lib::InterpolationMap;
-using argos_lib::SwappableControllersSubsystem;
-
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -40,16 +37,17 @@ class RobotContainer {
   DriveSubsystem m_drive;
   IntakeSubsystem m_intake;
   ExampleSubsystem m_exampleSubsystem;
-  SwappableControllersSubsystem m_controllers;
+  argos_lib::SwappableControllersSubsystem m_controllers;
 
   // Commands
   ExampleCommand m_autonomousCommand;
 
-  InterpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()>
+  argos_lib::InterpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal),
+                              controllerMap::driveLongSpeed.size()>
       m_driveLonSpeedMap;
-  InterpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()>
+  argos_lib::InterpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()>
       m_driveLatSpeedMap;
-  InterpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()>
+  argos_lib::InterpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()>
       m_driveRotSpeedMap;
 
   void ConfigureButtonBindings();

@@ -14,8 +14,8 @@ namespace argos_lib {
    * @brief Vibration percentages that can be sent to controller for user feedback
    */
   struct VibrationStatus {
-    double intensityLeft = 0.0; ///< Intensity percent for left vibration [0,1.0]
-    double intensityRight = 0.0; ///< Intensity percent for right vibration [0,1.0]
+    double intensityLeft = 0.0;   ///< Intensity percent for left vibration [0,1.0]
+    double intensityRight = 0.0;  ///< Intensity percent for right vibration [0,1.0]
   };
 
   using VibrationModel = std::function<VibrationStatus()>;
@@ -76,7 +76,9 @@ namespace argos_lib {
    * @param intensityOff Vibration percent output when in intensityOff portion of cycle [0,1.0]
    * @return VibrationModel
    */
-  VibrationModel VibrationAlternatePulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff = 0.0);
+  VibrationModel VibrationAlternatePulse(units::millisecond_t pulsePeriod,
+                                         double intensityOn,
+                                         double intensityOff = 0.0);
 
   /**
    * @brief Smoothly transition vibration between intensityOn and intensityOff levels.  Left output
@@ -88,6 +90,8 @@ namespace argos_lib {
    * @param intensityOff Vibration percent output when in trough of intensityOff portion of cycle [0,1.0]
    * @return VibrationModel
    */
-  VibrationModel VibrationAlternateWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff = 0.0);
+  VibrationModel VibrationAlternateWave(units::millisecond_t pulsePeriod,
+                                        double intensityOn,
+                                        double intensityOff = 0.0);
 
 }  // namespace argos_lib

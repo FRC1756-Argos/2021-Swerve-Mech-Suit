@@ -9,52 +9,52 @@
 
 namespace argos_lib {
 
-template <class T>
-struct InterpMapPoint {
-  T inVal;
-  T outVal;
+  template <class T>
+  struct InterpMapPoint {
+    T inVal;
+    T outVal;
 
-  constexpr InterpMapPoint(T in, T out) : inVal(in), outVal(out) {}
+    constexpr InterpMapPoint(T in, T out) : inVal(in), outVal(out) {}
 
-  constexpr bool operator<(const InterpMapPoint<T>& other) { return inVal < other.inVal; }
-  constexpr bool operator==(const InterpMapPoint<T>& other) { return inVal == other.inVal; }
-};
+    constexpr bool operator<(const InterpMapPoint<T>& other) { return inVal < other.inVal; }
+    constexpr bool operator==(const InterpMapPoint<T>& other) { return inVal == other.inVal; }
+  };
 
-template <class T>
-constexpr bool operator<(const InterpMapPoint<T>& a, const T& b) {
-  return a.inVal < b;
-}
-
-template <class T>
-constexpr bool operator<(const T& a, const InterpMapPoint<T>& b) {
-  return a < b.inVal;
-}
-
-template <class T, int size>
-class InterpolationMap {
- public:
-  InterpolationMap() = delete;
-  constexpr InterpolationMap(std::array<InterpMapPoint<T>, size> initArray) : m_mapArray(initArray) {
-    // assert(("Map must contain at least one value.", !initArray.empty()));
-    // assert(("Map values must be sorted.", std::is_sorted(initArray.cbegin(), initArray.cend())));
+  template <class T>
+  constexpr bool operator<(const InterpMapPoint<T>& a, const T& b) {
+    return a.inVal < b;
   }
 
-  constexpr T Map(const T inVal) const {
-    if (inVal >= m_mapArray.back().inVal) {
-      return m_mapArray.back().outVal;
-    } else if (inVal <= m_mapArray.front().inVal) {
-      return m_mapArray.front().outVal;
-    } else {
-      auto afterPoint{std::lower_bound(m_mapArray.cbegin(), m_mapArray.cend(), inVal)};
-      auto beforePoint{std::prev(afterPoint)};
-      const auto lerpPct = (inVal - beforePoint->inVal) / (afterPoint->inVal - beforePoint->inVal);
-      return beforePoint->outVal + lerpPct * (afterPoint->outVal - beforePoint->outVal);
+  template <class T>
+  constexpr bool operator<(const T& a, const InterpMapPoint<T>& b) {
+    return a < b.inVal;
+  }
+
+  template <class T, int size>
+  class InterpolationMap {
+   public:
+    InterpolationMap() = delete;
+    constexpr InterpolationMap(std::array<InterpMapPoint<T>, size> initArray) : m_mapArray(initArray) {
+      // assert(("Map must contain at least one value.", !initArray.empty()));
+      // assert(("Map values must be sorted.", std::is_sorted(initArray.cbegin(), initArray.cend())));
     }
-  }
-  constexpr T operator()(const T inVal) { return Map(inVal); }
 
- private:
-  std::array<InterpMapPoint<T>, size> m_mapArray;
-};
+    constexpr T Map(const T inVal) const {
+      if (inVal >= m_mapArray.back().inVal) {
+        return m_mapArray.back().outVal;
+      } else if (inVal <= m_mapArray.front().inVal) {
+        return m_mapArray.front().outVal;
+      } else {
+        auto afterPoint{std::lower_bound(m_mapArray.cbegin(), m_mapArray.cend(), inVal)};
+        auto beforePoint{std::prev(afterPoint)};
+        const auto lerpPct = (inVal - beforePoint->inVal) / (afterPoint->inVal - beforePoint->inVal);
+        return beforePoint->outVal + lerpPct * (afterPoint->outVal - beforePoint->outVal);
+      }
+    }
+    constexpr T operator()(const T inVal) { return Map(inVal); }
 
-} // namespace argos_lib
+   private:
+    std::array<InterpMapPoint<T>, size> m_mapArray;
+  };
+
+}  // namespace argos_lib

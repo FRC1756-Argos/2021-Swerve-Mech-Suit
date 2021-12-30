@@ -20,7 +20,9 @@ VibrationModel argos_lib::VibrationConstant(double intensityLeft, double intensi
   return [intensityLeft, intensityRight]() { return VibrationStatus{intensityLeft, intensityRight}; };
 }
 
-VibrationModel argos_lib::VibrationSyncPulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel argos_lib::VibrationSyncPulse(units::millisecond_t pulsePeriod,
+                                             double intensityOn,
+                                             double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff]() {
     const auto periodTime =
@@ -33,8 +35,8 @@ VibrationModel argos_lib::VibrationSyncPulse(units::millisecond_t pulsePeriod, d
 }
 
 VibrationModel argos_lib::VibrationAlternatePulse(units::millisecond_t pulsePeriod,
-                                                 double intensityOn,
-                                                 double intensityOff) {
+                                                  double intensityOn,
+                                                  double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff]() {
     const auto periodTime =
@@ -61,8 +63,8 @@ VibrationModel argos_lib::VibrationSyncWave(units::millisecond_t pulsePeriod, do
 }
 
 VibrationModel argos_lib::VibrationAlternateWave(units::millisecond_t pulsePeriod,
-                                                double intensityOn,
-                                                double intensityOff) {
+                                                 double intensityOn,
+                                                 double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff]() {
     const auto periodTime =
