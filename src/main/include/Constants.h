@@ -19,8 +19,6 @@
 
 #include "argos_lib/general/interpolation.h"
 
-using argos_lib::InterpMapPoint;
-
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -262,6 +260,8 @@ namespace motorConfig {
 }  // namespace motorConfig
 
 namespace controllerMap {
+  using argos_lib::InterpMapPoint;
+
   [[maybe_unused]] constexpr std::array driveLongSpeed{InterpMapPoint{-1.0, 0.6},
                                                        InterpMapPoint{-0.75, 0.4},
                                                        InterpMapPoint{-0.15, 0.0},

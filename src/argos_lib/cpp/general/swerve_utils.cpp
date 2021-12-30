@@ -8,9 +8,9 @@
 
 #include "Constants.h"
 
-using argos_lib::swerve::NearestAngle;
-using argos_lib::swerve::InvertedAngle;
 using argos_lib::swerve::ConstrainAngle;
+using argos_lib::swerve::InvertedAngle;
+using argos_lib::swerve::NearestAngle;
 using argos_lib::swerve::Optimize;
 
 units::degree_t argos_lib::swerve::NearestAngle(units::degree_t desiredAngle, units::degree_t referenceAngle) {
@@ -34,7 +34,9 @@ units::degree_t argos_lib::swerve::InvertedAngle(units::degree_t desiredAngle, u
   return referenceAngle + units::math::copysign(revDistMag, -fwDist);
 }
 
-units::degree_t argos_lib::swerve::ConstrainAngle(units::degree_t inVal, units::degree_t minVal, units::degree_t maxVal) {
+units::degree_t argos_lib::swerve::ConstrainAngle(units::degree_t inVal,
+                                                  units::degree_t minVal,
+                                                  units::degree_t maxVal) {
   const auto range = maxVal - minVal;
   inVal = units::math::fmod(inVal - minVal, maxVal - minVal);
   if (inVal < 0_deg) {
