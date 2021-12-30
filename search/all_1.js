@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['button_11',['Button',['../class_argos_lib_1_1_xbox_controller.html#ad3be0303bd93ce9bb5c8c9382125cbd9',1,'ArgosLib::XboxController']]]
+  ['button_15',['Button',['../classargos__lib_1_1_xbox_controller.html#a067fb8b43b80533b5ec763b7105f40fc',1,'argos_lib::XboxController']]]
 ];

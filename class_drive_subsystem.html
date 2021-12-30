@@ -116,8 +116,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3407432f9123b97c5d0bfc8601db76c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3407432f9123b97c5d0bfc8601db76c2">DriveSubsystem</a> ()</td></tr>
-<tr class="separator:a3407432f9123b97c5d0bfc8601db76c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12c67da5155895c0d70a482cf3db2bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#ab12c67da5155895c0d70a482cf3db2bf">DriveSubsystem</a> (std::unique_ptr&lt; <a class="el" href="classargos__lib_1_1swerve_1_1_swerve_home_storage_interface.html">argos_lib::swerve::SwerveHomeStorageInterface</a> &gt; homingStorage)</td></tr>
+<tr class="separator:ab12c67da5155895c0d70a482cf3db2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f5fe56e12d9b30195b9c2039089a4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a6f5fe56e12d9b30195b9c2039089a4d1">SwerveDrive</a> (const double fwVelocity, const double latVelocity, const double rotateVelocity)</td></tr>
 <tr class="separator:a6f5fe56e12d9b30195b9c2039089a4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28743f54dc2c97c75c0e3a8026075de4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a28743f54dc2c97c75c0e3a8026075de4">Home</a> (const units::degree_t currentAngle)</td></tr>
@@ -172,6 +172,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a35e1081e1f4fe062a5ec0097d948e1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2834011a21774f369a7811a304540b29"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; frc::SwerveDriveKinematics&lt; 4 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a2834011a21774f369a7811a304540b29">m_pSwerveKinematicsModel</a></td></tr>
 <tr class="separator:a2834011a21774f369a7811a304540b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93b9da1a5f7ffd7df6736cc36ae6047e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classargos__lib_1_1swerve_1_1_swerve_home_storage_interface.html">argos_lib::swerve::SwerveHomeStorageInterface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a93b9da1a5f7ffd7df6736cc36ae6047e">m_pHomingStorage</a></td></tr>
+<tr class="separator:a93b9da1a5f7ffd7df6736cc36ae6047e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fbb3099c470cc6d5103bc5dccfeeb7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_drive_subsystem.html#adbbe91a7fd62cf12702601070d50b6eb">ControlMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drive_subsystem.html#a3fbb3099c470cc6d5103bc5dccfeeb7e">m_activeControlMode</a></td></tr>
 <tr class="separator:a3fbb3099c470cc6d5103bc5dccfeeb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -225,21 +227,29 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3407432f9123b97c5d0bfc8601db76c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3407432f9123b97c5d0bfc8601db76c2">&#9670;&nbsp;</a></span>DriveSubsystem()</h2>
+<a id="ab12c67da5155895c0d70a482cf3db2bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab12c67da5155895c0d70a482cf3db2bf">&#9670;&nbsp;</a></span>DriveSubsystem()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">DriveSubsystem::DriveSubsystem </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classargos__lib_1_1swerve_1_1_swerve_home_storage_interface.html">argos_lib::swerve::SwerveHomeStorageInterface</a> &gt;&#160;</td>
+          <td class="paramname"><em>homingStorage</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) Argos FRC Team 1756. Open Source Software; you can modify and/or share it under the terms of the license file in the root directory of this project. </dd></dl>
 
 </div>
 </div>
@@ -838,6 +848,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">WPI_TalonFX DriveSubsystem::m_motorTurnRearRight</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93b9da1a5f7ffd7df6736cc36ae6047e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93b9da1a5f7ffd7df6736cc36ae6047e">&#9670;&nbsp;</a></span>m_pHomingStorage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classargos__lib_1_1swerve_1_1_swerve_home_storage_interface.html">argos_lib::swerve::SwerveHomeStorageInterface</a>&gt; DriveSubsystem::m_pHomingStorage</td>
         </tr>
       </table>
   </td>

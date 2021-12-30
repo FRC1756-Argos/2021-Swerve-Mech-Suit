@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['vibrateall_561',['VibrateAll',['../class_swappable_controllers_subsystem.html#aa92dfe982482b6449509fcea7edd6ab7',1,'SwappableControllersSubsystem']]],
-  ['vibrationalternatepulse_562',['VibrationAlternatePulse',['../namespace_argos_lib.html#ade004be3654f571a72531045c029e1b0',1,'ArgosLib']]],
-  ['vibrationalternatewave_563',['VibrationAlternateWave',['../namespace_argos_lib.html#a520f361e74ba83c84bdc1c0f178bca06',1,'ArgosLib']]],
-  ['vibrationconstant_564',['VibrationConstant',['../namespace_argos_lib.html#a9cdb3bf4cab530dcabb1b09949bb7ac3',1,'ArgosLib::VibrationConstant(double)'],['../namespace_argos_lib.html#a9959d5b3f142ca38497c96c158253e55',1,'ArgosLib::VibrationConstant(double, double)']]],
-  ['vibrationoff_565',['VibrationOff',['../namespace_argos_lib.html#a0cccc3a1cca4ab16062900995dbf2c2b',1,'ArgosLib']]],
-  ['vibrationsyncpulse_566',['VibrationSyncPulse',['../namespace_argos_lib.html#a54cb59d32b02ad7748d051fa78797719',1,'ArgosLib']]],
-  ['vibrationsyncwave_567',['VibrationSyncWave',['../namespace_argos_lib.html#a0a6fe6332045c08597ebfed7f5cb63aa',1,'ArgosLib']]]
+  ['updatebutton_608',['UpdateButton',['../classargos__lib_1_1_xbox_controller.html#a9646359d9a7bd868f0973d53640c24dc',1,'argos_lib::XboxController']]],
+  ['updatevibration_609',['UpdateVibration',['../classargos__lib_1_1_xbox_controller.html#a37e4539aa4e0cc854c05ffb9a24ba6db',1,'argos_lib::XboxController::UpdateVibration()'],['../classargos__lib_1_1_swappable_controllers_subsystem.html#a838b20adf26856f0c543172253084e4f',1,'argos_lib::SwappableControllersSubsystem::UpdateVibration()']]]
 ];

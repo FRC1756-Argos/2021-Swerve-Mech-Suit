@@ -61,8 +61,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_constants_8h.html",
-"class_swappable_controllers_subsystem.html#aa92dfe982482b6449509fcea7edd6ab7",
-"structhas__supply_current_threshold_time_3_01_t_00_01decltype_07_07void_08_01_t_1_1supply_curren3fa30c8ecaf7482aa3292ba7a023b768.html"
+"classargos__lib_1_1swerve_1_1_swerve_home_storage_interface.html#a5be6c1c6349951055b78a4144fe64f6e",
+"structargos__lib_1_1falcon__config_1_1has__pid0__k_f_3_01_t_00_01decltype_07_07void_08_01_t_1_1pid0__k_f_00_01void_07_08_08_4.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

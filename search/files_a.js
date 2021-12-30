@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xboxcontroller_2ecpp_486',['XboxController.cpp',['../_xbox_controller_8cpp.html',1,'']]],
-  ['xboxcontroller_2eh_487',['XboxController.h',['../_xbox_controller_8h.html',1,'']]]
+  ['vibration_2ecpp_530',['vibration.cpp',['../vibration_8cpp.html',1,'']]],
+  ['vibration_2eh_531',['vibration.h',['../vibration_8h.html',1,'']]]
 ];

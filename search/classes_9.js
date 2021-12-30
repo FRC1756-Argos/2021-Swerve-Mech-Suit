@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xboxcontroller_431',['XboxController',['../class_argos_lib_1_1_xbox_controller.html',1,'ArgosLib']]]
+  ['vibrationstatus_470',['VibrationStatus',['../structargos__lib_1_1_vibration_status.html',1,'argos_lib']]]
 ];

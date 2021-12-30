@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['periodic_535',['Periodic',['../class_swappable_controllers_subsystem.html#a8f16b598b661a722e6f77570099bd619',1,'SwappableControllersSubsystem::Periodic()'],['../class_example_subsystem.html#ae3a0c58819a31cca623fcb2fb8af0e1c',1,'ExampleSubsystem::Periodic()'],['../class_intake_subsystem.html#ad2ccc2c89807a28001aa2c8d3bdc9bed',1,'IntakeSubsystem::Periodic()']]]
+  ['operator_28_29_578',['operator()',['../classargos__lib_1_1_interpolation_map.html#acc2eb12aabd5ed579bfbaf477c2b9068',1,'argos_lib::InterpolationMap']]],
+  ['operator_3c_579',['operator&lt;',['../structargos__lib_1_1_interp_map_point.html#a2d761db78ade0c771300ef681a03a555',1,'argos_lib::InterpMapPoint::operator&lt;()'],['../namespaceargos__lib.html#a8ed2d3f18efcdd9aa1e5b19535e380aa',1,'argos_lib::operator&lt;(const InterpMapPoint&lt; T &gt; &amp;a, const T &amp;b)'],['../namespaceargos__lib.html#a6ce4f96310a8fed0c43bba8c5cdb31f1',1,'argos_lib::operator&lt;(const T &amp;a, const InterpMapPoint&lt; T &gt; &amp;b)']]],
+  ['operator_3d_3d_580',['operator==',['../structargos__lib_1_1_interp_map_point.html#aae6d6d0df96790c21e676755d99c49c3',1,'argos_lib::InterpMapPoint']]],
+  ['operatorcontroller_581',['OperatorController',['../classargos__lib_1_1_swappable_controllers_subsystem.html#a6a137c6ef1768f6f621799055c66582b',1,'argos_lib::SwappableControllersSubsystem']]],
+  ['optimize_582',['Optimize',['../namespaceargos__lib_1_1swerve.html#acc421e76b48b21874789c52224edf454',1,'argos_lib::swerve']]]
 ];

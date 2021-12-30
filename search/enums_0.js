@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['axis_687',['Axis',['../class_argos_lib_1_1_xbox_controller.html#a88c0d9390eae229a759c643719bfd149',1,'ArgosLib::XboxController']]]
+  ['axis_746',['Axis',['../classargos__lib_1_1_xbox_controller.html#aff2bf847008c81f1269494f552285a86',1,'argos_lib::XboxController']]]
 ];

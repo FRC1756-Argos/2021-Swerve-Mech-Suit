@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['operator_28_29_246',['operator()',['../classinterpolation_map.html#a3d80b2fbea6f4e5f5fb33f2e20abbbec',1,'interpolationMap']]],
-  ['operator_3c_247',['operator&lt;',['../structinterp_map_point.html#a171265f9e9dfb6fb0d3e50db2fe092de',1,'interpMapPoint::operator&lt;()'],['../interpolation_8h.html#a9f86b23342a3d8ada0a0509cb197ac67',1,'operator&lt;(const interpMapPoint&lt; T &gt; &amp;a, const T &amp;b):&#160;interpolation.h'],['../interpolation_8h.html#afb1f81863d9d038f35ac943c1ab9b43b',1,'operator&lt;(const T &amp;a, const interpMapPoint&lt; T &gt; &amp;b):&#160;interpolation.h']]],
-  ['operator_3d_3d_248',['operator==',['../structinterp_map_point.html#a20340a519de19ffbc61a23b11a74a30f',1,'interpMapPoint']]],
-  ['operatorcontroller_249',['operatorController',['../class_swappable_controllers_subsystem.html#a2a4bcb73af8b9bdf1909c904e9b8b61c',1,'SwappableControllersSubsystem']]],
-  ['optimize_250',['Optimize',['../swerve_utils_8cpp.html#a9dbe0ef2409eec980733fb7b5b114d8b',1,'Optimize(frc::SwerveModuleState desiredState, units::degree_t currentModuleAngle, units::degrees_per_second_t currentModuleAngularRate, units::feet_per_second_t currentModuleDriveVel):&#160;swerveUtils.cpp'],['../swerve_utils_8h.html#ad66e3c1ed007f0a65bd0f9d038085f84',1,'Optimize(frc::SwerveModuleState, units::degree_t, units::degrees_per_second_t, units::feet_per_second_t):&#160;swerveUtils.cpp']]],
-  ['outval_251',['outVal',['../structinterp_map_point.html#af1d0759cb17c416b528889437dacb00b',1,'interpMapPoint']]]
+  ['operator_28_29_270',['operator()',['../classargos__lib_1_1_interpolation_map.html#acc2eb12aabd5ed579bfbaf477c2b9068',1,'argos_lib::InterpolationMap']]],
+  ['operator_3c_271',['operator&lt;',['../structargos__lib_1_1_interp_map_point.html#a2d761db78ade0c771300ef681a03a555',1,'argos_lib::InterpMapPoint::operator&lt;()'],['../namespaceargos__lib.html#a8ed2d3f18efcdd9aa1e5b19535e380aa',1,'argos_lib::operator&lt;(const InterpMapPoint&lt; T &gt; &amp;a, const T &amp;b)'],['../namespaceargos__lib.html#a6ce4f96310a8fed0c43bba8c5cdb31f1',1,'argos_lib::operator&lt;(const T &amp;a, const InterpMapPoint&lt; T &gt; &amp;b)']]],
+  ['operator_3d_3d_272',['operator==',['../structargos__lib_1_1_interp_map_point.html#aae6d6d0df96790c21e676755d99c49c3',1,'argos_lib::InterpMapPoint']]],
+  ['operatorcontroller_273',['OperatorController',['../classargos__lib_1_1_swappable_controllers_subsystem.html#a6a137c6ef1768f6f621799055c66582b',1,'argos_lib::SwappableControllersSubsystem']]],
+  ['optimize_274',['Optimize',['../namespaceargos__lib_1_1swerve.html#acc421e76b48b21874789c52224edf454',1,'argos_lib::swerve']]],
+  ['outval_275',['outVal',['../structargos__lib_1_1_interp_map_point.html#a8524389b28995815bf34092c9c0a9719',1,'argos_lib::InterpMapPoint']]]
 ];

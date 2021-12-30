@@ -10,7 +10,7 @@ var class_drive_subsystem =
       [ "rearRight", "class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89ba61fdda06930a7985aefd1e8b23a2bb72", null ],
       [ "rearLeft", "class_drive_subsystem.html#a1ae6a4186bcdd2edd3795067bb4dd89ba7c6f5fc81c6413d542892ae0c06ebbeb", null ]
     ] ],
-    [ "DriveSubsystem", "class_drive_subsystem.html#a3407432f9123b97c5d0bfc8601db76c2", null ],
+    [ "DriveSubsystem", "class_drive_subsystem.html#ab12c67da5155895c0d70a482cf3db2bf", null ],
     [ "Home", "class_drive_subsystem.html#a28743f54dc2c97c75c0e3a8026075de4", null ],
     [ "InitializeTurnEncoderAngles", "class_drive_subsystem.html#a3bc0dff46dd7b3cf9046f04784e902de", null ],
     [ "ModuleDriveSpeed", "class_drive_subsystem.html#a12648a8ecbcd2729bb396e2ce43b8de7", null ],
@@ -35,5 +35,6 @@ var class_drive_subsystem =
     [ "m_motorTurnFrontRight", "class_drive_subsystem.html#aac5b2b9179c8af81ad989a604ea3d6a6", null ],
     [ "m_motorTurnRearLeft", "class_drive_subsystem.html#a7663af4eb76c401391e226558a2b8112", null ],
     [ "m_motorTurnRearRight", "class_drive_subsystem.html#a0bf08f9e9191f5f76ff3eb3f9d07bcd0", null ],
+    [ "m_pHomingStorage", "class_drive_subsystem.html#a93b9da1a5f7ffd7df6736cc36ae6047e", null ],
     [ "m_pSwerveKinematicsModel", "class_drive_subsystem.html#a2834011a21774f369a7811a304540b29", null ]
 ];
