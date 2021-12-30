@@ -28,28 +28,28 @@ namespace argos_lib {
     HAS_MEMBER(voltCompSat)
 
     /**
- * @brief Configures a CTRE TalonSRX with only the fields provided.  All other fields
- *        are given the factory default values.
- *
- * @tparam T Structure containing any combination of the following members:
- *           - inverted
- *           - neutralMode
- *           - pid0_allowableError
- *           - pid0_iZone
- *           - pid0_kD,
- *           - pid0_kF
- *           - pid0_kI
- *           - pid0_kP
- *           - pid0_selectedSensor
- *           - remoteFilter0_addr,
- *           - remoteFilter0_type
- *           - sensorPhase
- *           - voltCompSat
- * @param motorController TalonSRX object to configure
- * @param configTimeout Time to wait for response from TalonSRX
- * @return true Configuration succeeded
- * @return false Configuration failed
- */
+     * @brief Configures a CTRE TalonSRX with only the fields provided.  All other fields
+     *        are given the factory default values.
+     *
+     * @tparam T Structure containing any combination of the following members:
+     *           - inverted
+     *           - neutralMode
+     *           - pid0_allowableError
+     *           - pid0_iZone
+     *           - pid0_kD,
+     *           - pid0_kF
+     *           - pid0_kI
+     *           - pid0_kP
+     *           - pid0_selectedSensor
+     *           - remoteFilter0_addr,
+     *           - remoteFilter0_type
+     *           - sensorPhase
+     *           - voltCompSat
+     * @param motorController TalonSRX object to configure
+     * @param configTimeout Time to wait for response from TalonSRX
+     * @return true Configuration succeeded
+     * @return false Configuration failed
+     */
     template <typename T>
     bool TalonSRXConfig(WPI_TalonSRX& motorController, units::millisecond_t configTimeout) {
       TalonSRXConfiguration config;

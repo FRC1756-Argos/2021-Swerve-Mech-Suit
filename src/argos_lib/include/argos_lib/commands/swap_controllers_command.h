@@ -12,20 +12,20 @@
 namespace argos_lib {
 
   /**
- * @brief Swaps rolls of two controllers.  Useful if one controller breaks during a match
- */
+   * @brief Swaps rolls of two controllers.  Useful if one controller breaks during a match
+   */
   class SwapControllersCommand : public frc2::CommandHelper<frc2::CommandBase, SwapControllersCommand> {
    public:
     explicit SwapControllersCommand(SwappableControllersSubsystem* controllers);
 
     /**
-   * @brief Indicate swap has started, but don't actually swap yet
-   */
+     * @brief Indicate swap has started, but don't actually swap yet
+     */
     void Initialize() override;
 
     /**
-   * @brief Swap controllers when trigger ends
-   */
+     * @brief Swap controllers when trigger ends
+     */
     void End(bool) override;
 
    private:

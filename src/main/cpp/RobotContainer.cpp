@@ -8,9 +8,16 @@
 #include <networktables/NetworkTableInstance.h>
 
 #include "Constants.h"
+#include "argos_lib/general/network_tables_homing_storage.h"
 
 RobotContainer::RobotContainer()
-    : m_controllers(address::joystick::driver, address::joystick::secondary)
+    : m_drive(std::make_unique<argos_lib::swerve::NetworkTablesHomingStorage>(
+          ntKeys::tableName,
+          ntKeys::subsystemDrive::homePosition::turnFrontLeft,
+          ntKeys::subsystemDrive::homePosition::turnFrontRight,
+          ntKeys::subsystemDrive::homePosition::turnRearRight,
+          ntKeys::subsystemDrive::homePosition::turnRearLeft))
+    , m_controllers(address::joystick::driver, address::joystick::secondary)
     , m_autonomousCommand(&m_exampleSubsystem)
     , m_driveLonSpeedMap(controllerMap::driveLongSpeed)
     , m_driveLatSpeedMap(controllerMap::driveLatSpeed)
