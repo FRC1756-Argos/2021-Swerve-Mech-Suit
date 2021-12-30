@@ -6,8 +6,11 @@
 
 #include <units/time.h>
 
-#include "compileTimeMemberCheck.h"
+#include "compile_time_member_check.h"
 #include "ctre/Phoenix.h"
+
+namespace argos_lib {
+namespace cancoder_config {
 
 HAS_MEMBER(direction)
 HAS_MEMBER(initMode)
@@ -48,3 +51,6 @@ bool CanCoderConfig(CANCoder& encoder, units::millisecond_t configTimeout) {
 
   return 0 != encoder.ConfigAllSettings(config, timeout);
 }
+
+} // namespace cancoder_config
+} // namespace argos_lib

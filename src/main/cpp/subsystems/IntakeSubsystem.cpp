@@ -5,7 +5,9 @@
 #include "subsystems/IntakeSubsystem.h"
 
 #include "Constants.h"
-#include "argosLib/config/talonSRXConfig.h"
+#include "argos_lib/config/talonsrx_config.h"
+
+using argos_lib::talonsrx_config::TalonSRXConfig;
 
 IntakeSubsystem::IntakeSubsystem() : m_intakeMotor(address::motor::intake), m_motorSpeed(0.0) {
   TalonSRXConfig<motorConfig::intake::intakeMotor>(m_intakeMotor, 100_ms);

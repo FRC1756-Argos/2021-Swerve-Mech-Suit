@@ -2,25 +2,25 @@
 ///            Open Source Software; you can modify and/or share it under the terms of
 ///            the license file in the root directory of this project.
 
-#include "argosLib/controller/Vibration.h"
+#include "argos_lib/controller/vibration.h"
 
 #include <chrono>
 
-using namespace ArgosLib;
+using namespace argos_lib;
 
-VibrationModel ArgosLib::VibrationOff() {
+VibrationModel argos_lib::VibrationOff() {
   return []() { return VibrationStatus{0.0, 0.0}; };
 }
 
-VibrationModel ArgosLib::VibrationConstant(double intensity) {
+VibrationModel argos_lib::VibrationConstant(double intensity) {
   return [intensity]() { return VibrationStatus{intensity, intensity}; };
 }
 
-VibrationModel ArgosLib::VibrationConstant(double intensityLeft, double intensityRight) {
+VibrationModel argos_lib::VibrationConstant(double intensityLeft, double intensityRight) {
   return [intensityLeft, intensityRight]() { return VibrationStatus{intensityLeft, intensityRight}; };
 }
 
-VibrationModel ArgosLib::VibrationSyncPulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel argos_lib::VibrationSyncPulse(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff]() {
     const auto periodTime =
@@ -32,7 +32,7 @@ VibrationModel ArgosLib::VibrationSyncPulse(units::millisecond_t pulsePeriod, do
   };
 }
 
-VibrationModel ArgosLib::VibrationAlternatePulse(units::millisecond_t pulsePeriod,
+VibrationModel argos_lib::VibrationAlternatePulse(units::millisecond_t pulsePeriod,
                                                  double intensityOn,
                                                  double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
@@ -46,7 +46,7 @@ VibrationModel ArgosLib::VibrationAlternatePulse(units::millisecond_t pulsePerio
   };
 }
 
-VibrationModel ArgosLib::VibrationSyncWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
+VibrationModel argos_lib::VibrationSyncWave(units::millisecond_t pulsePeriod, double intensityOn, double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();
   return [msPeriod, intensityOn, intensityOff]() {
     const auto periodTime =
@@ -60,7 +60,7 @@ VibrationModel ArgosLib::VibrationSyncWave(units::millisecond_t pulsePeriod, dou
   };
 }
 
-VibrationModel ArgosLib::VibrationAlternateWave(units::millisecond_t pulsePeriod,
+VibrationModel argos_lib::VibrationAlternateWave(units::millisecond_t pulsePeriod,
                                                 double intensityOn,
                                                 double intensityOff) {
   auto msPeriod = pulsePeriod.to<int>();

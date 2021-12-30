@@ -2,9 +2,9 @@
 ///            Open Source Software; you can modify and/or share it under the terms of
 ///            the license file in the root directory of this project.
 
-#include "argosLib/controller/XboxController.h"
+#include "argos_lib/controller/xbox_controller.h"
 
-using namespace ArgosLib;
+using namespace argos_lib;
 
 XboxController::XboxController(int port) : frc::GenericHID(port), m_vibrationModel(VibrationOff()) {
   m_buttonDebounceSettings.fill({0_ms, 0_ms});
@@ -13,7 +13,7 @@ XboxController::XboxController(int port) : frc::GenericHID(port), m_vibrationMod
   m_buttonDebounceStableTime.fill(std::chrono::steady_clock::now());
 }
 
-void XboxController::SetButtonDebounce(Button targetButton, debounceSetttings newSettings) {
+void XboxController::SetButtonDebounce(Button targetButton, DebounceSettings newSettings) {
   m_buttonDebounceSettings.at(static_cast<int>(targetButton)) = newSettings;
 }
 

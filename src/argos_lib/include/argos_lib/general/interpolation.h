@@ -7,37 +7,39 @@
 #include <algorithm>
 #include <array>
 
+namespace argos_lib {
+
 template <class T>
-struct interpMapPoint {
+struct InterpMapPoint {
   T inVal;
   T outVal;
 
-  constexpr interpMapPoint(T in, T out) : inVal(in), outVal(out) {}
+  constexpr InterpMapPoint(T in, T out) : inVal(in), outVal(out) {}
 
-  constexpr bool operator<(const interpMapPoint<T>& other) { return inVal < other.inVal; }
-  constexpr bool operator==(const interpMapPoint<T>& other) { return inVal == other.inVal; }
+  constexpr bool operator<(const InterpMapPoint<T>& other) { return inVal < other.inVal; }
+  constexpr bool operator==(const InterpMapPoint<T>& other) { return inVal == other.inVal; }
 };
 
 template <class T>
-constexpr bool operator<(const interpMapPoint<T>& a, const T& b) {
+constexpr bool operator<(const InterpMapPoint<T>& a, const T& b) {
   return a.inVal < b;
 }
 
 template <class T>
-constexpr bool operator<(const T& a, const interpMapPoint<T>& b) {
+constexpr bool operator<(const T& a, const InterpMapPoint<T>& b) {
   return a < b.inVal;
 }
 
 template <class T, int size>
-class interpolationMap {
+class InterpolationMap {
  public:
-  interpolationMap() = delete;
-  constexpr interpolationMap(std::array<interpMapPoint<T>, size> initArray) : m_mapArray(initArray) {
+  InterpolationMap() = delete;
+  constexpr InterpolationMap(std::array<InterpMapPoint<T>, size> initArray) : m_mapArray(initArray) {
     // assert(("Map must contain at least one value.", !initArray.empty()));
     // assert(("Map values must be sorted.", std::is_sorted(initArray.cbegin(), initArray.cend())));
   }
 
-  constexpr T map(const T inVal) {
+  constexpr T Map(const T inVal) const {
     if (inVal >= m_mapArray.back().inVal) {
       return m_mapArray.back().outVal;
     } else if (inVal <= m_mapArray.front().inVal) {
@@ -49,8 +51,10 @@ class interpolationMap {
       return beforePoint->outVal + lerpPct * (afterPoint->outVal - beforePoint->outVal);
     }
   }
-  constexpr T operator()(const T inVal) { return map(inVal); }
+  constexpr T operator()(const T inVal) { return Map(inVal); }
 
  private:
-  std::array<interpMapPoint<T>, size> m_mapArray;
+  std::array<InterpMapPoint<T>, size> m_mapArray;
 };
+
+} // namespace argos_lib

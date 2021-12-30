@@ -8,9 +8,13 @@
 #include <networktables/NetworkTableInstance.h>
 
 #include "Constants.h"
-#include "argosLib/config/canCoderConfig.h"
-#include "argosLib/config/falconConfig.h"
-#include "argosLib/general/swerveUtils.h"
+#include "argos_lib/config/cancoder_config.h"
+#include "argos_lib/config/falcon_config.h"
+#include "argos_lib/general/swerve_utils.h"
+
+using argos_lib::cancoder_config::CanCoderConfig;
+using argos_lib::falcon_config::FalconConfig;
+using argos_lib::swerve::Optimize;
 
 DriveSubsystem::DriveSubsystem()
     : m_motorDriveFrontLeft(address::motor::frontLeftDrive)

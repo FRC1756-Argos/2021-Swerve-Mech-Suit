@@ -9,13 +9,16 @@
 #include <frc2/command/button/Trigger.h>
 
 #include "Constants.h"
-#include "argosLib/commands/SwapControllersCommand.h"
-#include "argosLib/controller/XboxController.h"
-#include "argosLib/general/interpolation.h"
-#include "argosLib/subsystems/SwappableControllersSubsystem.h"
+#include "argos_lib/commands/swap_controllers_command.h"
+#include "argos_lib/controller/xbox_controller.h"
+#include "argos_lib/general/interpolation.h"
+#include "argos_lib/subsystems/swappable_controllers_subsystem.h"
 #include "commands/ExampleCommand.h"
 #include "subsystems/DriveSubsystem.h"
 #include "subsystems/IntakeSubsystem.h"
+
+using argos_lib::InterpolationMap;
+using argos_lib::SwappableControllersSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -42,11 +45,11 @@ class RobotContainer {
   // Commands
   ExampleCommand m_autonomousCommand;
 
-  interpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()>
+  InterpolationMap<decltype(controllerMap::driveLongSpeed.front().inVal), controllerMap::driveLongSpeed.size()>
       m_driveLonSpeedMap;
-  interpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()>
+  InterpolationMap<decltype(controllerMap::driveLatSpeed.front().inVal), controllerMap::driveLatSpeed.size()>
       m_driveLatSpeedMap;
-  interpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()>
+  InterpolationMap<decltype(controllerMap::driveRotSpeed.front().inVal), controllerMap::driveRotSpeed.size()>
       m_driveRotSpeedMap;
 
   void ConfigureButtonBindings();

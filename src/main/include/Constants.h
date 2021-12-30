@@ -17,7 +17,9 @@
 #include <units/velocity.h>
 #include <units/voltage.h>
 
-#include "argosLib/general/interpolation.h"
+#include "argos_lib/general/interpolation.h"
+
+using argos_lib::InterpMapPoint;
 
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
@@ -260,20 +262,20 @@ namespace motorConfig {
 }  // namespace motorConfig
 
 namespace controllerMap {
-  [[maybe_unused]] constexpr std::array driveLongSpeed{interpMapPoint{-1.0, 0.6},
-                                                       interpMapPoint{-0.75, 0.4},
-                                                       interpMapPoint{-0.15, 0.0},
-                                                       interpMapPoint{0.15, 0.0},
-                                                       interpMapPoint{0.75, -0.4},
-                                                       interpMapPoint{1.0, -0.6}};
-  [[maybe_unused]] constexpr std::array driveLatSpeed{interpMapPoint{-1.0, -0.6},
-                                                      interpMapPoint{-0.75, -0.4},
-                                                      interpMapPoint{-0.15, 0.0},
-                                                      interpMapPoint{0.15, 0.0},
-                                                      interpMapPoint{0.75, 0.4},
-                                                      interpMapPoint{1.0, 0.6}};
+  [[maybe_unused]] constexpr std::array driveLongSpeed{InterpMapPoint{-1.0, 0.6},
+                                                       InterpMapPoint{-0.75, 0.4},
+                                                       InterpMapPoint{-0.15, 0.0},
+                                                       InterpMapPoint{0.15, 0.0},
+                                                       InterpMapPoint{0.75, -0.4},
+                                                       InterpMapPoint{1.0, -0.6}};
+  [[maybe_unused]] constexpr std::array driveLatSpeed{InterpMapPoint{-1.0, -0.6},
+                                                      InterpMapPoint{-0.75, -0.4},
+                                                      InterpMapPoint{-0.15, 0.0},
+                                                      InterpMapPoint{0.15, 0.0},
+                                                      InterpMapPoint{0.75, 0.4},
+                                                      InterpMapPoint{1.0, 0.6}};
   [[maybe_unused]] constexpr std::array driveRotSpeed{
-      interpMapPoint{-1.0, -1.0}, interpMapPoint{-0.15, 0.0}, interpMapPoint{0.15, 0.0}, interpMapPoint{1.0, 1.0}};
+      InterpMapPoint{-1.0, -1.0}, InterpMapPoint{-0.15, 0.0}, InterpMapPoint{0.15, 0.0}, InterpMapPoint{1.0, 1.0}};
 }  // namespace controllerMap
 
 namespace ntKeys {
