@@ -7,8 +7,11 @@
 #include <units/current.h>
 #include <units/time.h>
 
-#include "compileTimeMemberCheck.h"
+#include "compile_time_member_check.h"
 #include "ctre/Phoenix.h"
+
+namespace argos_lib {
+namespace falcon_config {
 
 HAS_MEMBER(forwardLimit_deviceID)
 HAS_MEMBER(forwardLimit_normalState)
@@ -16,6 +19,10 @@ HAS_MEMBER(forwardLimit_source)
 HAS_MEMBER(inverted)
 HAS_MEMBER(neutralDeadband)
 HAS_MEMBER(neutralMode)
+HAS_MEMBER(nominalOutputForward)
+HAS_MEMBER(nominalOutputReverse)
+HAS_MEMBER(peakOutputForward)
+HAS_MEMBER(peakOutputReverse)
 HAS_MEMBER(pid0_allowableError)
 HAS_MEMBER(pid0_iZone)
 HAS_MEMBER(pid0_kD)
@@ -45,6 +52,10 @@ HAS_MEMBER(voltCompSat)
  *           - inverted
  *           - neutralDeadband
  *           - neutralMode
+ *           - nominalOutputForward
+ *           - nominalOutputReverse
+ *           - peakOutputForward
+ *           - peakOutputReverse
  *           - pid0_allowableError
  *           - pid0_iZone
  *           - pid0_kD
@@ -68,11 +79,9 @@ HAS_MEMBER(voltCompSat)
  * @return false Configuration failed
  */
 template <typename T>
-bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeout) {
+bool FalconConfig(TalonFX& motorController, units::millisecond_t configTimeout) {
   TalonFXConfiguration config;
   auto timeout = configTimeout.to<int>();
-
-  motorController.ConfigFactoryDefault(timeout);
 
   if constexpr (has_inverted<T>{}) {
     motorController.SetInverted(T::inverted);
@@ -95,6 +104,18 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
     filterConfig.remoteSensorDeviceID = T::remoteFilter0_addr;
     filterConfig.remoteSensorSource = T::remoteFilter0_type;
     config.remoteFilter0 = filterConfig;
+  }
+  if constexpr (has_nominalOutputForward<T>{}) {
+    config.nominalOutputForward = T::nominalOutputForward;
+  }
+  if constexpr (has_nominalOutputReverse<T>{}) {
+    config.nominalOutputReverse = T::nominalOutputReverse;
+  }
+  if constexpr (has_peakOutputForward<T>{}) {
+    config.peakOutputForward = T::peakOutputForward;
+  }
+  if constexpr (has_peakOutputReverse<T>{}) {
+    config.peakOutputReverse = T::peakOutputReverse;
   }
   if constexpr (has_pid0_selectedSensor<T>{}) {
     config.primaryPID.selectedFeedbackSensor = T::pid0_selectedSensor;
@@ -197,5 +218,13 @@ bool FalconConfig(WPI_TalonFX& motorController, units::millisecond_t configTimeo
     config.neutralDeadband = T::neutralDeadband;
   }
 
-  return 0 != motorController.ConfigAllSettings(config, timeout);
+  auto retVal = motorController.ConfigAllSettings(config, timeout);
+  if(0 != retVal) {
+    std::cout << "Error code (" << motorController.GetDeviceID() << "): " << retVal << '\n';
+  }
+
+  return 0 != retVal;
 }
+
+} // namespace falcon_config
+} // namespace argos_lib

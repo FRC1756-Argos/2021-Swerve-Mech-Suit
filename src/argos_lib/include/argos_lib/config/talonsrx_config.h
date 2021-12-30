@@ -7,8 +7,11 @@
 #include <units/time.h>
 #include <units/voltage.h>
 
-#include "compileTimeMemberCheck.h"
+#include "compile_time_member_check.h"
 #include "ctre/Phoenix.h"
+
+namespace argos_lib {
+namespace talonsrx_config {
 
 HAS_MEMBER(inverted)
 HAS_MEMBER(neutralMode)
@@ -100,3 +103,6 @@ bool TalonSRXConfig(WPI_TalonSRX& motorController, units::millisecond_t configTi
 
   return 0 != motorController.ConfigAllSettings(config, timeout);
 }
+
+} // namespace talonsrx_config
+} // namespace argos_lib

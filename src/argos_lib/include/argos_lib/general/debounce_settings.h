@@ -6,7 +6,11 @@
 
 #include <units/time.h>
 
-struct debounceSetttings {
+namespace argos_lib {
+
+struct DebounceSettings {
   units::millisecond_t activateTime;
   units::millisecond_t clearTime;
 };
+
+} // namespace argos_lib
